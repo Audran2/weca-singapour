@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
+import '../../../authentication/presentation/screens/welcome_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -34,10 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-        );
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomeScreen()));
       }
     });
   }
