@@ -1,4 +1,4 @@
-package com.example.scanner
+package com.example.weca
 
 import io.flutter.embedding.android.FlutterActivity
 import androidx.core.view.WindowCompat

@@ -46,7 +46,7 @@ class BottomNavBar extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 AnimatedPositioned(
-                  duration: AppDurations.navbar.animationDuration,
+                  duration: AppDurations.defaultDuration,
                   curve: Curves.easeInOut,
                   left: currentIndex * itemWidth + (itemWidth - AppDimensions.navbar.navItemSize) / 2,
                   child: Container(
