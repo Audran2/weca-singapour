@@ -4,6 +4,7 @@ class AppDimensions {
   static const AppPadding padding = AppPadding();
   static const AppMargin margin = AppMargin();
 
+  static const NavbarDimensions navbar = NavbarDimensions();
   static const TopDialogDimensions topDialog = TopDialogDimensions();
 }
 
@@ -16,6 +17,8 @@ class AppRadius {
   final double extraLarge = 16.0;
   final double xxLarge = 20.0;
   final double xxxLarge = 24.0;
+
+  final double navbarRadius = 40.0;
 }
 
 class AppPadding {
@@ -38,6 +41,14 @@ class AppMargin {
   final double extraLarge = 16.0;
   final double xxLarge = 20.0;
   final double xxxLarge = 24.0;
+}
+
+class NavbarDimensions {
+  const NavbarDimensions();
+
+  final double navbarRadius = 40.0;
+  final double bottomPadding = 32.0;
+  final double navItemSize = 48.0;
 }
 
 class TopDialogDimensions {

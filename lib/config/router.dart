@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../core/presentation/widgets/bottom_navbar.dart';
-import '../features/home/presentation/screen/home_screen.dart';
+import '../features/history/presentation/screens/history_screen.dart';
+import '../features/home/presentation/screens/home_screen.dart';
+import '../features/notifications/presentation/screens/notification_screen.dart';
+import '../features/profile/presentation/screens/profile_screen.dart';
 import '../features/scanner/presentation/screens/scanner_screen.dart';
-import '../features/settings/presentation/screens/settings_screen.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
@@ -18,9 +20,12 @@ final GoRouter appRouter = GoRouter(
       },
       routes: [
         GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+        GoRoute(path: '/notifications', builder: (context, state) => const NotificationScreen()),
         GoRoute(path: '/scan', builder: (context, state) => const ScannerScreen()),
-        GoRoute(path: '/settings', builder: (context, state) => const SettingsScreen()),
+        GoRoute(path: '/history', builder: (context, state) => const HistoryScreen()),
+        GoRoute(path: '/profile', builder: (context, state) => const ProfileScreen()),
       ],
     ),
+    // GoRoute(path: '/settings', builder: (context, state) => const SettingsScreen()),
   ],
 );
