@@ -9,10 +9,16 @@ import '../features/home/presentation/screens/home_screen.dart';
 import '../features/notifications/presentation/screens/notification_screen.dart';
 import '../features/profile/presentation/screens/profile_screen.dart';
 import '../features/scanner/presentation/screens/scanner_screen.dart';
+import '../features/splash/presentation/screens/splash_screen.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: '/welcome',
+  initialLocation: '/splash',
   routes: [
+    // Route pour l'écran de démarrage (splash screen)
+    GoRoute(
+      path: '/splash',
+      builder: (context, state) => SplashScreen(),
+    ),
     GoRoute(
       path: '/welcome',
       builder: (context, state) => const WelcomeScreen(),
