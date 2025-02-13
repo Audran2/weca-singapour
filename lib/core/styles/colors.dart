@@ -2,9 +2,13 @@ import 'dart:ui';
 
 class AppColors {
   static const Color neutralWhite = Color(0xFFFFFFFF);
-  static const Color white = Color(0xFFF8F8FF);
+  static const Color white = Color(0xFFFDFDFF);
   static const Color black = Color(0xFF2E263B);
+
+  static const Color lightGrey = Color(0xFFE9EDEE);
   static const Color grey = Color(0xFFBBBBBB);
+  static const Color grey200 = Color(0xFF9E9E9E);
+  static const Color grey800 = Color(0xFF616161);
 }
 
 class ChartColors {

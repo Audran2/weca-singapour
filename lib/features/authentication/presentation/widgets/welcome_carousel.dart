@@ -37,10 +37,6 @@ class _WelcomeCarouselState extends State<WelcomeCarousel> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(AppDimensions.padding.extraLarge),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppDimensions.radius.extraLarge),
-      ),
       height: MediaQuery.of(context).size.height * 0.62,
       child: Stack(
         children: [
@@ -54,21 +50,18 @@ class _WelcomeCarouselState extends State<WelcomeCarousel> {
                     setState(() {});
                   },
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: AppDimensions.padding.xxxLarge),
-                      child: Column(
-                        children: [
-                          AspectRatio(
-                            aspectRatio: 1 / 1,
-                            child: Image.asset(
-                              items[index].image,
-                              fit: BoxFit.contain,
-                            ),
+                    return Column(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: Image.asset(
+                            items[index].image,
+                            fit: BoxFit.contain,
                           ),
-                          const SizedBox(height: 25),
-                          items[index].widget,
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 25),
+                        items[index].widget,
+                      ],
                     );
                   },
                   itemCount: items.length,
