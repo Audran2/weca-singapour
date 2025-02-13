@@ -4,10 +4,12 @@ import '../../../styles/colors.dart';
 import '../../../styles/dimensions.dart';
 
 class TextFormInput extends StatelessWidget {
+  final IconData icon;
   final String label;
   final ValueChanged<String> onChanged;
 
   const TextFormInput({
+    required this.icon,
     required this.label,
     required this.onChanged,
     super.key,
@@ -23,7 +25,7 @@ class TextFormInput extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.email_outlined, color: AppColors.grey200),
+          Icon(icon, color: AppColors.grey200),
           SizedBox(width: AppDimensions.margin.medium),
           Expanded(
             child: TextField(

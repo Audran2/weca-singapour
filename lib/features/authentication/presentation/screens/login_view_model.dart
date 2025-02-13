@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/services/top_dialog_services.dart';
 
@@ -19,5 +20,7 @@ class LoginViewModel {
     if (email.value.isEmpty || password.value.isEmpty) {
       return DialogService.showTopErrorDialog(context, 'Please fill in all fields');
     }
+
+    context.goNamed('home');
   }
 }

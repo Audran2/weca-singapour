@@ -8,12 +8,13 @@ class PasswordFormInput extends TextFormInput {
   final VoidCallback onToggleVisibility;
 
   const PasswordFormInput({
+    required IconData icon,
     required String label,
     required ValueChanged<String> onChanged,
     required this.obscureText,
     required this.onToggleVisibility,
     super.key,
-  }) : super(label: label, onChanged: onChanged);
+  }) : super(icon: icon, label: label, onChanged: onChanged);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class PasswordFormInput extends TextFormInput {
       ),
       child: Row(
         children: [
-          const Icon(Icons.lock_outline, color: AppColors.grey200),
+          Icon(icon, color: AppColors.grey200),
           SizedBox(width: AppDimensions.margin.medium),
           Expanded(
             child: TextField(

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../core/presentation/widgets/bottom_navbar.dart';
 import '../features/authentication/presentation/screens/login_screen.dart';
+import '../features/authentication/presentation/screens/sign_up_screen.dart';
 import '../features/authentication/presentation/screens/welcome_screen.dart';
 import '../features/history/presentation/screens/history_screen.dart';
 import '../features/home/presentation/screens/home_screen.dart';
@@ -17,7 +18,7 @@ final GoRouter appRouter = GoRouter(
     // Route pour l'écran de démarrage (splash screen)
     GoRoute(
       path: '/splash',
-      builder: (context, state) => SplashScreen(),
+      builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
       path: '/welcome',
@@ -29,6 +30,9 @@ final GoRouter appRouter = GoRouter(
       path: '/login',
       builder: (context, state) => const LoginScreen(),
     ),
+
+    // Route de sign up
+    GoRoute(path: '/signup', builder: (context, state) => const SignUpScreen()),
     ShellRoute(
       builder: (context, state, child) {
         return Scaffold(
@@ -37,12 +41,10 @@ final GoRouter appRouter = GoRouter(
         );
       },
       routes: [
-        GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+        GoRoute(path: '/', name: 'home', builder: (context, state) => const HomeScreen()),
         GoRoute(
             path: '/notifications',
             builder: (context, state) => const NotificationScreen()),
-        GoRoute(
-            path: '/scan', builder: (context, state) => const ScannerScreen()),
         GoRoute(
             path: '/history',
             builder: (context, state) => const HistoryScreen()),
@@ -51,6 +53,9 @@ final GoRouter appRouter = GoRouter(
             builder: (context, state) => const ProfileScreen()),
       ],
     ),
+    // Route de scan
+    GoRoute(
+        path: '/scan', builder: (context, state) => const ScannerScreen()),
     // GoRoute(path: '/settings', builder: (context, state) => const SettingsScreen()),
   ],
 );

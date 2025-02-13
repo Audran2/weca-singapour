@@ -52,14 +52,18 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 48),
               TextFormInput(
+                icon: Icons.email_outlined,
                 label: "Enter your email",
-                onChanged: (String? value) {},
+                onChanged: (String value) {
+                  _viewModel.email.value = value;
+                },
               ),
               SizedBox(height: AppDimensions.margin.xxxLarge),
               ValueListenableBuilder<bool>(
                 valueListenable: _viewModel.obscureText,
                 builder: (context, obscureText, child) {
                   return PasswordFormInput(
+                    icon: Icons.lock_outline,
                     label: "Enter your password",
                     onChanged: (String value) {
                       _viewModel.password.value = value;
@@ -117,25 +121,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: AppDimensions.margin.xxLarge),
                     Center(
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text.rich(
-                          TextSpan(
-                            text: "Don’t have an Account? ",
-                            style: AppTextStyles.bodyMedium
-                                .copyWith(color: AppColors.grey200),
-                            children: [
-                              TextSpan(
-                                text: "Sign-Up",
-                                style: AppTextStyles.bodyMedium.copyWith(
-                                    color: ChartColors.secondary500,
-                                    fontWeight: FontWeight.bold),
-                                recognizer: TapGestureRecognizer()..onTap = () {
-                                  context.go('/sign-up');
+                      child: Text.rich(
+                        TextSpan(
+                          text: "Don’t have an Account? ",
+                          style: AppTextStyles.bodyMedium
+                              .copyWith(color: AppColors.grey200),
+                          children: [
+                            TextSpan(
+                              text: "Sign-Up",
+                              style: AppTextStyles.bodyMedium.copyWith(
+                                  color: ChartColors.secondary500,
+                                  fontWeight: FontWeight.bold),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  context.go('/signup');
                                 },
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

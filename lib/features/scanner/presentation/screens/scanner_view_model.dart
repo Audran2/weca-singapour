@@ -15,14 +15,17 @@ class ScannerViewModel {
 
   bool isScanning = true;
   bool isPopupOpen = false;
+  List<Barcode> detectedBarcodes = [];
 
   void onDetect(BarcodeCapture barcodeCapture, BuildContext context) {
     if (isScanning && barcodeCapture.barcodes.isNotEmpty) {
       isScanning = false;
-      final String code =
-          barcodeCapture.barcodes.first.rawValue ?? 'Aucun résultat';
+      detectedBarcodes = barcodeCapture.barcodes;
 
-      getProduct(context, BarcodeId(code));
+      for (var barcode in barcodeCapture.barcodes) {
+        final String code = barcode.rawValue ?? 'Aucun résultat';
+        getProduct(context, BarcodeId(code));
+      }
 
       Future.delayed(const Duration(seconds: 2), () {
         isScanning = true;
