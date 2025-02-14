@@ -20,7 +20,8 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String location = GoRouterState.of(context).uri.toString();
-    final int currentIndex = navItems.indexWhere((item) => item.route == location);
+    final int currentIndex =
+        navItems.indexWhere((item) => item.route == location);
 
     return Container(
       decoration: BoxDecoration(
@@ -48,13 +49,15 @@ class BottomNavBar extends StatelessWidget {
                 AnimatedPositioned(
                   duration: AppDurations.defaultDuration,
                   curve: Curves.easeInOut,
-                  left: currentIndex * itemWidth + (itemWidth - AppDimensions.navbar.navItemSize) / 2,
+                  left: currentIndex * itemWidth +
+                      (itemWidth - AppDimensions.navbar.navItemSize) / 2,
                   child: Container(
                     width: AppDimensions.navbar.navItemSize,
                     height: AppDimensions.navbar.navItemSize,
                     decoration: BoxDecoration(
                       color: ChartColors.primary50,
-                      borderRadius: BorderRadius.circular(AppDimensions.radius.large),
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.radius.large),
                     ),
                   ),
                 ),
@@ -63,13 +66,17 @@ class BottomNavBar extends StatelessWidget {
                   children: navItems.map((item) {
                     final bool isActive = location == item.route;
                     return GestureDetector(
-                      onTap: () => context.go(item.route),
+                      onTap: () => item.route == "/scan"
+                          ? context.push(item.route)
+                          : context.go(item.route),
                       child: SizedBox(
                         width: AppDimensions.navbar.navItemSize,
                         height: AppDimensions.navbar.navItemSize,
                         child: Icon(
                           item.icon,
-                          color: isActive ? ChartColors.primary500 : AppColors.grey,
+                          color: isActive
+                              ? ChartColors.primary500
+                              : AppColors.grey,
                           size: AppTextSize.headlineMedium,
                         ),
                       ),
@@ -88,5 +95,6 @@ class BottomNavBar extends StatelessWidget {
 class NavItem {
   final IconData icon;
   final String route;
+
   const NavItem({required this.icon, required this.route});
 }
