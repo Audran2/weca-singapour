@@ -34,7 +34,7 @@ class PrimaryButton extends StatelessWidget {
         onPressed: () => onPressed(),
         child: Text(
           label,
-          style: AppTextStyles.titleMedium
+          style: AppTextStyles.largeButtonText
               .copyWith(color: AppColors.neutralWhite),
         ),
       ),

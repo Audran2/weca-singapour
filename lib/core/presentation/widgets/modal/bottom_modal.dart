@@ -70,7 +70,7 @@ class BottomModal extends StatelessWidget {
                 : EdgeInsets.fromLTRB(AppDimensions.padding.extraLarge, AppDimensions.padding.large, AppDimensions.padding.extraLarge, AppDimensions.padding.extraLarge),
             child: Text(
               label,
-              style: AppTextStyles.titleSmall,
+              // style: AppTextStyles.titleSmall,
             ),
           ),
         ],

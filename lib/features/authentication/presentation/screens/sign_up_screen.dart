@@ -47,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: [
               Text(
                 "Let's Create\nYour Account",
-                style: AppTextStyles.headlineSmall
+                style: AppTextStyles.titleText1
                     .copyWith(color: AppColors.grey800),
               ),
               const SizedBox(height: 48),
@@ -103,14 +103,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Text.rich(
                         TextSpan(
                           text: "Already have an Account? ",
-                          style: AppTextStyles.bodyMedium
+                          style: AppTextStyles.bodyText2
                               .copyWith(color: AppColors.grey200),
                           children: [
                             TextSpan(
                               text: "Sign-In",
-                              style: AppTextStyles.bodyMedium.copyWith(
-                                  color: ChartColors.secondary500,
-                                  fontWeight: FontWeight.bold),
+                              style: AppTextStyles.bodyText3.copyWith(
+                                  color: ChartColors.secondary500),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   context.go('/login');

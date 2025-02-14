@@ -79,7 +79,7 @@ class _TopInfoDialogState extends State<TopInfoDialog> with SingleTickerProvider
                 Expanded(
                   child: Text(
                     widget.message,
-                    style: AppTextStyles.titleSmall.copyWith(color: AppColors.white),
+                    style: AppTextStyles.bodyText2.copyWith(color: AppColors.white),
                   ),
                 ),
               ],

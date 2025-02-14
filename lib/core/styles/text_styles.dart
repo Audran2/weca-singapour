@@ -4,105 +4,119 @@ import 'colors.dart';
 
 class TextFontFamily {
   static const String rubik = 'Rubik';
-  static const String poppins = 'Poppins';
 }
 
 class AppTextSize {
-  static const double labelSmall = 11.0;
-  static const double labelMedium = 12.0;
-  static const double labelLarge = 14.0;
-  static const double bodySmall = 12.0;
-  static const double bodyMedium = 14.0;
-  static const double bodyLarge = 16.0;
-  static const double titleSmall = 14.0;
-  static const double titleMedium = 18.0;
-  static const double titleLarge = 22.0;
-  static const double headlineSmall = 28.0;
-  static const double headlineMedium = 32.0;
-  static const double headlineLarge = 36.0;
+  static const double subtitle1 = 24;
+  static const double subtitle2 = 20;
+  static const double subtitle3 = 16;
+  static const double subtitle4 = 10;
+  static const double body1 = 18;
+  static const double body2 = 14;
+  static const double body3 = 14;
+  static const double title1 = 26;
+  static const double title2 = 24.6;
+  static const double title3 = 22;
+  static const double title4 = 18;
+  static const double largeButton = 18;
+  static const double mediumButton = 14;
+  static const double smallButton = 14;
+
+  static const double navBarIcon = 24;
 }
 
 class AppTextStyles {
-  static const TextStyle headlineLarge = TextStyle(
+  static const TextStyle subtitleText1 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.headlineLarge,
+    fontSize: AppTextSize.subtitle1,
     fontFamily: TextFontFamily.rubik,
-    fontWeight: FontWeight.w700,
   );
 
-  static const TextStyle headlineMedium = TextStyle(
+  static const TextStyle subtitleText2 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.headlineMedium,
+    fontSize: AppTextSize.subtitle2,
     fontFamily: TextFontFamily.rubik,
-    fontWeight: FontWeight.w700,
   );
 
-  static const TextStyle headlineSmall = TextStyle(
+  static const TextStyle subtitleText3 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.headlineSmall,
+    fontSize: AppTextSize.subtitle3,
     fontFamily: TextFontFamily.rubik,
-    fontWeight: FontWeight.w700,
+    letterSpacing: 3.0,
   );
 
-  static const TextStyle titleLarge = TextStyle(
+  static const TextStyle subtitleText4 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.titleLarge,
+    fontSize: AppTextSize.subtitle4,
     fontFamily: TextFontFamily.rubik,
-    fontWeight: FontWeight.w700,
+    letterSpacing: 3.0,
+    fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle titleMedium = TextStyle(
+  static const TextStyle bodyText1 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.titleMedium,
-    fontFamily: TextFontFamily.poppins,
-    fontWeight: FontWeight.w700,
-  );
-
-  static const TextStyle titleSmall = TextStyle(
-    color: AppColors.black,
-    fontSize: AppTextSize.titleSmall,
+    fontSize: AppTextSize.body1,
     fontFamily: TextFontFamily.rubik,
-    fontWeight: FontWeight.w700,
   );
 
-  static const TextStyle bodyLarge = TextStyle(
+  static const TextStyle bodyText2 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.bodyLarge,
+    fontSize: AppTextSize.body2,
     fontFamily: TextFontFamily.rubik,
-    fontWeight: FontWeight.w400,
   );
 
-  static const TextStyle bodyMedium = TextStyle(
+  static const TextStyle bodyText3 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.bodyMedium,
+    fontSize: AppTextSize.body3,
     fontFamily: TextFontFamily.rubik,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle bodySmall = TextStyle(
+  static const TextStyle titleText1 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.bodySmall,
+    fontSize:  AppTextSize.title1,
     fontFamily: TextFontFamily.rubik,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle labelLarge = TextStyle(
+  static const TextStyle titleText2 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.labelLarge,
+    fontSize: AppTextSize.title2,
+    fontFamily: TextFontFamily.rubik,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle titleText3 = TextStyle(
+    color: AppColors.black,
+    fontSize: AppTextSize.title3,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
   );
 
-  static const TextStyle labelMedium = TextStyle(
+  static const TextStyle titleText4 = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.labelMedium,
+    fontSize: AppTextSize.title4,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
   );
 
-  static const TextStyle labelSmall = TextStyle(
+  static const TextStyle largeButtonText = TextStyle(
     color: AppColors.black,
-    fontSize: AppTextSize.labelSmall,
+    fontSize: AppTextSize.largeButton,
+    fontFamily: TextFontFamily.rubik,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle mediumButtonText = TextStyle(
+    color: AppColors.black,
+    fontSize: AppTextSize.mediumButton,
+    fontFamily: TextFontFamily.rubik,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle smallButtonText = TextStyle(
+    color: AppColors.black,
+    fontSize: AppTextSize.smallButton,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
   );

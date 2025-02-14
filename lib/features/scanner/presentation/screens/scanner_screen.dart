@@ -75,7 +75,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
                     ),
                     child: const Icon(
                       Icons.close,
-                      size: AppTextSize.headlineSmall,
+                      size: AppTextSize.subtitle1,
                       color: ChartColors.primary700,
                     ),
                   ),

@@ -77,7 +77,7 @@ class BottomNavBar extends StatelessWidget {
                           color: isActive
                               ? ChartColors.primary500
                               : AppColors.grey,
-                          size: AppTextSize.headlineMedium,
+                          size: AppTextSize.navBarIcon,
                         ),
                       ),
                     );

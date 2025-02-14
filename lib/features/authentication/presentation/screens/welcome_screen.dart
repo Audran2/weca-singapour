@@ -30,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
                             RichText(
                               text: const TextSpan(
                                 text: 'Welcome to ',
-                                style: AppTextStyles.headlineSmall,
+                                style: AppTextStyles.titleText1,
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: 'WECA',

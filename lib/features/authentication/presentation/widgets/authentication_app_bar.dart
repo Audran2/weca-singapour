@@ -30,7 +30,7 @@ class AuthenticationAppBar extends StatelessWidget implements PreferredSizeWidge
               ),
               child: const Icon(
                 Icons.arrow_back_outlined,
-                size: AppTextSize.titleLarge,
+                size: AppTextSize.largeButton,
                 color: AppColors.black,
               ),
             ),
