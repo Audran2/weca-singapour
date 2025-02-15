@@ -2,13 +2,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/presentation/widgets/app_bar_default.dart';
 import '../../../../core/presentation/widgets/button/primary_button.dart';
 import '../../../../core/presentation/widgets/form/password_form_input.dart';
 import '../../../../core/presentation/widgets/form/text_form_input.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/dimensions.dart';
 import '../../../../core/styles/text_styles.dart';
-import '../widgets/authentication_app_bar.dart';
 import 'sign_up_view_model.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -31,7 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AuthenticationAppBar(
+      appBar: AppBarDefault(
         onBackButtonPressed: () => context.pop(),
       ),
       body: SafeArea(

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/styles/colors.dart';
-import '../../../../core/styles/dimensions.dart';
-import '../../../../core/styles/text_styles.dart';
+import '../../styles/colors.dart';
+import '../../styles/dimensions.dart';
+import '../../styles/text_styles.dart';
 
-class AuthenticationAppBar extends StatelessWidget implements PreferredSizeWidget {
+class AppBarDefault extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onBackButtonPressed;
 
-  const AuthenticationAppBar({
+  const AppBarDefault({
     Key? key,
     required this.onBackButtonPressed,
   }) : super(key: key);
@@ -25,7 +25,7 @@ class AuthenticationAppBar extends StatelessWidget implements PreferredSizeWidge
             icon: Container(
               padding: EdgeInsets.all(AppDimensions.padding.large),
               decoration: BoxDecoration(
-                color: AppColors.lightGrey.withValues(alpha: .4),
+                color: AppColors.grey100.withValues(alpha: .4),
                 shape: BoxShape.circle,
               ),
               child: const Icon(

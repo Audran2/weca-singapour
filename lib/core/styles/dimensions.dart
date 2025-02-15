@@ -65,4 +65,5 @@ class ScannerDialog {
 
   final double sidePaddingFactor = 0.075;
   final double widthFactor = 0.85;
+  final double buttonSize = 50.0;
 }

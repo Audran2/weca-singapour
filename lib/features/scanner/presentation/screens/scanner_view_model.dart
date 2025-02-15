@@ -6,49 +6,58 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 class ScannerViewModel {
   final ValueNotifier<List<Barcode>> detectedBarcodes = ValueNotifier([]);
   final ValueNotifier<Size> cameraSize = ValueNotifier(Size.zero);
-  late AnimationController scanProductController;
-  late Animation<Offset> scanProductOffsetAnimation;
-  late AnimationController productScannedController;
-  late Animation<Offset> productScannedOffsetAnimation;
+  final ValueNotifier<String> defaultDialogLabel = ValueNotifier('Please, scan your products');
+
+  late AnimationController defaultDialogController;
+  late Animation<Offset> defaultDialogOffsetAnimation;
+  late AnimationController productDialogController;
+  late Animation<Offset> productDialogOffsetAnimation;
   Timer? _resetTimer;
 
   void initializeAnimation(TickerProvider vsync) {
-    scanProductController = AnimationController(
+    defaultDialogController = AnimationController(
       duration: const Duration(milliseconds: 400),
       reverseDuration: const Duration(milliseconds: 400),
       vsync: vsync,
     );
-    scanProductOffsetAnimation = Tween<Offset>(
+    defaultDialogOffsetAnimation = Tween<Offset>(
       begin: const Offset(0, 0),
       end: const Offset(0, 100),
     ).animate(CurvedAnimation(
-      parent: scanProductController,
+      parent: defaultDialogController,
       curve: Curves.easeInOut,
     ));
-    productScannedController = AnimationController(
+    productDialogController = AnimationController(
       duration: const Duration(milliseconds: 400),
       reverseDuration: const Duration(milliseconds: 400),
       vsync: vsync,
     );
-    productScannedOffsetAnimation = Tween<Offset>(
+    productDialogOffsetAnimation = Tween<Offset>(
       begin: const Offset(0, 100),
       end: const Offset(0, 0),
     ).animate(CurvedAnimation(
-      parent: productScannedController,
+      parent: productDialogController,
       curve: Curves.easeInOut,
     ));
-    showScanProductModal();
+    showDefaultDialog();
   }
 
-  void showScanProductModal() {
-    scanProductController.reverse();
-    productScannedController.reverse();
+  Future<void> showDefaultDialog({isSameDialog = false, dialogLabel = "Please, scan your products"}) async {
+    if (isSameDialog) {
+      await defaultDialogController.forward().then((_) {
+        defaultDialogLabel.value = dialogLabel;
+        defaultDialogController.reverse();
+      });
+    } else {
+      defaultDialogLabel.value = dialogLabel;
+      await defaultDialogController.reverse();
+    }
+    await productDialogController.reverse();
   }
 
-  void showProductScannedModal() {
-    productScannedController.forward();
-    scanProductController.forward();
-
+  void showProductDialog() {
+    productDialogController.forward();
+    defaultDialogController.forward();
   }
 
   void onBarcodeDetected(BarcodeCapture capture) {
@@ -60,7 +69,11 @@ class ScannerViewModel {
 
       if (newBarcodes.isNotEmpty) {
         detectedBarcodes.value = List.from(detectedBarcodes.value)..addAll(newBarcodes);
-        showProductScannedModal();
+        if (detectedBarcodes.value.length > 1) {
+          showDefaultDialog(isSameDialog: true, dialogLabel: "Multiple products detected");
+        } else {
+          showProductDialog();
+        }
       }
 
       if (capture.size != Size.zero) {
@@ -73,14 +86,15 @@ class ScannerViewModel {
     _resetTimer?.cancel();
     _resetTimer = Timer(const Duration(milliseconds: 500), () {
       detectedBarcodes.value = [];
-      showScanProductModal();
+      showDefaultDialog(isSameDialog: true);
     });
   }
 
   void dispose() {
-    scanProductController.dispose();
-    productScannedController.dispose();
+    defaultDialogController.dispose();
+    productDialogController.dispose();
     detectedBarcodes.dispose();
+    defaultDialogLabel.dispose();
     cameraSize.dispose();
     _resetTimer?.cancel();
   }

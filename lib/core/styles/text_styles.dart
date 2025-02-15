@@ -27,26 +27,26 @@ class AppTextSize {
 
 class AppTextStyles {
   static const TextStyle subtitleText1 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.subtitle1,
     fontFamily: TextFontFamily.rubik,
   );
 
   static const TextStyle subtitleText2 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.subtitle2,
     fontFamily: TextFontFamily.rubik,
   );
 
   static const TextStyle subtitleText3 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.subtitle3,
     fontFamily: TextFontFamily.rubik,
     letterSpacing: 0.5,
   );
 
   static const TextStyle subtitleText4 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.subtitle4,
     fontFamily: TextFontFamily.rubik,
     letterSpacing: 3.0,
@@ -54,68 +54,68 @@ class AppTextStyles {
   );
 
   static const TextStyle bodyText1 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.body1,
     fontFamily: TextFontFamily.rubik,
   );
 
   static const TextStyle bodyText2 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.body2,
     fontFamily: TextFontFamily.rubik,
   );
 
   static const TextStyle bodyText3 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.body3,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.bold,
   );
 
   static const TextStyle titleText1 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize:  AppTextSize.title1,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.bold,
   );
 
   static const TextStyle titleText2 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.title2,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w600,
   );
 
   static const TextStyle titleText3 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.title3,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
   );
 
   static const TextStyle titleText4 = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.title4,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
   );
 
   static const TextStyle largeButtonText = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.largeButton,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
   );
 
   static const TextStyle mediumButtonText = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.mediumButton,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
   );
 
   static const TextStyle smallButtonText = TextStyle(
-    color: AppColors.black,
+    color: AppColors.grey500,
     fontSize: AppTextSize.smallButton,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,

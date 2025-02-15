@@ -84,7 +84,7 @@ class BottomNavBar extends StatelessWidget {
                             colorFilter: ColorFilter.mode(
                               isActive
                                   ? ChartColors.primary500
-                                  : AppColors.grey,
+                                  : AppColors.grey300,
                               BlendMode.srcIn,
                             ),
                           ),

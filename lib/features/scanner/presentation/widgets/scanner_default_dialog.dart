@@ -5,11 +5,11 @@ import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/dimensions.dart';
 import '../../../../core/styles/text_styles.dart';
 
-class ScanProductDialog extends StatelessWidget {
+class ScannerDefaultDialog extends StatelessWidget {
   final Animation<Offset> offsetAnimation;
   final String label;
 
-  const ScanProductDialog(
+  const ScannerDefaultDialog(
       {super.key, required this.offsetAnimation, required this.label});
 
   @override
@@ -40,8 +40,8 @@ class ScanProductDialog extends StatelessWidget {
                 height: AppTextSize.defaultIcon,
               ),
               SizedBox(width: AppDimensions.margin.large),
-              const Text(
-                'Please, scan your products',
+              Text(
+                label,
                 style: AppTextStyles.subtitleText3
               ),
             ],

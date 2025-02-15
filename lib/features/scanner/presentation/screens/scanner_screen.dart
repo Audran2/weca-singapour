@@ -5,9 +5,9 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/dimensions.dart';
 import '../../../../core/styles/text_styles.dart';
-import '../widgets/product_scanned_dialog.dart';
-import '../widgets/scan_product_dialog.dart';
+import '../widgets/scanner_default_dialog.dart';
 import '../widgets/scanner_overlay_painter.dart';
+import '../widgets/scanner_product_dialog.dart';
 import 'scanner_view_model.dart';
 
 class ScannerScreen extends StatefulWidget {
@@ -90,13 +90,21 @@ class _ScannerScreenState extends State<ScannerScreen>
                   ),
                 ),
               ),
-              ProductScannedDialog(
-                offsetAnimation: viewModel.scanProductOffsetAnimation,
-                label: "Produit détecté",
+              ScannerProductDialog(
+                offsetAnimation: viewModel.productDialogOffsetAnimation,
+                brand: "Tropicana",
+                label: "Orange juice",
+                imageUrl:
+                    "https://i5.walmartimages.com/seo/Tropicana-Pure-Premium-Original-No-Pulp-100-Orange-Juice-46-Fl-Oz-Bottle_6f94bdc3-e12b-4366-bd7c-80001baee01a.b0e55c463b6fb53dd32c9b25df73cd04.jpeg",
               ),
-              ScanProductDialog(
-                offsetAnimation: viewModel.scanProductOffsetAnimation,
-                label: 'Please, scan your products',
+              ValueListenableBuilder<String>(
+                valueListenable: viewModel.defaultDialogLabel,
+                builder: (context, label, _) {
+                  return ScannerDefaultDialog(
+                    offsetAnimation: viewModel.defaultDialogOffsetAnimation,
+                    label: label,
+                  );
+                },
               ),
             ],
           );

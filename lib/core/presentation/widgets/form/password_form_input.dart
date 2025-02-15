@@ -21,7 +21,7 @@ class PasswordFormInput extends TextFormInput {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
       decoration: BoxDecoration(
-        color: AppColors.lightGrey.withValues(alpha: .6),
+        color: AppColors.grey100.withValues(alpha: .6),
         borderRadius: BorderRadius.circular(AppDimensions.radius.extraLarge)
       ),
       child: Row(

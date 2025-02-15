@@ -28,7 +28,7 @@ class CarouselDots extends StatelessWidget {
           decoration: BoxDecoration(
             color: currentIndex == index
                 ? ChartColors.secondary500
-                : AppColors.grey,
+                : AppColors.grey300,
             borderRadius: BorderRadius.circular(AppDimensions.radius.extraLarge),
           ),
         ),

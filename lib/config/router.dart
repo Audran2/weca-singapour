@@ -9,6 +9,7 @@ import '../features/history/presentation/screens/history_screen.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 import '../features/notifications/presentation/screens/notification_screen.dart';
 import '../features/profile/presentation/screens/profile_screen.dart';
+import '../features/scanner/presentation/screens/product_screen.dart';
 import '../features/scanner/presentation/screens/scanner_screen.dart';
 import '../features/splash/presentation/screens/splash_screen.dart';
 
@@ -56,6 +57,8 @@ final GoRouter appRouter = GoRouter(
     // Route de scan
     GoRoute(
         path: '/scan', builder: (context, state) => const ScannerScreen()),
+
+    GoRoute(path: '/product', builder: (context, state) => const ProductScreen()),
     // GoRoute(path: '/settings', builder: (context, state) => const SettingsScreen()),
   ],
 );
