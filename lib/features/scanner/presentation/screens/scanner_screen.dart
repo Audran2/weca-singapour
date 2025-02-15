@@ -5,6 +5,8 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/dimensions.dart';
 import '../../../../core/styles/text_styles.dart';
+import '../widgets/product_scanned_dialog.dart';
+import '../widgets/scan_product_dialog.dart';
 import '../widgets/scanner_overlay_painter.dart';
 import 'scanner_view_model.dart';
 
@@ -15,8 +17,15 @@ class ScannerScreen extends StatefulWidget {
   _ScannerScreenState createState() => _ScannerScreenState();
 }
 
-class _ScannerScreenState extends State<ScannerScreen> {
+class _ScannerScreenState extends State<ScannerScreen>
+    with TickerProviderStateMixin {
   final ScannerViewModel viewModel = ScannerViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    viewModel.initializeAnimation(this);
+  }
 
   @override
   void dispose() {
@@ -71,7 +80,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
                     decoration: BoxDecoration(
                       color: AppColors.white,
                       borderRadius:
-                      BorderRadius.circular(AppDimensions.radius.large),
+                          BorderRadius.circular(AppDimensions.radius.large),
                     ),
                     child: const Icon(
                       Icons.close,
@@ -81,29 +90,13 @@ class _ScannerScreenState extends State<ScannerScreen> {
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 30,
-                left: MediaQuery.of(context).size.width *
-                    AppDimensions.topDialog.sidePaddingFactor,
-                width: MediaQuery.of(context).size.width *
-                    AppDimensions.topDialog.widthFactor,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: AppDimensions.padding.xxxLarge,
-                      vertical: AppDimensions.padding.extraLarge),
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius:
-                    BorderRadius.circular(AppDimensions.radius.extraLarge),
-                  ),
-                  child: const Text(
-                    'Please, scan your products',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
+              ProductScannedDialog(
+                offsetAnimation: viewModel.scanProductOffsetAnimation,
+                label: "Produit détecté",
+              ),
+              ScanProductDialog(
+                offsetAnimation: viewModel.scanProductOffsetAnimation,
+                label: 'Please, scan your products',
               ),
             ],
           );

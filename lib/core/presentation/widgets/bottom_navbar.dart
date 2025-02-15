@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../styles/colors.dart';
 import '../../styles/dimensions.dart';
@@ -10,11 +11,12 @@ class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
 
   static const List<NavItem> navItems = [
-    NavItem(icon: Icons.home, route: '/'),
-    NavItem(icon: Icons.notifications, route: '/notifications'),
-    NavItem(icon: Icons.qr_code_scanner, route: '/scan'),
-    NavItem(icon: Icons.access_time, route: '/history'),
-    NavItem(icon: Icons.account_box, route: '/profile'),
+    NavItem(icon: 'assets/icons/navbar/home.svg', route: '/'),
+    NavItem(
+        icon: 'assets/icons/navbar/notification.svg', route: '/notifications'),
+    NavItem(icon: 'assets/icons/navbar/scan.svg', route: '/scan'),
+    NavItem(icon: 'assets/icons/navbar/history.svg', route: '/history'),
+    NavItem(icon: 'assets/icons/navbar/profile.svg', route: '/profile'),
   ];
 
   @override
@@ -27,17 +29,17 @@ class BottomNavBar extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(AppDimensions.radius.navbarRadius),
-          topRight: Radius.circular(AppDimensions.radius.navbarRadius),
+          topLeft: Radius.circular(AppDimensions.navbar.navbarRadius),
+          topRight: Radius.circular(AppDimensions.navbar.navbarRadius),
         ),
         boxShadow: [AppShadows.bottomNavShadow],
       ),
       child: Padding(
         padding: EdgeInsets.only(
-          top: AppDimensions.padding.xxLarge,
+          top: AppDimensions.navbar.topPadding,
           bottom: AppDimensions.navbar.bottomPadding,
-          left: AppDimensions.padding.extraLarge,
-          right: AppDimensions.padding.extraLarge,
+          left: AppDimensions.navbar.sidePadding,
+          right: AppDimensions.navbar.sidePadding,
         ),
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -49,11 +51,12 @@ class BottomNavBar extends StatelessWidget {
                 AnimatedPositioned(
                   duration: AppDurations.defaultDuration,
                   curve: Curves.easeInOut,
-                  left: currentIndex * itemWidth +
-                      (itemWidth - AppDimensions.navbar.navItemSize) / 2,
+                  top: -AppTextSize.defaultIcon / 2,
+                  left: (currentIndex + 0.5) * itemWidth -
+                      (AppTextSize.defaultIcon),
                   child: Container(
-                    width: AppDimensions.navbar.navItemSize,
-                    height: AppDimensions.navbar.navItemSize,
+                    width: AppTextSize.defaultIcon * 2,
+                    height: AppTextSize.defaultIcon * 2,
                     decoration: BoxDecoration(
                       color: ChartColors.primary50,
                       borderRadius:
@@ -69,15 +72,22 @@ class BottomNavBar extends StatelessWidget {
                       onTap: () => item.route == "/scan"
                           ? context.push(item.route)
                           : context.go(item.route),
-                      child: SizedBox(
-                        width: AppDimensions.navbar.navItemSize,
-                        height: AppDimensions.navbar.navItemSize,
-                        child: Icon(
-                          item.icon,
-                          color: isActive
-                              ? ChartColors.primary500
-                              : AppColors.grey,
-                          size: AppTextSize.navBarIcon,
+                      child: Transform.translate(
+                        offset: item.route == '/scan'
+                            ? const Offset(0, -8)
+                            : const Offset(0, 0),
+                        child: SizedBox(
+                          width: AppTextSize.defaultIcon,
+                          height: AppTextSize.defaultIcon,
+                          child: SvgPicture.asset(
+                            item.icon,
+                            colorFilter: ColorFilter.mode(
+                              isActive
+                                  ? ChartColors.primary500
+                                  : AppColors.grey,
+                              BlendMode.srcIn,
+                            ),
+                          ),
                         ),
                       ),
                     );
@@ -93,7 +103,7 @@ class BottomNavBar extends StatelessWidget {
 }
 
 class NavItem {
-  final IconData icon;
+  final String icon;
   final String route;
 
   const NavItem({required this.icon, required this.route});

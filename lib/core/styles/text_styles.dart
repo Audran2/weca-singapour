@@ -22,7 +22,7 @@ class AppTextSize {
   static const double mediumButton = 14;
   static const double smallButton = 14;
 
-  static const double navBarIcon = 24;
+  static const double defaultIcon = 24;
 }
 
 class AppTextStyles {
@@ -42,7 +42,7 @@ class AppTextStyles {
     color: AppColors.black,
     fontSize: AppTextSize.subtitle3,
     fontFamily: TextFontFamily.rubik,
-    letterSpacing: 3.0,
+    letterSpacing: 0.5,
   );
 
   static const TextStyle subtitleText4 = TextStyle(

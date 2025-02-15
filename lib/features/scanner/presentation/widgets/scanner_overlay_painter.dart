@@ -37,7 +37,9 @@ class ScannerOverlayPainter extends CustomPainter {
 
     _drawScannerRectangle(canvas, rect, gap, cornerLength, cornerPaint, cornerRadius);
 
-    _drawBarCodePointer(canvas);
+    if (barcodes.length > 1) {
+      _drawBarCodePointer(canvas);
+    }
   }
 
   void _drawScannerRectangle(Canvas canvas, Rect rect, double gap, double cornerLength, Paint cornerPaint, double cornerRadius) {
