@@ -12,7 +12,7 @@ class ScannerViewModel {
   late Animation<Offset> defaultDialogOffsetAnimation;
   late AnimationController productDialogController;
   late Animation<Offset> productDialogOffsetAnimation;
-  Timer? _resetTimer;
+  // Timer? _resetTimer;
 
   void initializeAnimation(TickerProvider vsync) {
     defaultDialogController = AnimationController(
@@ -42,17 +42,9 @@ class ScannerViewModel {
     showDefaultDialog();
   }
 
-  Future<void> showDefaultDialog({isSameDialog = false, dialogLabel = "Please, scan your products"}) async {
-    if (isSameDialog) {
-      await defaultDialogController.forward().then((_) {
-        defaultDialogLabel.value = dialogLabel;
-        defaultDialogController.reverse();
-      });
-    } else {
-      defaultDialogLabel.value = dialogLabel;
-      await defaultDialogController.reverse();
-    }
-    await productDialogController.reverse();
+  void showDefaultDialog() {
+    defaultDialogController.reverse();
+    productDialogController.reverse();
   }
 
   void showProductDialog() {
@@ -69,11 +61,7 @@ class ScannerViewModel {
 
       if (newBarcodes.isNotEmpty) {
         detectedBarcodes.value = List.from(detectedBarcodes.value)..addAll(newBarcodes);
-        if (detectedBarcodes.value.length > 1) {
-          showDefaultDialog(isSameDialog: true, dialogLabel: "Multiple products detected");
-        } else {
-          showProductDialog();
-        }
+        showProductDialog();
       }
 
       if (capture.size != Size.zero) {
@@ -83,11 +71,11 @@ class ScannerViewModel {
       }
     }
 
-    _resetTimer?.cancel();
-    _resetTimer = Timer(const Duration(milliseconds: 500), () {
-      detectedBarcodes.value = [];
-      showDefaultDialog(isSameDialog: true);
-    });
+    // _resetTimer?.cancel();
+    // _resetTimer = Timer(const Duration(milliseconds: 500), () {
+    //   detectedBarcodes.value = [];
+    //   showDefaultDialog();
+    // });
   }
 
   void dispose() {
@@ -96,6 +84,6 @@ class ScannerViewModel {
     detectedBarcodes.dispose();
     defaultDialogLabel.dispose();
     cameraSize.dispose();
-    _resetTimer?.cancel();
+    // _resetTimer?.cancel();
   }
 }
