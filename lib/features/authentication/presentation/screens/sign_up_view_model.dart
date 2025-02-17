@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/services/top_dialog_services.dart';
 
@@ -27,5 +28,7 @@ class SignUpViewModel {
     if (email.value.isEmpty || phoneNumber.value.isEmpty || password.value.isEmpty || confirmPassword.value.isEmpty) {
       return DialogService.showTopErrorDialog(context, 'Please fill in all fields');
     }
+
+    await context.pushNamed('boarding');
   }
 }

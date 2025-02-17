@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../core/presentation/widgets/button/primary_button.dart';
-import '../../../../core/styles/colors.dart';
-import '../../../../core/styles/dimensions.dart';
-import '../../../../core/styles/text_styles.dart';
-import '../widgets/welcome_carousel.dart';
+import '../../../../../core/presentation/widgets/button/primary_button.dart';
+import '../../../../../core/styles/colors.dart';
+import '../../../../../core/styles/dimensions.dart';
+import '../../../../../core/styles/text_styles.dart';
+import '../../widgets/welcome_carousel.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+class StartupScreen extends StatelessWidget {
+  const StartupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

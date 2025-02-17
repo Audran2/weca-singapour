@@ -3,8 +3,9 @@ import 'package:go_router/go_router.dart';
 
 import '../core/presentation/widgets/bottom_navbar.dart';
 import '../features/authentication/presentation/screens/login_screen.dart';
+import '../features/authentication/presentation/screens/onboarding/onboarding_screen.dart';
+import '../features/authentication/presentation/screens/onboarding/startup_screen.dart';
 import '../features/authentication/presentation/screens/sign_up_screen.dart';
-import '../features/authentication/presentation/screens/welcome_screen.dart';
 import '../features/history/presentation/screens/history_screen.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 import '../features/notifications/presentation/screens/notification_screen.dart';
@@ -23,7 +24,7 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/welcome',
-      builder: (context, state) => const WelcomeScreen(),
+      builder: (context, state) => const StartupScreen(),
     ),
 
     // Route de login
@@ -32,8 +33,14 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const LoginScreen(),
     ),
 
-    // Route de sign up
+    // Route sign up
     GoRoute(path: '/signup', builder: (context, state) => const SignUpScreen()),
+
+    // Route onboarding
+    GoRoute(
+        path: '/boarding',
+        name: 'boarding',
+        builder: (context, state) => const OnboardingScreen()),
     ShellRoute(
       builder: (context, state, child) {
         return Scaffold(
@@ -42,7 +49,10 @@ final GoRouter appRouter = GoRouter(
         );
       },
       routes: [
-        GoRoute(path: '/', name: 'home', builder: (context, state) => const HomeScreen()),
+        GoRoute(
+            path: '/',
+            name: 'home',
+            builder: (context, state) => const HomeScreen()),
         GoRoute(
             path: '/notifications',
             builder: (context, state) => const NotificationScreen()),
@@ -55,10 +65,10 @@ final GoRouter appRouter = GoRouter(
       ],
     ),
     // Route de scan
-    GoRoute(
-        path: '/scan', builder: (context, state) => const ScannerScreen()),
+    GoRoute(path: '/scan', builder: (context, state) => const ScannerScreen()),
 
-    GoRoute(path: '/product', builder: (context, state) => const ProductScreen()),
+    GoRoute(
+        path: '/product', builder: (context, state) => const ProductScreen()),
     // GoRoute(path: '/settings', builder: (context, state) => const SettingsScreen()),
   ],
 );

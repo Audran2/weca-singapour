@@ -2,6 +2,7 @@ import 'dart:ui';
 
 class AppColors {
   static const Color neutralWhite = Color(0xFFFFFFFF);
+  static const Color whiteDisabled = Color(0xFFCFCFCF);
   static const Color white = Color(0xFFFDFDFF);
   static const Color black = Color(0xFF2E263B);
 
@@ -35,6 +36,7 @@ class ChartColors {
   static const Color secondary300 = Color(0xFFAF6CA1);
   static const Color secondary200 = Color(0xFFC794BC);
   static const Color secondary100 = Color(0xFFDDBED6);
+  static const Color secondary50 = Color(0xFFF1E5EE);
 }
 
 class StatusColors {

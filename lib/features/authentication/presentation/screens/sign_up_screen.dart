@@ -96,7 +96,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     PrimaryButton(
                       label: "Create Account",
-                      onPressed: () {},
+                      onPressed: () => _viewModel.signUp(),
                     ),
                     SizedBox(height: AppDimensions.margin.xxxLarge),
                     Center(

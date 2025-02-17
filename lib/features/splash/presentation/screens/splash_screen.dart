@@ -2,8 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
-import '../../../authentication/presentation/screens/welcome_screen.dart';
-import '../../../home/presentation/screens/home_screen.dart';
+import '../../../authentication/presentation/screens/onboarding/startup_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -35,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomeScreen()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const StartupScreen()));
       }
     });
   }

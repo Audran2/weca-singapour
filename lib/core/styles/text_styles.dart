@@ -14,6 +14,7 @@ class AppTextSize {
   static const double body1 = 18;
   static const double body2 = 14;
   static const double body3 = 14;
+  static const double body4 = 12;
   static const double title1 = 26;
   static const double title2 = 24.6;
   static const double title3 = 22;
@@ -70,6 +71,13 @@ class AppTextStyles {
     fontSize: AppTextSize.body3,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle bodyText4 = TextStyle(
+    color: AppColors.grey500,
+    fontSize: AppTextSize.body4,
+    fontFamily: TextFontFamily.rubik,
+    fontWeight: FontWeight.w600,
   );
 
   static const TextStyle titleText1 = TextStyle(
