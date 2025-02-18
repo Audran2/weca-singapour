@@ -1,0 +1,46 @@
+{
+  "authentication": {
+    "start_up": {
+      "slider": {
+        "slide1": {
+          "title": {
+            "text": "Welcome to ",
+            "highlight": "WECA"
+          },
+          "description": "Scan, analyze, and choose better. Start today."
+        },
+        "slide2": {
+          "title": {
+            "text": "Health Made ",
+            "highlight": "Simple"
+          },
+          "description": "Decipher labels, avoid allergens, and eat smarter."
+        },
+        "slide3": {
+          "title": {
+            "text": "Smarter ",
+            "highlight": "Choices"
+          },
+          "description": "Get personalized advise and healthier options."
+        }
+      },
+      "button_action": "Get Started"
+    }
+  },
+  "boarding": {
+    "step1": {
+      "subStep1": {
+        "label": "Allergies"
+      },
+      "subStep2": {
+        "label": "Intolerance"
+      },
+      "subStep3": {
+        "label": "Disease"
+      },
+      "subStep4": {
+        "label": "Medical\nrestriction"
+      }
+    }
+  }
+}

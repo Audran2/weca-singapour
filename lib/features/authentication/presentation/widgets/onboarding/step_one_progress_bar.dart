@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/styles/colors.dart';
-import '../../../../core/styles/text_styles.dart';
+import '../../../../../core/styles/colors.dart';
+import '../../../../../core/styles/text_styles.dart';
 
 class StepOneProgressBar extends StatelessWidget {
   const StepOneProgressBar({

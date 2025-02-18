@@ -1,0 +1,30 @@
+{
+  "authentication": {
+    "start_up": {
+      "slider": {
+        "slide1": {
+          "title": {
+            "text": "Selamat datang ke ",
+            "highlight": "WECA"
+          },
+          "description": "Imbas, analisa, dan pilih yang lebih baik. Mulakan hari ini."
+        },
+        "slide2": {
+          "title": {
+            "text": "Kesihatan Jadi ",
+            "highlight": "Ringkas"
+          },
+          "description": "Fahami label, elakkan alergen, dan makan dengan lebih bijak."
+        },
+        "slide3": {
+          "title": {
+            "text": "Lebih Bijak ",
+            "highlight": "Pilihan"
+          },
+          "description": "Dapatkan nasihat peribadi dan pilihan yang lebih sihat."
+        }
+      },
+      "button_action": "Mulakan"
+    }
+  }
+}

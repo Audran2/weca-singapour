@@ -1,0 +1,30 @@
+{
+  "authentication": {
+    "start_up": {
+      "slider": {
+        "slide1": {
+          "title": {
+            "text": "Bienvenue chez ",
+            "highlight": "WECA"
+          },
+          "description": "Scannez, analysez et choisissez mieux. Commencez aujourd'hui."
+        },
+        "slide2": {
+          "title": {
+            "text": "La santé rendue ",
+            "highlight": "Simple"
+          },
+          "description": "Déchiffrez les étiquettes, évitez les allergènes et mangez plus intelligemment."
+        },
+        "slide3": {
+          "title": {
+            "text": "Plus intelligents ",
+            "highlight": "Choix"
+          },
+          "description": "Recevez des conseils personnalisés et des options plus saines."
+        }
+      },
+      "button_action": "Commencer"
+    }
+  }
+}

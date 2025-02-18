@@ -1,0 +1,30 @@
+{
+  "authentication": {
+    "start_up": {
+      "slider": {
+        "slide1": {
+          "title": {
+            "text": "欢迎来到 ",
+            "highlight": "WECA"
+          },
+          "description": "扫描、分析，并做出更好的选择。从今天开始。"
+        },
+        "slide2": {
+          "title": {
+            "text": "健康变得 ",
+            "highlight": "简单"
+          },
+          "description": "解读标签，避免过敏原，吃得更聪明。"
+        },
+        "slide3": {
+          "title": {
+            "text": "更聪明的 ",
+            "highlight": "选择"
+          },
+          "description": "获得个性化建议和更健康的选项。"
+        }
+      },
+      "button_action": "开始"
+    }
+  }
+}

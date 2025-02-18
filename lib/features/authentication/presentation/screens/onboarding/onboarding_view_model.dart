@@ -2,22 +2,37 @@ import 'package:flutter/material.dart';
 
 class OnboardingViewModel with ChangeNotifier {
   final PageController pageController = PageController();
-  int currentStepIndex = 1;
-  int currentSubStep = 1;
-  String dietaryPreference = '';
+  final PageController pageOneController = PageController();
+  final PageController pageThreeController = PageController();
+
+  int boardingStepIndex = 1;
+  int boardingSubStepOneIndex = 1;
+  int boardingSubStepThreeIndex = 1;
+
+  List<String> selectedAllergies = [];
+  List<String> selectedIntolerances = [];
+  List<String> selectedDiseases = [];
+  List<String> selectedMedicalRestrictions = [];
+  List<String> dietaryPreferences = [];
+
   String nutriGrade = '';
   String ecoGrade = '';
 
-  final Set<String> selectedAllergies = {};
-  final Set<String> selectedIntolerances = {};
-  final Set<String> selectedDiseases = {};
-  final Set<String> selectedMedicalRestrictions = {};
-
   Future<void> goToNextStep() async {
-    if (currentSubStep < 4) {
-      currentSubStep++;
-    } else if (currentStepIndex < 4) {
-      currentStepIndex++;
+    if (boardingStepIndex == 1 && boardingSubStepOneIndex < 4) {
+      boardingSubStepOneIndex++;
+      await pageOneController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else if (boardingStepIndex == 3 && boardingSubStepThreeIndex < 2) {
+      boardingSubStepThreeIndex++;
+      await pageThreeController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else if (boardingStepIndex < 3) {
+      boardingStepIndex++;
       await pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -27,23 +42,25 @@ class OnboardingViewModel with ChangeNotifier {
   }
 
   Future<void> goToPreviousStep() async {
-    print('currentSubStep: $currentSubStep');
-    print('currentStepIndex: $currentStepIndex');
-    if (currentStepIndex == 1 && currentSubStep > 1) {
-      currentSubStep--;
-    } else if (currentStepIndex > 1) {
-      currentStepIndex--;
+    if (boardingStepIndex == 1 && boardingSubStepOneIndex > 1) {
+      boardingSubStepOneIndex--;
+      await pageOneController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else if (boardingStepIndex == 3 && boardingSubStepThreeIndex > 1) {
+      boardingSubStepThreeIndex--;
+      await pageThreeController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else if (boardingStepIndex > 1) {
+      boardingStepIndex--;
       await pageController.previousPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
-    notifyListeners();
-  }
-
-
-  void setDietaryPreference(String preference) {
-    dietaryPreference = preference;
     notifyListeners();
   }
 
@@ -55,6 +72,10 @@ class OnboardingViewModel with ChangeNotifier {
   void setEcoGrade(String grade) {
     ecoGrade = grade;
     notifyListeners();
+  }
+
+  void toggleDietaryPreference(String item) {
+    _toggleSelection(dietaryPreferences, item);
   }
 
   void toggleAllergySelection(String item) {
@@ -73,7 +94,7 @@ class OnboardingViewModel with ChangeNotifier {
     _toggleSelection(selectedMedicalRestrictions, item);
   }
 
-  void _toggleSelection(Set<String> selectedSet, String item) {
+  void _toggleSelection(List<String> selectedSet, String item) {
     if (selectedSet.contains(item)) {
       selectedSet.remove(item);
     } else {

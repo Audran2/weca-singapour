@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/presentation/widgets/button/primary_button.dart';
-import '../../../../core/styles/colors.dart';
-import '../../../../core/styles/dimensions.dart';
-import '../screens/onboarding/onboarding_view_model.dart';
+import '../../../../../core/presentation/widgets/button/primary_button.dart';
+import '../../../../../core/styles/colors.dart';
+import '../../../../../core/styles/dimensions.dart';
+import '../../screens/onboarding/onboarding_view_model.dart';
 
 class BoardingBottomNavigationBar extends StatelessWidget {
   final PageController pageController;
@@ -54,7 +54,7 @@ class BoardingBottomNavigationBar extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width * 0.6,
               child: PrimaryButton(
-                label: 'Next step',
+                label: onBoardingViewModel.boardingStepIndex == 3 ? 'Last step' : 'Next step',
                 onPressed: () => onBoardingViewModel.goToNextStep(),
               ),
             ),

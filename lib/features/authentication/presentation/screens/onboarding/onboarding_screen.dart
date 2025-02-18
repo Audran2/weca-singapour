@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'onboarding_view_model.dart';
 import 'step_one_screen.dart';
+import 'step_three_screen.dart';
 import 'step_two_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -25,12 +26,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               physics: const NeverScrollableScrollPhysics(),
               onPageChanged: (index) {
                 setState(() {
-                  onboardingViewModel.currentStepIndex = index + 1;
+                  onboardingViewModel.boardingStepIndex = index + 1;
                 });
               },
               children: [
                 StepOneScreen(),
                 StepTwoScreen(),
+                StepThreeScreen(),
               ],
             );
           },

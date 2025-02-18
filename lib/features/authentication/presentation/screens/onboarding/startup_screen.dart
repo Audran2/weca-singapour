@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/presentation/widgets/button/primary_button.dart';
@@ -28,24 +29,28 @@ class StartupScreen extends StatelessWidget {
                         widget: Column(
                           children: [
                             RichText(
-                              text: const TextSpan(
-                                text: 'Welcome to ',
+                              text: TextSpan(
+                                text:
+                                    "authentication.start_up.slider.slide1.title.text".tr(),
                                 style: AppTextStyles.titleText1,
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: 'WECA',
-                                    style: TextStyle(
+                                    text:
+                                        "authentication.start_up.slider.slide1.title.highlight"
+                                            .tr(),
+                                    style: const TextStyle(
                                         color: ChartColors.primary500),
                                   ),
                                 ],
                               ),
                             ),
                             const SizedBox(height: 8),
-                            const Text.rich(
+                            Text.rich(
                               TextSpan(
                                 text:
-                                    'Scan, analyze, and choose better.\nStart today.',
-                                style: TextStyle(fontSize: 16),
+                                    "authentication.start_up.slider.slide1.description"
+                                        .tr(),
+                                style: AppTextStyles.bodyText2,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -57,24 +62,29 @@ class StartupScreen extends StatelessWidget {
                         widget: Column(
                           children: [
                             RichText(
-                              text: const TextSpan(
-                                text: 'Health Made ',
+                              text: TextSpan(
+                                text:
+                                    "authentication.start_up.slider.slide2.title.text"
+                                        .tr(),
                                 style: AppTextStyles.titleText1,
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: 'Simple',
-                                    style: TextStyle(
+                                    text:
+                                        "authentication.start_up.slider.slide2.title.highlight"
+                                            .tr(),
+                                    style: const TextStyle(
                                         color: ChartColors.primary500),
                                   ),
                                 ],
                               ),
                             ),
                             const SizedBox(height: 8),
-                            const Text.rich(
+                            Text.rich(
                               TextSpan(
                                 text:
-                                    'Decipher labels, avoid allergens,\nand eat smarter.',
-                                style: TextStyle(fontSize: 16),
+                                    "authentication.start_up.slider.slide2.description"
+                                        .tr(),
+                                style: AppTextStyles.bodyText2,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -86,24 +96,29 @@ class StartupScreen extends StatelessWidget {
                         widget: Column(
                           children: [
                             RichText(
-                              text: const TextSpan(
-                                text: 'Smarter ',
+                              text: TextSpan(
+                                text:
+                                    "authentication.start_up.slider.slide3.title.text"
+                                        .tr(),
                                 style: AppTextStyles.titleText1,
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: 'Choices',
-                                    style: TextStyle(
+                                    text:
+                                        "authentication.start_up.slider.slide3.title.highlight"
+                                            .tr(),
+                                    style: const TextStyle(
                                         color: ChartColors.primary500),
                                   ),
                                 ],
                               ),
                             ),
                             const SizedBox(height: 8),
-                            const Text.rich(
+                            Text.rich(
                               TextSpan(
                                 text:
-                                    'Get personalized advice\nand healthier options.',
-                                style: TextStyle(fontSize: 16),
+                                    "authentication.start_up.slider.slide3.description"
+                                        .tr(),
+                                style: AppTextStyles.bodyText2,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -115,7 +130,7 @@ class StartupScreen extends StatelessWidget {
                 ),
               ),
               PrimaryButton(
-                label: 'Get Started',
+                label: "authentication.start_up.button_action".tr(),
                 onPressed: () {
                   context.go('/login');
                 },
