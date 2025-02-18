@@ -18,6 +18,7 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
+      height: 55,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(
@@ -26,8 +27,8 @@ class PrimaryButton extends StatelessWidget {
           foregroundColor: AppColors.neutralWhite,
           backgroundColor: ChartColors.primary500,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-                AppDimensions.radius.extraLarge),
+            borderRadius:
+                BorderRadius.circular(AppDimensions.radius.extraLarge),
           ),
           shadowColor: Colors.transparent,
         ),

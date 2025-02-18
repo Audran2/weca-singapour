@@ -82,7 +82,7 @@ class AppTextStyles {
 
   static const TextStyle titleText1 = TextStyle(
     color: AppColors.grey500,
-    fontSize:  AppTextSize.title1,
+    fontSize: AppTextSize.title1,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.bold,
   );
@@ -113,6 +113,7 @@ class AppTextStyles {
     fontSize: AppTextSize.largeButton,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
+    letterSpacing: 0,
   );
 
   static const TextStyle mediumButtonText = TextStyle(
@@ -120,6 +121,7 @@ class AppTextStyles {
     fontSize: AppTextSize.mediumButton,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
+    letterSpacing: 0,
   );
 
   static const TextStyle smallButtonText = TextStyle(
@@ -127,5 +129,6 @@ class AppTextStyles {
     fontSize: AppTextSize.smallButton,
     fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.w500,
+    letterSpacing: 0,
   );
 }
