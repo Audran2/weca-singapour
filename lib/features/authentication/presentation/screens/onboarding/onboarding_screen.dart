@@ -18,33 +18,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return ChangeNotifierProvider(
       create: (_) => OnboardingViewModel(),
       child: Scaffold(
-        body: SafeArea(
-          child: Consumer<OnboardingViewModel>(
-            builder: (context, onboardingViewModel, child) {
-              return Column(
-                children: [
-                  Expanded(
-                    child: PageView(
-                      controller: onboardingViewModel.pageController,
-                      physics: const NeverScrollableScrollPhysics(),
-                      onPageChanged: (index) {
-                        setState(() {
-                          onboardingViewModel.currentStepIndex = index + 1;
-                        });
-                      },
-                      children: [
-                        StepOneScreen(),
-                        StepTwoScreen(),
-                      ],
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
+        body: Consumer<OnboardingViewModel>(
+          builder: (context, onboardingViewModel, child) {
+            return PageView(
+              controller: onboardingViewModel.pageController,
+              physics: const NeverScrollableScrollPhysics(),
+              onPageChanged: (index) {
+                setState(() {
+                  onboardingViewModel.currentStepIndex = index + 1;
+                });
+              },
+              children: [
+                StepOneScreen(),
+                StepTwoScreen(),
+              ],
+            );
+          },
         ),
       ),
     );
   }
 }
-

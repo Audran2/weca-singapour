@@ -68,7 +68,9 @@ flutter:
     - assets/images/intolerance/
     - assets/images/disease/
     - assets/images/medical_restrictions/
+    - assets/images/food_preferences/
     - assets/icons/
+    - assets/icons/actions/
     - assets/icons/infos/
     - assets/icons/navbar/
     - assets/videos/

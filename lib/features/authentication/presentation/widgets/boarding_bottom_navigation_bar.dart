@@ -42,7 +42,11 @@ class BoardingBottomNavigationBar extends StatelessWidget {
                 padding: EdgeInsets.zero,
               ),
               child: SvgPicture.asset(
-                'assets/icons/chevron_left.svg',
+                'assets/icons/actions/Chevron_Left.svg',
+                colorFilter: const ColorFilter.mode(
+                  ChartColors.primary700,
+                  BlendMode.srcIn,
+                ),
                 width: 24,
                 height: 24,
               ),

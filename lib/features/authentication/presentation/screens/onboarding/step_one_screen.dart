@@ -9,17 +9,21 @@ import 'onboarding_view_model.dart';
 class StepOneScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final OnboardingViewModel onboardingViewModel = Provider.of<OnboardingViewModel>(context);
+    final OnboardingViewModel onboardingViewModel =
+        Provider.of<OnboardingViewModel>(context);
 
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          StepOneProgressBar(currentPageIndex: onboardingViewModel.currentSubStep),
-          StepOneItemList(currentSubStep: onboardingViewModel.currentSubStep),
-          BoardingBottomNavigationBar(
-            pageController: onboardingViewModel.pageController,
-          ),
-        ],
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            StepOneProgressBar(
+                currentPageIndex: onboardingViewModel.currentSubStep),
+            StepOneItemList(currentSubStep: onboardingViewModel.currentSubStep),
+            BoardingBottomNavigationBar(
+              pageController: onboardingViewModel.pageController,
+            ),
+          ],
+        ),
       ),
     );
   }
