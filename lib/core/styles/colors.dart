@@ -5,6 +5,7 @@ class AppColors {
   static const Color whiteDisabled = Color(0xFFCFCFCF);
   static const Color white = Color(0xFFFDFDFF);
   static const Color black = Color(0xFF2E263B);
+  static const Color blackNeutral = Color(0xFF545454);
 
   static const Color grey100 = Color(0xFFE9EDEE);
   static const Color grey200 = Color(0xFF9E9E9E);
@@ -12,7 +13,10 @@ class AppColors {
   static const Color grey400 = Color(0xFFC2C2C2);
   static const Color grey500 = Color(0xFF494949);
   static const Color grey800 = Color(0xFF616161);
-
+  //
+  static const Color neutralGrey1 = Color(0xCC221F1F); // 0xCC = 80% d'opacité
+  static const Color neutralGrey2 = Color(0xB3221F1F); // 0xB3 = 70% d'opacité
+  static const Color neutralGrey3 = Color(0x99221F1F); // 0x99 = 60% d'opacité
 }
 
 class ChartColors {

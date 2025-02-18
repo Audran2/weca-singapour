@@ -46,24 +46,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Let's Create\nYour Account",
+                "Let's,\nCreate Your Account",
                 style: AppTextStyles.titleText1
-                    .copyWith(color: AppColors.grey800),
+                    .copyWith(color: AppColors.blackNeutral),
               ),
               const SizedBox(height: 48),
+              TextFormInput(
+                icon: Icons.phone,
+                label: "Enter your name",
+                onChanged: (String value) {
+                  _viewModel.phoneNumber.value = value;
+                },
+              ),
+              SizedBox(height: AppDimensions.margin.xxxLarge),
               TextFormInput(
                 icon: Icons.email_outlined,
                 label: "Enter your email",
                 onChanged: (String value) {
                   _viewModel.email.value = value;
-                },
-              ),
-              SizedBox(height: AppDimensions.margin.xxxLarge),
-              TextFormInput(
-                icon: Icons.phone,
-                label: "Enter your phone number",
-                onChanged: (String value) {
-                  _viewModel.phoneNumber.value = value;
                 },
               ),
               SizedBox(height: AppDimensions.margin.xxxLarge),
@@ -108,8 +108,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           children: [
                             TextSpan(
                               text: "Sign-In",
-                              style: AppTextStyles.bodyText3.copyWith(
-                                  color: ChartColors.secondary500),
+                              style: AppTextStyles.bodyText3
+                                  .copyWith(color: ChartColors.secondary500),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   context.go('/login');

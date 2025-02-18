@@ -25,15 +25,15 @@ class TextFormInput extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.grey200),
+          Icon(icon, color: AppColors.neutralGrey3),
           SizedBox(width: AppDimensions.margin.medium),
           Expanded(
             child: TextField(
               decoration: InputDecoration(
                 isDense: true,
                 hintText: label,
-                hintStyle: const TextStyle(color: AppColors.grey200),
-                labelStyle: const TextStyle(color: AppColors.grey800),
+                hintStyle: const TextStyle(color: AppColors.neutralGrey3),
+                labelStyle: const TextStyle(color: AppColors.neutralGrey3),
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.zero,
               ),

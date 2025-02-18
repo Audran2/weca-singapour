@@ -25,8 +25,9 @@ class _SplashScreenState extends State<SplashScreen> {
       ..initialize().then((_) {
         if (mounted) {
           setState(() {
-            _controller.setLooping(true);
-            _controller.play();
+            _controller
+              ..setLooping(true)
+              ..play();
             _visible = true;
           });
         }
@@ -34,7 +35,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const StartupScreen()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const StartupScreen()));
       }
     });
   }
@@ -49,7 +51,14 @@ class _SplashScreenState extends State<SplashScreen> {
     return AnimatedOpacity(
       opacity: _visible ? 1.0 : 0.0,
       duration: const Duration(milliseconds: 1000),
-      child: VideoPlayer(_controller),
+      child: FittedBox(
+        fit: BoxFit.cover,
+        child: SizedBox(
+          width: _controller.value.size.width,
+          height: _controller.value.size.height,
+          child: VideoPlayer(_controller),
+        ),
+      ),
     );
   }
 

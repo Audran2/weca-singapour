@@ -41,19 +41,74 @@ class StartupScreen extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 8),
-                            const Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                              style: TextStyle(fontSize: 16),
+                            const Text.rich(
+                              TextSpan(
+                                text:
+                                    'Scan, analyze, and choose better.\nStart today.',
+                                style: TextStyle(fontSize: 16),
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ],
                         ),
                       ),
                       CarouselItem(
-                        image: 'assets/images/authentication/welcome-1.png',
-                        widget: const Text('Title 2',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold)),
+                        image: 'assets/images/authentication/welcome-2.gif',
+                        widget: Column(
+                          children: [
+                            RichText(
+                              text: const TextSpan(
+                                text: 'Health Made ',
+                                style: AppTextStyles.titleText1,
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'Simple',
+                                    style: TextStyle(
+                                        color: ChartColors.primary500),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            const Text.rich(
+                              TextSpan(
+                                text:
+                                    'Decipher labels, avoid allergens,\nand eat smarter.',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                      CarouselItem(
+                        image: 'assets/images/authentication/welcome-3.png',
+                        widget: Column(
+                          children: [
+                            RichText(
+                              text: const TextSpan(
+                                text: 'Smarter ',
+                                style: AppTextStyles.titleText1,
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'Choices',
+                                    style: TextStyle(
+                                        color: ChartColors.primary500),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            const Text.rich(
+                              TextSpan(
+                                text:
+                                    'Get personalized advice\nand healthier options.',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

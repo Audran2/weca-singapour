@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Text(
                 "Hey,\nWelcome Back",
                 style: AppTextStyles.titleText1
-                    .copyWith(color: AppColors.grey800),
+                    .copyWith(color: AppColors.blackNeutral),
               ),
               const SizedBox(height: 48),
               TextFormInput(
@@ -129,8 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             TextSpan(
                               text: "Sign-Up",
-                              style: AppTextStyles.bodyText3.copyWith(
-                                  color: ChartColors.secondary500),
+                              style: AppTextStyles.bodyText3
+                                  .copyWith(color: ChartColors.secondary500),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   context.go('/signup');
