@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -34,97 +35,105 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBarDefault(
         onBackButtonPressed: () => context.pop(),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.only(
-            top: AppDimensions.padding.xxxLarge,
-            left: AppDimensions.padding.xxxLarge,
-            right: AppDimensions.padding.xxxLarge,
-            bottom: AppDimensions.padding.large,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Let's,\nCreate Your Account",
-                style: AppTextStyles.titleText1
-                    .copyWith(color: AppColors.blackNeutral),
-              ),
-              const SizedBox(height: 48),
-              TextFormInput(
-                icon: Icons.phone,
-                label: "Enter your name",
-                onChanged: (String value) {
-                  _viewModel.phoneNumber.value = value;
-                },
-              ),
-              SizedBox(height: AppDimensions.margin.xxxLarge),
-              TextFormInput(
-                icon: Icons.email_outlined,
-                label: "Enter your email",
-                onChanged: (String value) {
-                  _viewModel.email.value = value;
-                },
-              ),
-              SizedBox(height: AppDimensions.margin.xxxLarge),
-              PasswordFormInput(
-                icon: Icons.lock_outline,
-                label: "Enter your password",
-                onChanged: (String value) {
-                  _viewModel.password.value = value;
-                },
-                obscureText: true,
-                onToggleVisibility: () {
-                  _viewModel.togglePasswordVisibility();
-                },
-              ),
-              SizedBox(height: AppDimensions.margin.xxxLarge),
-              PasswordFormInput(
-                icon: Icons.lock_outline,
-                label: "Confirm your password",
-                onChanged: (String value) {
-                  _viewModel.confirmPassword.value = value;
-                },
-                obscureText: true,
-                onToggleVisibility: () {
-                  _viewModel.toggleConfirmPasswordVisibility();
-                },
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    PrimaryButton(
-                      label: "Create Account",
-                      onPressed: () => _viewModel.signUp(),
-                    ),
-                    SizedBox(height: AppDimensions.margin.xxxLarge),
-                    Center(
-                      child: Text.rich(
-                        TextSpan(
-                          text: "Already have an Account? ",
-                          style: AppTextStyles.bodyText2
-                              .copyWith(color: AppColors.grey200),
-                          children: [
-                            TextSpan(
-                              text: "Sign-In",
-                              style: AppTextStyles.bodyText3
-                                  .copyWith(color: ChartColors.secondary500),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  context.go('/login');
-                                },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+      body: _buildBody(context),
+    );
+  }
+
+  SafeArea _buildBody(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: AppDimensions.padding.xxxLarge,
+          left: AppDimensions.padding.xxxLarge,
+          right: AppDimensions.padding.xxxLarge,
+          bottom: AppDimensions.padding.large,
         ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "authentication.signup.label".tr(),
+              style: AppTextStyles.titleText1
+                  .copyWith(color: AppColors.blackNeutral),
+            ),
+            const SizedBox(height: 48),
+            TextFormInput(
+              iconPath: "assets/icons/inputs/User_02.svg",
+              label: "authentication.signup.form.name".tr(),
+              onChanged: (String value) {
+                _viewModel.userName.value = value;
+              },
+            ),
+            SizedBox(height: AppDimensions.margin.xxxLarge),
+            TextFormInput(
+              iconPath: "assets/icons/inputs/Mail.svg",
+              label: "authentication.signup.form.email".tr(),
+              onChanged: (String value) {
+                _viewModel.email.value = value;
+              },
+            ),
+            SizedBox(height: AppDimensions.margin.xxxLarge),
+            PasswordFormInput(
+              iconPath: "assets/icons/inputs/Lock.svg",
+              label: "authentication.signup.form.password".tr(),
+              onChanged: (String value) {
+                _viewModel.password.value = value;
+              },
+              obscureText: true,
+              onToggleVisibility: () {
+                _viewModel.togglePasswordVisibility();
+              },
+            ),
+            SizedBox(height: AppDimensions.margin.xxxLarge),
+            PasswordFormInput(
+              iconPath: "assets/icons/inputs/Lock.svg",
+              label: "authentication.signup.form.confirm_password".tr(),
+              onChanged: (String value) {
+                _viewModel.confirmPassword.value = value;
+              },
+              obscureText: true,
+              onToggleVisibility: () {
+                _viewModel.toggleConfirmPasswordVisibility();
+              },
+            ),
+            _buildBottomSignup(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Expanded _buildBottomSignup(BuildContext context) {
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          PrimaryButton(
+            label: "authentication.signup.action_button.signup".tr(),
+            onPressed: () => _viewModel.signUp(),
+          ),
+          SizedBox(height: AppDimensions.margin.xxxLarge),
+          Center(
+            child: Text.rich(
+              TextSpan(
+                text: "authentication.signup.action_button.login.text".tr(),
+                style:
+                    AppTextStyles.bodyText2.copyWith(color: AppColors.grey200),
+                children: [
+                  TextSpan(
+                    text: "authentication.signup.action_button.login.link".tr(),
+                    style: AppTextStyles.bodyText3
+                        .copyWith(color: ChartColors.secondary500),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        context.pushNamed('login');
+                      },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

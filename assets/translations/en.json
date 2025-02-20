@@ -25,21 +25,53 @@
         }
       },
       "button_action": "Get Started"
-    }
-  },
-  "boarding": {
-    "step1": {
-      "subStep1": {
-        "label": "Allergies"
+    },
+    "login": {
+      "label": "Hey\nWelcome Back",
+      "form": {
+        "email": "Enter your email",
+        "password": "Enter your password"
       },
-      "subStep2": {
-        "label": "Intolerance"
+      "login_alternative": "Or continue with",
+      "action_button": {
+        "login": "Login",
+        "password_forgot": "Forgot Password?",
+        "signup": {
+          "text": "Don't have an account? ",
+          "link": "Sign-Up"
+        }
+      }
+    },
+    "signup": {
+      "label": "Let's,\nCreate Your Account",
+      "form": {
+        "name": "Enter your name",
+        "email": "Enter your email",
+        "password": "Enter your password",
+        "confirm_password": "Confirm your password"
       },
-      "subStep3": {
-        "label": "Disease"
-      },
-      "subStep4": {
-        "label": "Medical\nrestriction"
+      "action_button": {
+        "signup": "Create Account",
+        "login": {
+          "text": "Already have an account? ",
+          "link": "Sing-In"
+        }
+      }
+    },
+    "boarding": {
+      "step1": {
+        "subStep1": {
+          "label": "Allergies"
+        },
+        "subStep2": {
+          "label": "Intolerance"
+        },
+        "subStep3": {
+          "label": "Disease"
+        },
+        "subStep4": {
+          "label": "Medical\nrestriction"
+        }
       }
     }
   }

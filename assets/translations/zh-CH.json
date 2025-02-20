@@ -7,24 +7,72 @@
             "text": "欢迎来到 ",
             "highlight": "WECA"
           },
-          "description": "扫描、分析，并做出更好的选择。从今天开始。"
+          "description": "扫描、分析，做出更好的选择。立即开始。"
         },
         "slide2": {
           "title": {
             "text": "健康变得 ",
             "highlight": "简单"
           },
-          "description": "解读标签，避免过敏原，吃得更聪明。"
+          "description": "解读标签，避开过敏原，并选择更明智的饮食。"
         },
         "slide3": {
           "title": {
-            "text": "更聪明的 ",
+            "text": "更明智的 ",
             "highlight": "选择"
           },
-          "description": "获得个性化建议和更健康的选项。"
+          "description": "获取个性化建议，并选择更健康的选项。"
         }
       },
       "button_action": "开始"
+    },
+    "login": {
+      "label": "你好，\n欢迎回来",
+      "form": {
+        "email": "请输入您的邮箱",
+        "password": "请输入您的密码"
+      },
+      "login_alternative": "或者使用",
+      "action_button": {
+        "login": "登录",
+        "password_forgot": "忘记密码？",
+        "signup": {
+          "text": "没有账号？ ",
+          "link": "注册"
+        }
+      }
+    },
+    "signup": {
+      "label": "让我们，\n创建您的账号",
+      "form": {
+        "name": "请输入您的姓名",
+        "email": "请输入您的邮箱",
+        "password": "请输入您的密码",
+        "confirm_password": "请确认您的密码"
+      },
+      "action_button": {
+        "signup": "创建账号",
+        "login": {
+          "text": "已有账号？ ",
+          "link": "登录"
+        }
+      }
+    },
+    "boarding": {
+      "step1": {
+        "subStep1": {
+          "label": "过敏"
+        },
+        "subStep2": {
+          "label": "不耐症"
+        },
+        "subStep3": {
+          "label": "疾病"
+        },
+        "subStep4": {
+          "label": "医疗\n限制"
+        }
+      }
     }
   }
 }

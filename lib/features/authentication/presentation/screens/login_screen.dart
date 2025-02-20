@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -34,118 +35,126 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBarDefault(
         onBackButtonPressed: () => context.pop(),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.only(
-            top: AppDimensions.padding.xxxLarge,
-            left: AppDimensions.padding.xxxLarge,
-            right: AppDimensions.padding.xxxLarge,
-            bottom: AppDimensions.padding.large,
+      body: _buildBody(context),
+    );
+  }
+
+  SafeArea _buildBody(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: AppDimensions.padding.xxxLarge,
+          left: AppDimensions.padding.xxxLarge,
+          right: AppDimensions.padding.xxxLarge,
+          bottom: AppDimensions.padding.large,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "authentication.login.label".tr(),
+              style: AppTextStyles.titleText1
+                  .copyWith(color: AppColors.blackNeutral),
+            ),
+            const SizedBox(height: 48),
+            TextFormInput(
+              iconPath: "assets/icons/inputs/Mail.svg",
+              label: "authentication.login.form.email".tr(),
+              onChanged: (String value) {
+                _viewModel.email.value = value;
+              },
+            ),
+            SizedBox(height: AppDimensions.margin.xxxLarge),
+            ValueListenableBuilder<bool>(
+              valueListenable: _viewModel.obscureText,
+              builder: (context, obscureText, child) {
+                return PasswordFormInput(
+                  iconPath: "assets/icons/inputs/Lock.svg",
+                  label: "authentication.login.form.password".tr(),
+                  onChanged: (String value) {
+                    _viewModel.password.value = value;
+                  },
+                  obscureText: obscureText,
+                  onToggleVisibility: _viewModel.togglePasswordVisibility,
+                );
+              },
+            ),
+            SizedBox(height: AppDimensions.margin.xxxLarge),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  child: Text(
+                    "authentication.login.action_button.password_forgot".tr(),
+                    style: AppTextStyles.bodyText3
+                        .copyWith(color: ChartColors.secondary500),
+                  ),
+                ),
+              ],
+            ),
+            _buildBottomLogin(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Expanded _buildBottomLogin(BuildContext context) {
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          PrimaryButton(
+            label: "authentication.login.action_button.login".tr(),
+            onPressed: _viewModel.login,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          SizedBox(height: AppDimensions.margin.xxxLarge),
+          Center(
+            child: Text(
+              "authentication.login.login_alternative".tr(),
+              style: AppTextStyles.subtitleText4
+                  .copyWith(color: AppColors.grey200.withValues(alpha: .6)),
+            ),
+          ),
+          SizedBox(height: AppDimensions.margin.extraLarge),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Hey,\nWelcome Back",
-                style: AppTextStyles.titleText1
-                    .copyWith(color: AppColors.blackNeutral),
-              ),
-              const SizedBox(height: 48),
-              TextFormInput(
-                icon: Icons.email_outlined,
-                label: "Enter your email",
-                onChanged: (String value) {
-                  _viewModel.email.value = value;
-                },
-              ),
-              SizedBox(height: AppDimensions.margin.xxxLarge),
-              ValueListenableBuilder<bool>(
-                valueListenable: _viewModel.obscureText,
-                builder: (context, obscureText, child) {
-                  return PasswordFormInput(
-                    icon: Icons.lock_outline,
-                    label: "Enter your password",
-                    onChanged: (String value) {
-                      _viewModel.password.value = value;
-                    },
-                    obscureText: obscureText,
-                    onToggleVisibility: _viewModel.togglePasswordVisibility,
-                  );
-                },
-              ),
-              SizedBox(height: AppDimensions.margin.xxxLarge),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              _buildSocialButton("assets/icons/facebook_icon.png"),
+              SizedBox(width: AppDimensions.margin.xxxLarge),
+              _buildSocialButton("assets/icons/google_icon.png"),
+              SizedBox(width: AppDimensions.margin.xxxLarge),
+              _buildSocialButton("assets/icons/apple_icon.png"),
+            ],
+          ),
+          SizedBox(height: AppDimensions.margin.xxLarge),
+          Center(
+            child: Text.rich(
+              TextSpan(
+                text: "authentication.login.action_button.signup.text".tr(),
+                style:
+                    AppTextStyles.bodyText2.copyWith(color: AppColors.grey200),
                 children: [
-                  TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      minimumSize: Size.zero,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    ),
-                    child: Text(
-                      "Forget password?",
-                      style: AppTextStyles.bodyText3
-                          .copyWith(color: ChartColors.secondary500),
-                    ),
+                  TextSpan(
+                    text: "authentication.login.action_button.signup.link".tr(),
+                    style: AppTextStyles.bodyText3
+                        .copyWith(color: ChartColors.secondary500),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        context.pushNamed('signup');
+                      },
                   ),
                 ],
               ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    PrimaryButton(
-                      label: "Login",
-                      onPressed: _viewModel.login,
-                    ),
-                    SizedBox(height: AppDimensions.margin.xxxLarge),
-                    Center(
-                      child: Text(
-                        "Or Continue with",
-                        style: AppTextStyles.subtitleText4.copyWith(
-                            color: AppColors.grey200.withValues(alpha: .6)),
-                      ),
-                    ),
-                    SizedBox(height: AppDimensions.margin.extraLarge),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildSocialButton("assets/icons/facebook_icon.png"),
-                        SizedBox(width: AppDimensions.margin.xxxLarge),
-                        _buildSocialButton("assets/icons/google_icon.png"),
-                        SizedBox(width: AppDimensions.margin.xxxLarge),
-                        _buildSocialButton("assets/icons/apple_icon.png"),
-                      ],
-                    ),
-                    SizedBox(height: AppDimensions.margin.xxLarge),
-                    Center(
-                      child: Text.rich(
-                        TextSpan(
-                          text: "Don’t have an Account? ",
-                          style: AppTextStyles.bodyText2
-                              .copyWith(color: AppColors.grey200),
-                          children: [
-                            TextSpan(
-                              text: "Sign-Up",
-                              style: AppTextStyles.bodyText3
-                                  .copyWith(color: ChartColors.secondary500),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  context.go('/signup');
-                                },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

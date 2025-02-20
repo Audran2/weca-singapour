@@ -10,7 +10,8 @@ class AppTextSize {
   static const double subtitle1 = 24;
   static const double subtitle2 = 20;
   static const double subtitle3 = 16;
-  static const double subtitle4 = 10;
+  static const double subtitle4 = 12;
+  static const double subtitle5 = 10;
   static const double body1 = 18;
   static const double body2 = 14;
   static const double body3 = 14;
@@ -51,6 +52,13 @@ class AppTextStyles {
     fontSize: AppTextSize.subtitle4,
     fontFamily: TextFontFamily.rubik,
     letterSpacing: 3.0,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle subtitleText5 = TextStyle(
+    color: AppColors.grey500,
+    fontSize: AppTextSize.subtitle5,
+    fontFamily: TextFontFamily.rubik,
     fontWeight: FontWeight.bold,
   );
 

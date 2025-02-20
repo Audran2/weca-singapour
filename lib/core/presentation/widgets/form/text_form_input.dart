@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../styles/colors.dart';
 import '../../../styles/dimensions.dart';
+import '../../../styles/text_styles.dart';
 
 class TextFormInput extends StatelessWidget {
-  final IconData icon;
+  final String iconPath;
   final String label;
   final ValueChanged<String> onChanged;
 
   const TextFormInput({
-    required this.icon,
+    required this.iconPath,
     required this.label,
     required this.onChanged,
     super.key,
@@ -25,15 +27,27 @@ class TextFormInput extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.neutralGrey3),
+          SvgPicture.asset(
+            width: AppTextSize.defaultIcon,
+            height: AppTextSize.defaultIcon,
+            iconPath,
+            colorFilter: const ColorFilter.mode(
+              AppColors.neutralGrey3,
+              BlendMode.srcIn,
+            ),
+          ),
           SizedBox(width: AppDimensions.margin.medium),
           Expanded(
             child: TextField(
               decoration: InputDecoration(
                 isDense: true,
                 hintText: label,
-                hintStyle: const TextStyle(color: AppColors.neutralGrey3),
-                labelStyle: const TextStyle(color: AppColors.neutralGrey3),
+                hintStyle: AppTextStyles.bodyText2.copyWith(
+                  color: AppColors.neutralGrey3,
+                ),
+                labelStyle: AppTextStyles.bodyText2.copyWith(
+                  color: AppColors.neutralGrey3,
+                ),
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.zero,
               ),

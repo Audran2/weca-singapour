@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../styles/colors.dart';
 import '../../../styles/dimensions.dart';
+import '../../../styles/text_styles.dart';
 import 'text_form_input.dart';
 
 class PasswordFormInput extends TextFormInput {
@@ -8,25 +10,32 @@ class PasswordFormInput extends TextFormInput {
   final VoidCallback onToggleVisibility;
 
   const PasswordFormInput({
-    required IconData icon,
+    required String iconPath,
     required String label,
     required ValueChanged<String> onChanged,
     required this.obscureText,
     required this.onToggleVisibility,
     super.key,
-  }) : super(icon: icon, label: label, onChanged: onChanged);
+  }) : super(iconPath: iconPath, label: label, onChanged: onChanged);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
       decoration: BoxDecoration(
-        color: AppColors.grey100.withValues(alpha: .6),
-        borderRadius: BorderRadius.circular(AppDimensions.radius.extraLarge)
-      ),
+          color: AppColors.grey100.withValues(alpha: .6),
+          borderRadius: BorderRadius.circular(AppDimensions.radius.extraLarge)),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.grey200),
+          SvgPicture.asset(
+            width: AppTextSize.defaultIcon,
+            height: AppTextSize.defaultIcon,
+            iconPath,
+            colorFilter: const ColorFilter.mode(
+              AppColors.neutralGrey3,
+              BlendMode.srcIn,
+            ),
+          ),
           SizedBox(width: AppDimensions.margin.medium),
           Expanded(
             child: TextField(
@@ -34,8 +43,12 @@ class PasswordFormInput extends TextFormInput {
               decoration: InputDecoration(
                 isDense: true,
                 hintText: label,
-                hintStyle: const TextStyle(color: AppColors.grey200),
-                labelStyle: const TextStyle(color: AppColors.grey800),
+                hintStyle: AppTextStyles.bodyText2.copyWith(
+                  color: AppColors.neutralGrey3,
+                ),
+                labelStyle: AppTextStyles.bodyText2.copyWith(
+                  color: AppColors.neutralGrey3,
+                ),
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.zero,
               ),
@@ -44,8 +57,17 @@ class PasswordFormInput extends TextFormInput {
           ),
           GestureDetector(
             onTap: onToggleVisibility,
-            child: Icon(obscureText ? Icons.visibility_off : Icons.visibility,
-                color: AppColors.grey200),
+            child: SvgPicture.asset(
+              width: AppTextSize.defaultIcon,
+              height: AppTextSize.defaultIcon,
+              obscureText
+                  ? "assets/icons/actions/Hide.svg"
+                  : "assets/icons/actions/Show.svg",
+              colorFilter: const ColorFilter.mode(
+                AppColors.neutralGrey3,
+                BlendMode.srcIn,
+              ),
+            ),
           ),
         ],
       ),

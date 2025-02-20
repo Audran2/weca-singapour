@@ -7,24 +7,72 @@
             "text": "Selamat datang ke ",
             "highlight": "WECA"
           },
-          "description": "Imbas, analisa, dan pilih yang lebih baik. Mulakan hari ini."
+          "description": "Imbas, analisis, dan pilih dengan lebih bijak. Mulakan hari ini."
         },
         "slide2": {
           "title": {
-            "text": "Kesihatan Jadi ",
-            "highlight": "Ringkas"
+            "text": "Kesihatan Menjadi ",
+            "highlight": "Mudah"
           },
-          "description": "Fahami label, elakkan alergen, dan makan dengan lebih bijak."
+          "description": "Tafsirkan label, elakkan alergen, dan makan dengan lebih bijak."
         },
         "slide3": {
           "title": {
-            "text": "Lebih Bijak ",
-            "highlight": "Pilihan"
+            "text": "Pilihan yang lebih ",
+            "highlight": "Bijak"
           },
-          "description": "Dapatkan nasihat peribadi dan pilihan yang lebih sihat."
+          "description": "Dapatkan nasihat yang diperibadikan dan pilihan yang lebih sihat."
         }
       },
       "button_action": "Mulakan"
+    },
+    "login": {
+      "label": "Hai\nSelamat Datang Kembali",
+      "form": {
+        "email": "Masukkan e-mel anda",
+        "password": "Masukkan kata laluan anda"
+      },
+      "login_alternative": "Atau teruskan dengan",
+      "action_button": {
+        "login": "Log Masuk",
+        "password_forgot": "Lupa Kata Laluan?",
+        "signup": {
+          "text": "Belum ada akaun? ",
+          "link": "Daftar"
+        }
+      }
+    },
+    "signup": {
+      "label": "Mari,\nCipta Akaun Anda",
+      "form": {
+        "name": "Masukkan nama anda",
+        "email": "Masukkan e-mel anda",
+        "password": "Masukkan kata laluan anda",
+        "confirm_password": "Sahkan kata laluan anda"
+      },
+      "action_button": {
+        "signup": "Cipta Akaun",
+        "login": {
+          "text": "Sudah mempunyai akaun? ",
+          "link": "Log Masuk"
+        }
+      }
+    },
+    "boarding": {
+      "step1": {
+        "subStep1": {
+          "label": "Alergi"
+        },
+        "subStep2": {
+          "label": "Intoleransi"
+        },
+        "subStep3": {
+          "label": "Penyakit"
+        },
+        "subStep4": {
+          "label": "Sekatan\nperubatan"
+        }
+      }
     }
   }
 }

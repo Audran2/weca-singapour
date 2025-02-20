@@ -70,9 +70,11 @@ flutter:
     - assets/images/disease/
     - assets/images/medical_restrictions/
     - assets/images/food_preferences/
+    - assets/images/home/
     - assets/icons/
     - assets/icons/actions/
     - assets/icons/infos/
+    - assets/icons/inputs/
     - assets/icons/navbar/
     - assets/videos/
     - assets/videos/splash.mp4

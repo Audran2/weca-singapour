@@ -132,7 +132,7 @@ class StartupScreen extends StatelessWidget {
               PrimaryButton(
                 label: "authentication.start_up.button_action".tr(),
                 onPressed: () {
-                  context.go('/login');
+                  context.pushNamed('login');
                 },
               ),
             ],

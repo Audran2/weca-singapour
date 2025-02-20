@@ -16,10 +16,11 @@ class AppBarDefault extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
+      automaticallyImplyLeading: false,
       title: Row(
         children: [
           IconButton(
-            onPressed: () => onBackButtonPressed,
+            onPressed: onBackButtonPressed,
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             icon: Container(

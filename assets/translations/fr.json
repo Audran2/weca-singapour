@@ -4,27 +4,75 @@
       "slider": {
         "slide1": {
           "title": {
-            "text": "Bienvenue chez ",
+            "text": "Bienvenue sur ",
             "highlight": "WECA"
           },
-          "description": "Scannez, analysez et choisissez mieux. Commencez aujourd'hui."
+          "description": "Scannez, analysez et faites de meilleurs choix. Commencez dès aujourd’hui."
         },
         "slide2": {
           "title": {
-            "text": "La santé rendue ",
-            "highlight": "Simple"
+            "text": "La santé, en toute ",
+            "highlight": "simplicité"
           },
-          "description": "Déchiffrez les étiquettes, évitez les allergènes et mangez plus intelligemment."
+          "description": "Déchiffrez les étiquettes, évitez les allergènes et adoptez une alimentation plus saine."
         },
         "slide3": {
           "title": {
-            "text": "Plus intelligents ",
-            "highlight": "Choix"
+            "text": "Des choix plus ",
+            "highlight": "avisés"
           },
-          "description": "Recevez des conseils personnalisés et des options plus saines."
+          "description": "Recevez des conseils personnalisés et optez pour des alternatives plus saines."
         }
       },
       "button_action": "Commencer"
+    },
+    "login": {
+      "label": "Bonjour,\nRavi de vous revoir",
+      "form": {
+        "email": "Saisissez votre adresse e-mail",
+        "password": "Saisissez votre mot de passe"
+      },
+      "login_alternative": "Ou continuez avec",
+      "action_button": {
+        "login": "Se connecter",
+        "password_forgot": "Mot de passe oublié ?",
+        "signup": {
+          "text": "Vous n'avez pas de compte ? ",
+          "link": "Inscrivez-vous"
+        }
+      }
+    },
+    "signup": {
+      "label": "Créons\nvotre compte",
+      "form": {
+        "name": "Saisissez votre nom",
+        "email": "Saisissez votre adresse e-mail",
+        "password": "Saisissez votre mot de passe",
+        "confirm_password": "Confirmez votre mot de passe"
+      },
+      "action_button": {
+        "signup": "Créer un compte",
+        "login": {
+          "text": "Vous avez déjà un compte ? ",
+          "link": "Connectez-vous"
+        }
+      }
+    },
+    "boarding": {
+      "step1": {
+        "subStep1": {
+          "label": "Allergies"
+        },
+        "subStep2": {
+          "label": "Intolérances"
+        },
+        "subStep3": {
+          "label": "Maladies"
+        },
+        "subStep4": {
+          "label": "Restrictions\nmédicales"
+        }
+      }
     }
   }
 }

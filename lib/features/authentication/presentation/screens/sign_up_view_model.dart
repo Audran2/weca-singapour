@@ -10,7 +10,7 @@ class SignUpViewModel {
   ValueNotifier<bool> obscureConfirmPassword = ValueNotifier(true);
 
   ValueNotifier<String> email = ValueNotifier('');
-  ValueNotifier<String> phoneNumber = ValueNotifier('');
+  ValueNotifier<String> userName = ValueNotifier('');
   ValueNotifier<String> password = ValueNotifier('');
   ValueNotifier<String> confirmPassword = ValueNotifier('');
 
@@ -25,7 +25,7 @@ class SignUpViewModel {
   }
 
   Future<void> signUp() async {
-    if (email.value.isEmpty || phoneNumber.value.isEmpty || password.value.isEmpty || confirmPassword.value.isEmpty) {
+    if (email.value.isEmpty || userName.value.isEmpty || password.value.isEmpty || confirmPassword.value.isEmpty) {
       return DialogService.showTopErrorDialog(context, 'Please fill in all fields');
     }
 
