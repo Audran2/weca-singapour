@@ -54,7 +54,7 @@
         "signup": "Create Account",
         "login": {
           "text": "Already have an account? ",
-          "link": "Sing-In"
+          "link": "Sign-In"
         }
       }
     },

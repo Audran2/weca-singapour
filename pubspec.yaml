@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: ^2.0.17
   provider: ^6.1.2
   easy_localization: ^3.0.7+1
+  fluttertoast: ^8.2.12
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -70,7 +71,7 @@ flutter:
     - assets/images/disease/
     - assets/images/medical_restrictions/
     - assets/images/food_preferences/
-    - assets/images/home/
+    - assets/images/card_lifestyle/
     - assets/icons/
     - assets/icons/actions/
     - assets/icons/infos/
