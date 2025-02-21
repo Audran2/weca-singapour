@@ -3,36 +3,19 @@ import 'package:flutter/material.dart';
 import '../../../../core/styles/dimensions.dart';
 import 'carousel_dots.dart';
 
-class WelcomeCarousel extends StatefulWidget {
+class WelcomeCarousel extends StatelessWidget {
   const WelcomeCarousel({
     super.key,
     required this.items,
+    required this.controller,
+    required this.currentIndex,
+    required this.onPageChanged,
   });
 
   final List<CarouselItem> items;
-
-  @override
-  State<WelcomeCarousel> createState() => _WelcomeCarouselState();
-}
-
-class _WelcomeCarouselState extends State<WelcomeCarousel> {
-  late PageController controller;
-  int currentIndex = 0;
-
-  List<CarouselItem> items = [];
-
-  @override
-  void initState() {
-    super.initState();
-    items = widget.items;
-    controller = PageController();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  final PageController controller;
+  final ValueNotifier<int> currentIndex;
+  final Function(int) onPageChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +28,7 @@ class _WelcomeCarouselState extends State<WelcomeCarousel> {
               Expanded(
                 child: PageView.builder(
                   controller: controller,
-                  onPageChanged: (v) {
-                    currentIndex = v;
-                    setState(() {});
-                  },
+                  onPageChanged: onPageChanged,
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
@@ -69,9 +49,19 @@ class _WelcomeCarouselState extends State<WelcomeCarousel> {
               ),
               Padding(
                 padding: EdgeInsets.all(AppDimensions.padding.xxxLarge),
-                child: CarouselDots(
-                  totalItems: items.length,
-                  currentIndex: currentIndex,
+                child: ValueListenableBuilder<int>(
+                  valueListenable: currentIndex,
+                  builder: (context, index, _) {
+                    return ValueListenableBuilder<int>(
+                      valueListenable: currentIndex,
+                      builder: (context, index, _) {
+                        return CarouselDots(
+                          totalItems: items.length,
+                          currentIndex: index,
+                        );
+                      },
+                    );
+                  },
                 ),
               )
             ],

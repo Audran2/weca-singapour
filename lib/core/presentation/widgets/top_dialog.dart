@@ -68,9 +68,9 @@ class _TopInfoDialogState extends State<TopInfoDialog> with SingleTickerProvider
           child: Container(
             padding: EdgeInsets.all(AppDimensions.padding.extraLarge),
             decoration: BoxDecoration(
-              color: AppColors.black,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(AppDimensions.radius.large),
-              boxShadow: [AppShadows.defaultShadow],
+              boxShadow: [AppShadows.historyCardShadow],
             ),
             child: Row(
               children: [
@@ -79,7 +79,7 @@ class _TopInfoDialogState extends State<TopInfoDialog> with SingleTickerProvider
                 Expanded(
                   child: Text(
                     widget.message,
-                    style: AppTextStyles.bodyText2.copyWith(color: AppColors.white),
+                    style: AppTextStyles.bodyText2,
                   ),
                 ),
               ],

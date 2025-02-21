@@ -1,4 +1,9 @@
 {
+  "default": {
+    "action": {
+      "next": "Next"
+    }
+  },
   "authentication": {
     "start_up": {
       "slider": {

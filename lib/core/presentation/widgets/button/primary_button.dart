@@ -7,11 +7,13 @@ import '../../../styles/text_styles.dart';
 class PrimaryButton extends StatelessWidget {
   final String label;
   final Function onPressed;
+  final bool isLoading;
 
   const PrimaryButton({
     super.key,
     required this.label,
     required this.onPressed,
+    this.isLoading = false,
   });
 
   @override
@@ -32,12 +34,21 @@ class PrimaryButton extends StatelessWidget {
           ),
           shadowColor: Colors.transparent,
         ),
-        onPressed: () => onPressed(),
-        child: Text(
-          label,
-          style: AppTextStyles.largeButtonText
-              .copyWith(color: AppColors.neutralWhite),
-        ),
+        onPressed: () => isLoading ? () : onPressed(),
+        child: isLoading
+            ? const SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(AppColors.neutralWhite),
+                ),
+              )
+            : Text(
+                label,
+                style: AppTextStyles.largeButtonText
+                    .copyWith(color: AppColors.neutralWhite),
+              ),
       ),
     );
   }

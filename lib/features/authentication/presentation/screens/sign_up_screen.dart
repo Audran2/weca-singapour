@@ -108,9 +108,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          PrimaryButton(
-            label: "authentication.signup.action_button.signup".tr(),
-            onPressed: () => _viewModel.signUp(),
+          ValueListenableBuilder(
+            valueListenable: _viewModel.isLoading,
+            builder: (context, isLoading, child) {
+              return PrimaryButton(
+                label: "authentication.signup.action_button.signup".tr(),
+                onPressed: () => _viewModel.signUp(),
+                isLoading: isLoading,
+              );
+            },
           ),
           SizedBox(height: AppDimensions.margin.xxxLarge),
           Center(
