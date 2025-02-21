@@ -1,7 +1,8 @@
 {
   "default": {
     "action": {
-      "next": "Next"
+      "next": "Next",
+      "explore": "Explore More"
     }
   },
   "authentication": {
@@ -64,19 +65,186 @@
       }
     },
     "boarding": {
+      "action_button": {
+        "next": "Next Step",
+        "last": "Last Step",
+        "start": "Start Now"
+      },
       "step1": {
         "subStep1": {
-          "label": "Allergies"
+          "label": "Allergies",
+          "list_data": {
+            "animal_proteins": {
+              "title": "Animal proteins",
+              "description": "Animal protein allergy: a reaction to proteins found in meat, dairy, eggs, and fish, which may cause skin and digestive symptoms."
+            },
+            "cereals_and_gluten": {
+              "title": "Cereals and gluten",
+              "description": "Cereals and gluten allergy: sensitivity to proteins in wheat, barley, and rye, affecting breads, pastas, and baked goods."
+            },
+            "pulses_and_seeds": {
+              "title": "Pulses and seeds",
+              "description": "Pulses and seeds allergy: an adverse reaction to legumes and seeds (e.g., peas, lentils, beans, sesame), potentially leading to digestive issues."
+            },
+            "dried_nuts": {
+              "title": "Dried nuts",
+              "description": "Dried nuts allergy: sensitivity to tree nuts like walnuts, almonds, and hazelnuts, with a risk of severe reactions such as anaphylaxis."
+            },
+            "fruit_and_vegetables": {
+              "title": "Fruit and vegetables",
+              "description": "Fruit and vegetables allergy: an allergic reaction to proteins in various fruits and vegetables (such as strawberries, tomatoes, bell peppers), which may cause irritation or itching."
+            },
+            "spices_and_condiments": {
+              "title": "Spices and condiments",
+              "description": "Spices and condiments allergy: hypersensitivity to common seasonings like pepper, paprika, or turmeric, potentially affecting digestion or causing irritation."
+            }
+          }
         },
         "subStep2": {
-          "label": "Intolerance"
+          "label": "Intolerance",
+          "list_data": {
+            "gluten_intolerance": {
+              "title": "Gluten intolerance",
+              "description": "Gluten intolerance: difficulty digesting gluten found in wheat, barley, and rye, leading to bloating and diarrhea."
+            },
+            "lactose_intolerance": {
+              "title": "Lactose intolerance",
+              "description": "Lactose intolerance: inability to digest lactose in dairy products, resulting in abdominal pain and bloating."
+            },
+            "sorbitol_intolerance": {
+              "title": "Sorbitol intolerance",
+              "description": "Sorbitol intolerance: poor absorption of the natural sugar sorbitol, found in some fruits and as a sweetener, which can cause digestive discomfort."
+            },
+            "soy_intolerance": {
+              "title": "Soy intolerance",
+              "description": "Soy intolerance: digestive issues triggered by soy products such as tofu or soy milk, causing gastrointestinal discomfort."
+            },
+            "histamine_intolerance": {
+              "title": "Histamine intolerance",
+              "description": "Histamine intolerance: inability to break down histamine present in fermented or aged foods (like cheeses, wines, sausages), leading to headaches and flushing."
+            },
+            "fructose_intolerance": {
+              "title": "Fructose intolerance",
+              "description": "Fructose intolerance: difficulty absorbing fructose found in fruits, some vegetables, and honey, which may result in bloating and diarrhea."
+            }
+          }
         },
         "subStep3": {
-          "label": "Disease"
+          "label": "Disease",
+          "list_data": {
+            "diabetes": {
+              "title": "Diabetes (Type 1 or Type 2)",
+              "description": "Diabetes (Type 1 or Type 2): a condition affecting blood sugar regulation, requiring careful management of carbohydrate and sugar intake."
+            },
+            "hypertension": {
+              "title": "Hypertension",
+              "description": "Hypertension: high blood pressure that necessitates limiting salt and saturated fat intake, especially from processed foods."
+            },
+            "celiac_disease": {
+              "title": "Celiac disease",
+              "description": "Celiac disease: an autoimmune reaction to gluten found in wheat, barley, and rye. A strict gluten-free diet is essential to prevent intestinal damage."
+            }
+          }
         },
         "subStep4": {
-          "label": "Medical\nrestriction"
+          "label": "Medical\nrestriction",
+          "list_data": {
+            "sodium_and_saturated_fat_reduction": {
+              "title": "Sodium and saturated fat reduction",
+              "description": "Sodium and saturated fat reduction: reducing processed foods, salt, and animal fats to support cardiovascular health."
+            },
+            "low_fodmap_diet": {
+              "title": "Low FODMAP diet",
+              "description": "Low FODMAP diet: a dietary approach that limits certain fermentable carbohydrates (e.g., garlic, onions, some fruits, dairy) to alleviate digestive symptoms."
+            },
+            "added_sugar_reduction": {
+              "title": "Added sugar reduction",
+              "description": "Added sugar reduction: decreasing consumption of sugary drinks and processed foods for better energy management and overall health."
+            }
+          }
         }
+      },
+      "step2": {
+        "list_data": {
+          "vegetarian": "Vegetarian",
+          "vegan": "Vegan",
+          "pescetarian": "Pescetarian",
+          "flexitarian": "Flexitarian",
+          "gluten_free": "Gluten-Free",
+          "lactose_free": "Lactose-Free",
+          "halal": "Halal",
+          "kosher": "Kosher",
+          "ketogenic": "Ketogenic",
+          "paleo": "Paleo"
+        }
+      },
+      "step3": {
+        "nutri_grade": {
+          "question": "Is the Nutri-Grade important\nto you ?",
+          "description": "Nutri-Grade “grades” your drinks based on their sugar and saturated fat content with “A” having the lowest levels and “D” the highest."
+        },
+        "eco_grade": {
+          "question": "Do you care about the Eco-Grade ?",
+          "description": "Eco-grade means the plant is Economy Grade or less than perfect."
+        },
+        "affect": "Your selection will affect the information displayed on the app.",
+        "action_button": {
+          "yes": "Yeah, why not ?",
+          "sometimes": "Sometimes, it depends on the product",
+          "no": "No, I check ingredients instead"
+        }
+      }
+    }
+  },
+  "home": {
+    "welcome": "Hello \uD83D\uDC4B\uD83C\uDFFB",
+    "grid_stats": {
+      "scan": {
+        "label": "Scan new",
+        "info": "Scanned 110"
+      },
+      "not_found": {
+        "label": "Not found",
+        "info": "23 products"
+      },
+      "success": {
+        "label": "Success",
+        "info": "87 products"
+      },
+      "favorite": {
+        "label": "Favorite",
+        "info": "12 products"
+      }
+    },
+    "shop_card": {
+      "brand_center": {
+        "title": "Explore our Brand Center",
+        "description": "The best shop for the \nbest body that we support"
+      },
+      "quality_supplements": {
+        "title": "Shop Quality\nSupplements Now"
+      },
+      "quality_gym": {
+        "title": "Shop Quality Gym\nApparels Now"
+      }
+    },
+    "dietitians": {
+      "title": "Consult dietitians",
+      "description": "Expert nutrition guidance\n& personalized plans"
+    },
+    "faq": {
+      "title": "FAQ on allergies",
+      "description": "Empower Your Body,\nAchieve Your Goals"
+    },
+    "articles": {
+      "action_button": {
+        "all": "All articles"
+      },
+      "macronutriments": {
+        "title": "Understanding\nMacronutrients"
+      },
+      "muscle_growth": {
+        "title": "Best Foods for\nMuscle Growth"
       }
     }
   }

@@ -1,4 +1,9 @@
 {
+  "default": {
+    "action": {
+      "next": "Suivant"
+    }
+  },
   "authentication": {
     "start_up": {
       "slider": {
@@ -7,30 +12,30 @@
             "text": "Bienvenue sur ",
             "highlight": "WECA"
           },
-          "description": "Scannez, analysez et faites de meilleurs choix. Commencez dès aujourd’hui."
+          "description": "Scannez, analysez et choisissez mieux. Commencez dès aujourd'hui."
         },
         "slide2": {
           "title": {
-            "text": "La santé, en toute ",
-            "highlight": "simplicité"
+            "text": "La santé rendue ",
+            "highlight": "simple"
           },
-          "description": "Déchiffrez les étiquettes, évitez les allergènes et adoptez une alimentation plus saine."
+          "description": "Déchiffrez les étiquettes, évitez les allergènes et mangez plus intelligemment."
         },
         "slide3": {
           "title": {
-            "text": "Des choix plus ",
-            "highlight": "avisés"
+            "text": "Des choix ",
+            "highlight": "plus avisés"
           },
-          "description": "Recevez des conseils personnalisés et optez pour des alternatives plus saines."
+          "description": "Recevez des conseils personnalisés et des options plus saines."
         }
       },
       "button_action": "Commencer"
     },
     "login": {
-      "label": "Bonjour,\nRavi de vous revoir",
+      "label": "Salut\nContent de te revoir",
       "form": {
-        "email": "Saisissez votre adresse e-mail",
-        "password": "Saisissez votre mot de passe"
+        "email": "Entrez votre email",
+        "password": "Entrez votre mot de passe"
       },
       "login_alternative": "Ou continuez avec",
       "action_button": {
@@ -45,13 +50,13 @@
     "signup": {
       "label": "Créons\nvotre compte",
       "form": {
-        "name": "Saisissez votre nom",
-        "email": "Saisissez votre adresse e-mail",
-        "password": "Saisissez votre mot de passe",
+        "name": "Entrez votre nom",
+        "email": "Entrez votre email",
+        "password": "Entrez votre mot de passe",
         "confirm_password": "Confirmez votre mot de passe"
       },
       "action_button": {
-        "signup": "Créer un compte",
+        "signup": "Créer le compte",
         "login": {
           "text": "Vous avez déjà un compte ? ",
           "link": "Connectez-vous"
@@ -61,16 +66,126 @@
     "boarding": {
       "step1": {
         "subStep1": {
-          "label": "Allergies"
+          "label": "Allergies",
+          "list_data": {
+            "animal_proteins": {
+              "title": "Protéines animales",
+              "description": "Allergie aux protéines animales : réaction aux protéines présentes dans la viande, les produits laitiers, les œufs et le poisson, pouvant provoquer des symptômes cutanés et digestifs."
+            },
+            "cereals_and_gluten": {
+              "title": "Céréales et gluten",
+              "description": "Allergie aux céréales et au gluten : sensibilité aux protéines du blé, de l’orge et du seigle, affectant pains, pâtes et pâtisseries."
+            },
+            "pulses_and_seeds": {
+              "title": "Légumineuses et graines",
+              "description": "Allergie aux légumineuses et graines : réaction défavorable aux pois, lentilles, haricots ou sésame, pouvant entraîner des troubles digestifs."
+            },
+            "dried_nuts": {
+              "title": "Fruits à coque",
+              "description": "Allergie aux fruits à coque : sensibilité aux noix telles que les noix, amandes et noisettes, avec un risque de réactions sévères, voire d'anaphylaxie."
+            },
+            "fruit_and_vegetables": {
+              "title": "Fruits et légumes",
+              "description": "Allergie aux fruits et légumes : réaction allergique aux protéines de divers fruits et légumes (comme les fraises, tomates, poivrons), pouvant provoquer des irritations ou des démangeaisons."
+            },
+            "spices_and_condiments": {
+              "title": "Épices et condiments",
+              "description": "Allergie aux épices et condiments : hypersensibilité aux assaisonnements courants tels que le poivre, le paprika ou le curcuma, pouvant affecter la digestion ou provoquer des irritations."
+            }
+          }
         },
         "subStep2": {
-          "label": "Intolérances"
+          "label": "Intolerance",
+          "list_data": {
+            "gluten_intolerance": {
+              "title": "Intolérance au gluten",
+              "description": "Intolérance au gluten : difficulté à digérer le gluten présent dans le blé, l’orge et le seigle, entraînant ballonnements et diarrhée."
+            },
+            "lactose_intolerance": {
+              "title": "Intolérance au lactose",
+              "description": "Intolérance au lactose : incapacité à digérer le lactose contenu dans les produits laitiers, provoquant douleurs abdominales et ballonnements."
+            },
+            "sorbitol_intolerance": {
+              "title": "Intolérance au sorbitol",
+              "description": "Intolérance au sorbitol : mauvaise absorption du sucre naturel sorbitol, présent dans certains fruits et utilisé comme édulcorant, pouvant causer des inconforts digestifs."
+            },
+            "soy_intolerance": {
+              "title": "Intolérance au soja",
+              "description": "Intolérance au soja : troubles digestifs déclenchés par les produits à base de soja tels que le tofu ou le lait de soja, entraînant un inconfort gastro-intestinal."
+            },
+            "histamine_intolerance": {
+              "title": "Intolérance à l'histamine",
+              "description": "Intolérance à l'histamine : incapacité à décomposer l'histamine présente dans les aliments fermentés ou vieillis (comme les fromages, vins, saucisses), provoquant maux de tête et rougeurs."
+            },
+            "fructose_intolerance": {
+              "title": "Intolérance au fructose",
+              "description": "Intolérance au fructose : difficulté à absorber le fructose contenu dans les fruits, certains légumes et le miel, pouvant entraîner ballonnements et diarrhée."
+            }
+          }
         },
         "subStep3": {
-          "label": "Maladies"
+          "label": "Maladies",
+          "list_data": {
+            "diabetes": {
+              "title": "Diabète (Type 1 ou Type 2)",
+              "description": "Diabète (Type 1 ou Type 2) : affection impactant la régulation de la glycémie, nécessitant une gestion attentive des apports en glucides et en sucres."
+            },
+            "hypertension": {
+              "title": "Hypertension",
+              "description": "Hypertension : pression artérielle élevée qui impose de limiter la consommation de sel et de graisses saturées, notamment issues des aliments transformés."
+            },
+            "celiac_disease": {
+              "title": "Maladie cœliaque",
+              "description": "Maladie cœliaque : réaction auto-immune au gluten contenu dans le blé, l’orge et le seigle. Un régime strict sans gluten est indispensable pour prévenir les lésions intestinales."
+            }
+          }
         },
         "subStep4": {
-          "label": "Restrictions\nmédicales"
+          "label": "Restriction\nmédicale",
+          "list_data": {
+            "sodium_and_saturated_fat_reduction": {
+              "title": "Réduction du sodium et des graisses saturées",
+              "description": "Réduction du sodium et des graisses saturées : diminuer la consommation d'aliments transformés, de sel et de graisses animales afin de soutenir la santé cardiovasculaire."
+            },
+            "low_fodmap_diet": {
+              "title": "Régime Low FODMAP",
+              "description": "Régime Low FODMAP : approche nutritionnelle limitant certains glucides fermentescibles (ex. ail, oignons, certains fruits, produits laitiers) pour soulager les symptômes digestifs."
+            },
+            "added_sugar_reduction": {
+              "title": "Réduction des sucres ajoutés",
+              "description": "Réduction des sucres ajoutés : diminuer la consommation de boissons sucrées et d'aliments transformés pour une meilleure gestion de l'énergie et une santé globale améliorée."
+            }
+          }
+        }
+      },
+      "step2": {
+        "list_data": {
+          "vegetarian": "Végétarien",
+          "vegan": "Vegan",
+          "pescetarian": "Pescétarien",
+          "flexitarian": "Flexitarien",
+          "gluten_free": "Sans gluten",
+          "lactose_free": "Sans lactose",
+          "halal": "Halal",
+          "kosher": "Casher",
+          "ketogenic": "Cétogène",
+          "paleo": "Paléo"
+        }
+      },
+      "step3": {
+        "nutri_grade": {
+          "question": "Le Nutri-Grade est-il important\npour vous ?",
+          "description": "Le Nutri-Grade évalue vos boissons en fonction de leur teneur en sucres et en graisses saturées, « A » indiquant les niveaux les plus bas et « D » les plus élevés."
+        },
+        "eco_grade": {
+          "question": "L'Eco-Grade vous importe-t-il ?",
+          "description": "L'Eco-Grade signifie que le produit est de qualité économique ou moins qu'idéal."
+        },
+        "affect": "Votre sélection influera sur les informations affichées dans l'application.",
+        "action_button": {
+          "yes": "Oui, pourquoi pas ?",
+          "sometimes": "Parfois, cela dépend du produit",
+          "no": "Non, je vérifie plutôt les ingrédients"
         }
       }
     }

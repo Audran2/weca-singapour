@@ -23,6 +23,9 @@ class StepOneScreen extends StatelessWidget {
                   final currentIndicator = page.round() + 1;
                   return StepOneProgressBar(
                     currentPageIndex: currentIndicator,
+                    onStepTapped: (int subStep) {
+                      viewModel.goToStepOneSubStep(subStep);
+                    },
                   );
                 },
               ),
@@ -33,9 +36,7 @@ class StepOneScreen extends StatelessWidget {
                   children: List.generate(4, (index) => StepOneItemList(currentSubStep: index + 1)),
                 ),
               ),
-              BoardingBottomNavigationBar(
-                pageController: viewModel.pageController,
-              ),
+              const BoardingBottomNavigationBar(),
             ],
           );
         },

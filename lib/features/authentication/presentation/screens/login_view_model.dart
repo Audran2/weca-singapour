@@ -11,9 +11,9 @@ import '../../data/repository/authentication_remote_repository.dart';
 import '../../domain/auth_token.dart';
 
 class LoginViewModel {
-  final AuthenticationRemoteRepository _authenticationRemoteRepository = AuthenticationRemoteRepository();
-
   final BuildContext context;
+
+  final ValueNotifier<bool> isLoading = ValueNotifier(false);
 
   final ValueNotifier<bool> obscureText = ValueNotifier(true);
   final ValueNotifier<String> email = ValueNotifier('');
@@ -26,22 +26,41 @@ class LoginViewModel {
   }
 
   Future<void> login() async {
-    if (email.value.isEmpty || password.value.isEmpty) {
-      return DialogService.showTopErrorDialog(context, 'Please fill in all fields');
+    if (isLoading.value) return;
+
+    isLoading.value = true;
+
+    try {
+      if (email.value.isEmpty || password.value.isEmpty) {
+        return DialogService.showTopErrorDialog(
+            context, 'Please fill in all fields');
+      }
+
+      final String? deviceName = await DeviceService().getDeviceId();
+
+      final SignInDTO signInDTO = SignInDTO(
+          email: email.value,
+          password: password.value,
+          deviceName: deviceName!);
+
+      final tokenProvider =
+          Provider.of<TokenProviderNotifier>(context, listen: false);
+      final repository =
+          AuthenticationRemoteRepository(tokenProvider: tokenProvider);
+
+      final Result<AuthToken> result =
+          await repository.signIn(signInDTO: signInDTO);
+
+      if (result.isFailure) {
+        return DialogService.showTopErrorDialog(context, result.errorMessage!);
+      }
+
+      Provider.of<TokenProviderNotifier>(context, listen: false)
+          .setToken(result.data!.token);
+
+      context.goNamed('home');
+    } finally {
+      isLoading.value = false;
     }
-
-    final String? deviceName = await DeviceService().getDeviceId();
-
-    final SignInDTO signInDTO = SignInDTO(email: email.value, password: password.value, deviceName: deviceName!);
-
-    final Result<AuthToken> result = await _authenticationRemoteRepository.signIn(signInDTO: signInDTO);
-
-    if (result.isFailure) {
-      return DialogService.showTopErrorDialog(context, result.errorMessage!);
-    }
-
-    Provider.of<TokenProviderNotifier>(context, listen: false).setToken(result.data!.token);
-
-    context.goNamed('home');
   }
 }

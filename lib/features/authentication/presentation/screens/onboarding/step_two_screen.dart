@@ -83,9 +83,7 @@ class StepTwoScreen extends StatelessWidget {
               option: dietaryOptions[index],
             );
           } else {
-            return BoardingBottomNavigationBar(
-              pageController: onboardingViewModel.pageController,
-            );
+            return const BoardingBottomNavigationBar();
           }
         },
       ),

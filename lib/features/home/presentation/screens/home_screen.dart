@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -29,12 +30,39 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 42),
                 _buildHomeGrid(),
+                const SizedBox(height: 40),
+                HomeExploreCard(
+                  title: "home.shop_card.brand_center.title".tr(),
+                  description:
+                  "home.shop_card.brand_center.description".tr(),
+                  imageUrl: 'assets/images/card_lifestyle/brand_center.png',
+                  color: ChartColors.primary500,
+                ),
+                const SizedBox(height: 32),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    HomeExploreHalfCard(
+                      title: "home.shop_card.quality_supplements.title".tr(),
+                      imageUrl: 'assets/images/card_lifestyle/shop_quality_supplements_now.webp',
+                      primaryColor: ChartColors.primary200,
+                      secondaryColor: ChartColors.primary50.withValues(alpha: 0.5),
+                    ),
+                    const SizedBox(width: 24),
+                    HomeExploreHalfCard(
+                      title: "home.shop_card.quality_gym.title".tr(),
+                      imageUrl: 'assets/images/card_lifestyle/shop_quality_gym_apparels_now.webp',
+                      primaryColor: ChartColors.secondary200,
+                      secondaryColor: ChartColors.secondary50.withValues(alpha: 0.5),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      "Explore More",
+                    Text(
+                      "default.action.explore".tr(),
                       style: AppTextStyles.bodyText1,
                     ),
                     SvgPicture.asset(
@@ -45,34 +73,48 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 40),
-                const HomeExploreCard(
-                  title: "Consult dietitians",
-                  description:
-                      "Expert nutrition guidance\n& personalized plans",
+                HomeExploreCard(
+                  title: "home.dietitians.title".tr(),
+                  description: "home.dietitians.description".tr(),
                   imageUrl: 'assets/images/card_lifestyle/consult_dietitians.png',
                   color: ChartColors.primary500,
                 ),
                 const SizedBox(height: 40),
-                const HomeExploreCard(
-                  title: "FAQ on allergies",
-                  description: "Empower Your Body,\nAchieve Your Goals",
+                HomeExploreCard(
+                  title: "home.faq.title".tr(),
+                  description: "home.faq.description".tr(),
                   imageUrl: 'assets/images/card_lifestyle/faq_on_allergies.png',
                   color: ChartColors.secondary500,
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "home.articles.action_button.all".tr(),
+                      style: AppTextStyles.bodyText1,
+                    ),
+                    SvgPicture.asset(
+                      'assets/icons/actions/Arrow_Right_MD.svg',
+                      height: AppTextSize.defaultIcon,
+                      width: AppTextSize.defaultIcon,
+                    )
+                  ],
+                ),
+                const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     HomeExploreHalfCard(
-                      title: "Shop Quality\nSupplements Now",
-                      imageUrl: 'assets/images/card_lifestyle/shop_quality_supplements_now.webp',
+                      title: "home.articles.macronutriments.title".tr(),
+                      imageUrl: 'assets/images/card_lifestyle/macronutriments.png',
                       primaryColor: ChartColors.primary200,
                       secondaryColor: ChartColors.primary50.withValues(alpha: 0.5),
                     ),
                     const SizedBox(width: 24),
                     HomeExploreHalfCard(
-                      title: "Shop Quality Gym\nApparels Now",
-                      imageUrl: 'assets/images/card_lifestyle/shop_quality_gym_apparels_now.webp',
+                      title: "home.articles.muscle_growth.title".tr(),
+                      imageUrl: 'assets/images/card_lifestyle/muscle_growth.png',
                       primaryColor: ChartColors.secondary200,
                       secondaryColor: ChartColors.secondary50.withValues(alpha: 0.5),
                     ),
@@ -91,14 +133,14 @@ class HomeScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Hello 👋🏻",
+              "home.welcome".tr(),
               style: AppTextStyles.titleText3,
             ),
-            Text(
+            const Text(
               "John",
               style: AppTextStyles.bodyText1,
             ),
@@ -123,26 +165,26 @@ class HomeScreen extends StatelessWidget {
         mainAxisSpacing: 16,
         mainAxisExtent: 200,
       ),
-      children: const [
+      children: [
         HomeCardNavigation(
           icon: Icons.qr_code_scanner,
-          title: "Scan new",
-          subtitle: "Scanned 483",
+          title: "home.grid_stats.scan.label".tr(),
+          subtitle: "home.grid_stats.scan.info".tr(),
         ),
         HomeCardNavigation(
           icon: Icons.error_outline,
-          title: "Not found",
-          subtitle: "23 products",
+          title: "home.grid_stats.not_found.label".tr(),
+          subtitle: "home.grid_stats.not_found.info".tr(),
         ),
         HomeCardNavigation(
           icon: Icons.check_circle_outline,
-          title: "Success",
-          subtitle: "8 products",
+          title: "home.grid_stats.success.label".tr(),
+          subtitle: "home.grid_stats.success.info".tr(),
         ),
         HomeCardNavigation(
           icon: Icons.favorite_border,
-          title: "Favorite",
-          subtitle: "26 products",
+          title: "home.grid_stats.favorite.label".tr(),
+          subtitle: "home.grid_stats.info.info".tr(),
         ),
       ],
     );

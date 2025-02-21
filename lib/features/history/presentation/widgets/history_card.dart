@@ -4,9 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/shadows.dart';
 import '../../../../core/styles/text_styles.dart';
+import '../../domain/product_history_model.dart';
 
 class HistoryCard extends StatelessWidget {
-  const HistoryCard({super.key});
+  final ProductHistory productHistory;
+
+  const HistoryCard({super.key, required this.productHistory});
 
   @override
   Widget build(BuildContext context) {

@@ -5,6 +5,7 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/dimensions.dart';
 import '../../../../core/styles/text_styles.dart';
+import '../../domain/product_model.dart';
 import '../widgets/scanner_default_dialog.dart';
 import '../widgets/scanner_overlay_painter.dart';
 import '../widgets/scanner_product_dialog.dart';
@@ -19,11 +20,12 @@ class ScannerScreen extends StatefulWidget {
 
 class _ScannerScreenState extends State<ScannerScreen>
     with TickerProviderStateMixin {
-  final ScannerViewModel viewModel = ScannerViewModel();
+  late final ScannerViewModel viewModel;
 
   @override
   void initState() {
     super.initState();
+    viewModel = ScannerViewModel(context: context);
     viewModel.initializeAnimation(this);
   }
 
@@ -58,7 +60,6 @@ class _ScannerScreenState extends State<ScannerScreen>
                       builder: (context, cameraSize, _) {
                         return CustomPaint(
                           painter: ScannerOverlayPainter(
-                            barcodes: barcodes,
                             widgetSize: Size(widgetWidth, widgetHeight),
                             cameraSize: cameraSize,
                           ),
@@ -90,12 +91,17 @@ class _ScannerScreenState extends State<ScannerScreen>
                   ),
                 ),
               ),
-              ScannerProductDialog(
-                offsetAnimation: viewModel.productDialogOffsetAnimation,
-                brand: "Tropicana",
-                label: "Orange juice",
-                imageUrl:
+              ValueListenableBuilder<Product?>(
+                valueListenable: viewModel.product,
+                builder: (context, product, _) {
+                  return ScannerProductDialog(
+                    offsetAnimation: viewModel.productDialogOffsetAnimation,
+                    brand: "Tropicana",
+                    label: "Orange juice",
+                    imageUrl:
                     "https://i5.walmartimages.com/seo/Tropicana-Pure-Premium-Original-No-Pulp-100-Orange-Juice-46-Fl-Oz-Bottle_6f94bdc3-e12b-4366-bd7c-80001baee01a.b0e55c463b6fb53dd32c9b25df73cd04.jpeg",
+                  );
+                },
               ),
               ValueListenableBuilder<String>(
                 valueListenable: viewModel.defaultDialogLabel,

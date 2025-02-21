@@ -110,9 +110,15 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          PrimaryButton(
-            label: "authentication.login.action_button.login".tr(),
-            onPressed: _viewModel.login,
+          ValueListenableBuilder(
+            valueListenable: _viewModel.isLoading,
+            builder: (context, isLoading, child) {
+              return PrimaryButton(
+                label: "authentication.login.action_button.login".tr(),
+                onPressed: _viewModel.login,
+                isLoading: isLoading,
+              );
+            },
           ),
           SizedBox(height: AppDimensions.margin.xxxLarge),
           Center(

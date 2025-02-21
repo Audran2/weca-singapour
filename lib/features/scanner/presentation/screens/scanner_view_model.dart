@@ -2,17 +2,30 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../core/data/http/token_provider.dart';
+import '../../../../core/data/result.dart';
+import '../../data/repository/scanner_remote_repository.dart';
+import '../../domain/barcode_id.dart';
+import '../../domain/product_model.dart';
 
 class ScannerViewModel {
+  final BuildContext context;
+
+  ScannerViewModel({required this.context});
+
   final ValueNotifier<List<Barcode>> detectedBarcodes = ValueNotifier([]);
+  ValueNotifier<Product?> product = ValueNotifier(null);
   final ValueNotifier<Size> cameraSize = ValueNotifier(Size.zero);
-  final ValueNotifier<String> defaultDialogLabel = ValueNotifier('Please, scan your products');
+  final ValueNotifier<String> defaultDialogLabel =
+      ValueNotifier('Please, scan your products');
 
   late AnimationController defaultDialogController;
   late Animation<Offset> defaultDialogOffsetAnimation;
   late AnimationController productDialogController;
   late Animation<Offset> productDialogOffsetAnimation;
-  // Timer? _resetTimer;
+  Timer? _resetTimer;
 
   void initializeAnimation(TickerProvider vsync) {
     defaultDialogController = AnimationController(
@@ -52,7 +65,7 @@ class ScannerViewModel {
     defaultDialogController.forward();
   }
 
-  void onBarcodeDetected(BarcodeCapture capture) {
+  Future<void> onBarcodeDetected(BarcodeCapture capture) async {
     if (capture.barcodes.isNotEmpty) {
       final List<Barcode> newBarcodes = capture.barcodes.where((barcode) {
         return !detectedBarcodes.value.any((existingBarcode) =>
@@ -62,6 +75,21 @@ class ScannerViewModel {
       if (newBarcodes.isNotEmpty) {
         detectedBarcodes.value = List.from(detectedBarcodes.value)..addAll(newBarcodes);
         showProductDialog();
+
+        final tokenProvider =
+            Provider.of<TokenProviderNotifier>(context, listen: false);
+        final repository =
+            ScannerRemoteRepository(tokenProvider: tokenProvider);
+
+        final Result<Product> result =
+            await repository.getProductByBarcodeId(BarcodeId("5787399902942"));
+
+        if (result.isFailure) {
+          product.value = null;
+          return;
+        }
+
+        product.value = result.data;
       }
 
       if (capture.size != Size.zero) {
@@ -71,11 +99,13 @@ class ScannerViewModel {
       }
     }
 
-    // _resetTimer?.cancel();
-    // _resetTimer = Timer(const Duration(milliseconds: 500), () {
-    //   detectedBarcodes.value = [];
-    //   showDefaultDialog();
-    // });
+    _resetTimer?.cancel();
+    _resetTimer = Timer(const Duration(seconds: 45), () {
+      detectedBarcodes.value = [];
+      product.value = null;
+      showDefaultDialog();
+    });
+
   }
 
   void dispose() {
@@ -84,6 +114,6 @@ class ScannerViewModel {
     detectedBarcodes.dispose();
     defaultDialogLabel.dispose();
     cameraSize.dispose();
-    // _resetTimer?.cancel();
+    _resetTimer?.cancel();
   }
 }

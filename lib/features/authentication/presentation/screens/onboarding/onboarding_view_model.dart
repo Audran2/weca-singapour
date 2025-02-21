@@ -1,9 +1,24 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../core/data/http/token_provider.dart';
+import '../../../../../core/data/result.dart';
+import '../../../../../core/services/top_dialog_services.dart';
+import '../../../data/dto/onboarding_user_option_dto.dart';
+import '../../../data/repository/authentication_remote_repository.dart';
 
 class OnboardingViewModel with ChangeNotifier {
+  final BuildContext context;
+
+  OnboardingViewModel({required this.context});
+
   final PageController pageController = PageController();
   final PageController pageOneController = PageController();
   final PageController pageThreeController = PageController();
+
+  ValueNotifier<bool> isLoading = ValueNotifier(false);
 
   int boardingStepIndex = 1;
   int boardingSubStepOneIndex = 1;
@@ -56,12 +71,56 @@ class OnboardingViewModel with ChangeNotifier {
       );
     } else if (boardingStepIndex > 1) {
       boardingStepIndex--;
+      if (boardingStepIndex == 1) {
+        boardingSubStepOneIndex = 4;
+      }
       await pageController.previousPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
+      if (boardingStepIndex == 1) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (pageOneController.hasClients) {
+            pageOneController.jumpToPage(3);
+          }
+        });
+      }
     }
     notifyListeners();
+  }
+
+  void goToStepOneSubStep(int subStep) {
+    boardingSubStepOneIndex = subStep;
+    pageOneController.animateToPage(subStep - 1,
+        duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+    notifyListeners();
+  }
+
+  void onMainButtonPressed() {
+    if (boardingStepIndex == 3 && boardingSubStepThreeIndex == 2) {
+      updateUserInfos();
+    } else {
+      goToNextStep();
+    }
+  }
+
+  double get progress {
+    const int totalSteps = 7;
+    final double currentStep = boardingStepIndex +
+        (boardingSubStepOneIndex - 1) +
+        (boardingSubStepThreeIndex - 1);
+
+    return currentStep / totalSteps;
+  }
+
+  String get progressText {
+    if (boardingStepIndex == 3) {
+      if (boardingSubStepThreeIndex == 2) {
+        return "authentication.boarding.action_button.start".tr();
+      }
+      return "authentication.boarding.action_button.last".tr();
+    }
+    return "authentication.boarding.action_button.next".tr();
   }
 
   void setNutriGrade(String grade) {
@@ -135,8 +194,40 @@ class OnboardingViewModel with ChangeNotifier {
     }
   }
 
+  Future<void> updateUserInfos() async {
+    if (isLoading.value) return;
 
-  Future<void> sendDataToApi() async {
-    //TODO à renommer et relier à l'API
+    isLoading.value = true;
+
+    try {
+      final OnboardingUserOptionDTO userOptionDTO = OnboardingUserOptionDTO(
+        name: "Audran",
+        allergies: selectedAllergies,
+        preferences: dietaryPreferences,
+        options: [
+          {"name": "Nutri-Grade", "value": nutriGrade},
+          {"name": "Eco-Grade", "value": ecoGrade},
+        ],
+        intolerances: selectedIntolerances,
+        diseases: selectedDiseases,
+        medicalRestrictions: selectedMedicalRestrictions,
+      );
+
+      final tokenProvider =
+          Provider.of<TokenProviderNotifier>(context, listen: false);
+      final repository =
+          AuthenticationRemoteRepository(tokenProvider: tokenProvider);
+
+      final Result<void> result = await repository.updateProfile(
+          onboardingUserOptionDTO: userOptionDTO);
+
+      if (result.isFailure) {
+        return DialogService.showTopErrorDialog(context, result.errorMessage!);
+      }
+
+      context.goNamed('home');
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

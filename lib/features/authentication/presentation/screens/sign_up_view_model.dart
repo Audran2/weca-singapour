@@ -11,8 +11,6 @@ import '../../data/repository/authentication_remote_repository.dart';
 import '../../domain/auth_token.dart';
 
 class SignUpViewModel {
-  final AuthenticationRemoteRepository _authenticationRemoteRepository = AuthenticationRemoteRepository();
-
   final BuildContext context;
 
   ValueNotifier<bool> obscurePassword = ValueNotifier(true);
@@ -59,7 +57,10 @@ class SignUpViewModel {
         deviceName: deviceName!,
       );
 
-      final Result<AuthToken> result = await _authenticationRemoteRepository.signUp(signUpDTO: signUpDTO);
+      final tokenProvider = Provider.of<TokenProviderNotifier>(context, listen: false);
+      final repository = AuthenticationRemoteRepository(tokenProvider: tokenProvider);
+
+      final Result<AuthToken> result = await repository.signUp(signUpDTO: signUpDTO);
 
       if (result.isFailure) {
         return DialogService.showTopErrorDialog(context, result.errorMessage!);

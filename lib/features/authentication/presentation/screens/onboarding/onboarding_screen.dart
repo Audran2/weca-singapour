@@ -17,7 +17,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => OnboardingViewModel(),
+      create: (_) => OnboardingViewModel(context: context),
       child: Scaffold(
         body: Consumer<OnboardingViewModel>(
           builder: (context, onboardingViewModel, child) {
