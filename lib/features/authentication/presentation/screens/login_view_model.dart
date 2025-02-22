@@ -41,7 +41,7 @@ class LoginViewModel {
       final SignInDTO signInDTO = SignInDTO(
           email: email.value,
           password: password.value,
-          deviceName: deviceName!);
+          deviceName: deviceName ?? "");
 
       final tokenProvider =
           Provider.of<TokenProviderNotifier>(context, listen: false);

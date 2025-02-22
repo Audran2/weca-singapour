@@ -1,11 +1,18 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/presentation/widgets/modal/modal_bottom_sheet.dart';
+import '../../../../core/styles/colors.dart';
+import '../../../../core/styles/text_styles.dart';
+import '../../domain/product_model.dart';
 
 class ProductScreen extends StatelessWidget {
-  const ProductScreen({Key? key}) : super(key: key);
+  final Product product;
+
+  const ProductScreen({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +34,14 @@ class ProductScreen extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Icon(
-                  Icons.arrow_back_outlined,
-                  size: 24,
-                  color: Colors.black,
+                child: SvgPicture.asset(
+                  'assets/icons/actions/Chevron_Left.svg',
+                  height: AppTextSize.defaultIcon,
+                  width: AppTextSize.defaultIcon,
+                  colorFilter: const ColorFilter.mode(
+                    ChartColors.primary700,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),
@@ -49,124 +60,161 @@ class ProductScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          ModalBottomSheet(body: _modalBody(),),
+          ModalBottomSheet(
+            body: _modalBody(),
+          ),
         ],
       ),
     );
   }
 
   Widget _modalBody() {
-    return Padding(
+    return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Tag "Vegetarian"
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: Colors.pink[100],
+              color: ChartColors.primary50,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                //TODO add icons in assets
                 SvgPicture.asset(
-                  'assets/icons/vegetarian.svg',
-                  width: 16,
-                  height: 16,
-                  color: Colors.pink.shade700,
+                  'assets/icons/infos/Leaf.svg',
+                  width: AppTextSize.defaultIcon,
+                  height: AppTextSize.defaultIcon,
+                  colorFilter: const ColorFilter.mode(
+                    ChartColors.secondary500,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 const SizedBox(width: 4),
                 Text(
                   "Vegetarian",
-                  style: TextStyle(color: Colors.pink.shade700, fontWeight: FontWeight.bold),
+                  style: AppTextStyles.bodyText3.copyWith(
+                    color: ChartColors.secondary500,
+                  ),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 12),
-
-          // Title
-          const Text(
-            "Orange juice",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          const SizedBox(height: 20),
+          Text(
+            product.name,
+            style: AppTextStyles.titleText1,
           ),
-          const SizedBox(height: 8),
-
-          // Rating & Allergen info
+          const SizedBox(height: 20),
           Row(
             children: [
-              const Icon(Icons.star_border, color: Colors.pink),
-              const SizedBox(width: 4),
+              SvgPicture.asset(
+                'assets/icons/infos/Star.svg',
+                width: AppTextSize.defaultIcon,
+                height: AppTextSize.defaultIcon,
+                colorFilter: const ColorFilter.mode(
+                  ChartColors.primary500,
+                  BlendMode.srcIn,
+                ),
+              ),
+              const SizedBox(width: 8),
               Text(
-                "80/100 Rating",
-                style: TextStyle(color: Colors.pink.shade700, fontWeight: FontWeight.bold),
+                //TODO verify here
+                product.score.toString(),
+                style: AppTextStyles.bodyText3.copyWith(
+                  color: ChartColors.primary300,
+                ),
               ),
               const SizedBox(width: 16),
-              const Icon(Icons.health_and_safety, color: Colors.pink),
-              const SizedBox(width: 4),
+              SvgPicture.asset(
+                'assets/icons/infos/Health.svg',
+                width: AppTextSize.defaultIcon,
+                height: AppTextSize.defaultIcon,
+                colorFilter: const ColorFilter.mode(
+                  ChartColors.primary500,
+                  BlendMode.srcIn,
+                ),
+              ),
+              const SizedBox(width: 8),
               Text(
+                //TODO and here ?
                 "Allergen free",
-                style: TextStyle(color: Colors.pink.shade700, fontWeight: FontWeight.bold),
+                style: AppTextStyles.bodyText3.copyWith(
+                  color: ChartColors.primary300,
+                ),
               ),
             ],
           ),
-          const SizedBox(height: 12),
-
-          // Additives / Warning
+          const SizedBox(height: 20),
           Row(
-            children: [
-              _buildTag("E621", Icons.info, Colors.purple),
-              const SizedBox(width: 8),
-              _buildTag("Nitrite", Icons.warning, Colors.purple),
-            ],
+            children: product.dangerousComponents.map((component) {
+              return Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: _buildTag(component, 'assets/icons/infos/Triangle_Warning.svg'),
+              );
+            }).toList(),
           ),
-          const SizedBox(height: 16),
-
-          // Ingredients
+          const SizedBox(height: 20),
           const Text(
             "Ingredients:",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: AppTextStyles.subtitleText3,
           ),
           const SizedBox(height: 4),
-          const Text("- Orange\n- Sugar\n- Water", style: TextStyle(fontSize: 16)),
-
-          const SizedBox(height: 16),
-
-          // Description
+          Text(
+            product.ingredients.map((ingredient) => "- $ingredient").join("\n"),
+            style: AppTextStyles.bodyText2,
+          ),
+          const SizedBox(height: 20),
           const Text(
             "Description:",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: AppTextStyles.subtitleText3,
           ),
           const SizedBox(height: 4),
-          const Text(
-            "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit "
-                "excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua "
-                "ad duis eu laborum.",
-            style: TextStyle(fontSize: 14),
+          Text(
+            product.description,
+            style: AppTextStyles.bodyText2,
+          ),
+          const SizedBox(height: 20),
+          Image.asset(
+            'assets/images/ads/${['ads_active_sg.png', 'ads_nature_glory.png'][Random().nextInt(2)]}',
+            fit: BoxFit.cover,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildTag(String text, IconData icon, Color color) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 16, color: color),
-          const SizedBox(width: 4),
-          Text(text, style: TextStyle(color: color, fontWeight: FontWeight.bold)),
-        ],
-      ),
+  Widget _buildTag(String text, String icon) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(8),
+          decoration: const BoxDecoration(
+            color: ChartColors.secondary50,
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: SvgPicture.asset(
+              icon,
+              width: AppTextSize.defaultIcon,
+              height: AppTextSize.defaultIcon,
+              colorFilter: const ColorFilter.mode(
+                ChartColors.secondary500,
+                BlendMode.srcIn,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          text,
+          style: AppTextStyles.subtitleText5.copyWith(
+            color: ChartColors.secondary500,
+          ),
+        ),
+      ],
     );
   }
 }

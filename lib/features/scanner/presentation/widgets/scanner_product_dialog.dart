@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/dimensions.dart';
 import '../../../../core/styles/text_styles.dart';
+import '../../domain/product_model.dart';
+import '../screens/scanner_view_model.dart';
 
 class ScannerProductDialog extends StatelessWidget {
   final Animation<Offset> offsetAnimation;
@@ -71,7 +74,12 @@ class ScannerProductDialog extends StatelessWidget {
               ),
               SizedBox(width: AppDimensions.padding.large),
               GestureDetector(
-                onTap: () => context.push('/product'),
+                onTap: () {
+                  final Product? product = context.read<ScannerViewModel>().product.value;
+                  if (product != null) {
+                    context.push('/product', extra: product);
+                  }
+                },
                 child: Container(
                   width: AppDimensions.scannerDialog.buttonSize,
                   height: AppDimensions.scannerDialog.buttonSize,

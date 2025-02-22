@@ -184,7 +184,7 @@ class HomeScreen extends StatelessWidget {
         HomeCardNavigation(
           icon: Icons.favorite_border,
           title: "home.grid_stats.favorite.label".tr(),
-          subtitle: "home.grid_stats.info.info".tr(),
+          subtitle: "home.grid_stats.favorite.info".tr(),
         ),
       ],
     );
