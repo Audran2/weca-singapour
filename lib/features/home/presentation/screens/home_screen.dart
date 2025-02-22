@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/text_styles.dart';
@@ -29,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                   style: AppTextStyles.bodyText1,
                 ),
                 const SizedBox(height: 42),
-                _buildHomeGrid(),
+                _buildHomeGrid(context),
                 const SizedBox(height: 40),
                 HomeExploreCard(
                   title: "home.shop_card.brand_center.title".tr(),
@@ -87,19 +89,22 @@ class HomeScreen extends StatelessWidget {
                   color: ChartColors.secondary500,
                 ),
                 const SizedBox(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "home.articles.action_button.all".tr(),
-                      style: AppTextStyles.bodyText1,
-                    ),
-                    SvgPicture.asset(
-                      'assets/icons/actions/Arrow_Right_MD.svg',
-                      height: AppTextSize.defaultIcon,
-                      width: AppTextSize.defaultIcon,
-                    )
-                  ],
+                GestureDetector(
+                  onTap: () => context.pushNamed('articles'),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "home.articles.action_button.all".tr(),
+                        style: AppTextStyles.bodyText1,
+                      ),
+                      SvgPicture.asset(
+                        'assets/icons/actions/Arrow_Right_MD.svg',
+                        height: AppTextSize.defaultIcon,
+                        width: AppTextSize.defaultIcon,
+                      )
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 12),
                 Row(
@@ -155,7 +160,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  GridView _buildHomeGrid() {
+  GridView _buildHomeGrid(BuildContext context) {
     return GridView(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
@@ -167,24 +172,55 @@ class HomeScreen extends StatelessWidget {
       ),
       children: [
         HomeCardNavigation(
-          icon: Icons.qr_code_scanner,
+          icon: "assets/icons/infos/scanner.svg",
           title: "home.grid_stats.scan.label".tr(),
           subtitle: "home.grid_stats.scan.info".tr(),
+          onTap: () => context.push('/scan'),
         ),
         HomeCardNavigation(
-          icon: Icons.error_outline,
+          icon: "assets/icons/infos/not_found.svg",
           title: "home.grid_stats.not_found.label".tr(),
           subtitle: "home.grid_stats.not_found.info".tr(),
+          onTap: () {
+            Fluttertoast.showToast(
+              msg: "Feature not available yet",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: AppColors.black,
+              textColor: AppColors.white,
+              fontSize: 16.0,
+            );
+          },
         ),
         HomeCardNavigation(
-          icon: Icons.check_circle_outline,
+          icon: "assets/icons/infos/success.svg",
           title: "home.grid_stats.success.label".tr(),
           subtitle: "home.grid_stats.success.info".tr(),
+          onTap: () {
+            Fluttertoast.showToast(
+              msg: "Feature not available yet",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: AppColors.black,
+              textColor: AppColors.white,
+              fontSize: 16.0,
+            );
+          },
         ),
         HomeCardNavigation(
-          icon: Icons.favorite_border,
+          icon: "assets/icons/infos/favorite.svg",
           title: "home.grid_stats.favorite.label".tr(),
           subtitle: "home.grid_stats.favorite.info".tr(),
+          onTap: () {
+            Fluttertoast.showToast(
+              msg: "Feature not available yet",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: AppColors.black,
+              textColor: AppColors.white,
+              fontSize: 16.0,
+            );
+          },
         ),
       ],
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../core/presentation/widgets/bottom_navbar.dart';
+import '../features/articles/presentation/screens/Articles_screen.dart';
 import '../features/authentication/presentation/screens/login_screen.dart';
 import '../features/authentication/presentation/screens/onboarding/onboarding_screen.dart';
 import '../features/authentication/presentation/screens/onboarding/startup_screen.dart';
@@ -37,9 +38,9 @@ final GoRouter appRouter = GoRouter(
 
     // Route sign up
     GoRoute(
-        path: '/signup',
-        name: 'signup',
-        builder: (context, state) => const SignUpScreen(),
+      path: '/signup',
+      name: 'signup',
+      builder: (context, state) => const SignUpScreen(),
     ),
 
     // Route onboarding
@@ -70,6 +71,11 @@ final GoRouter appRouter = GoRouter(
             builder: (context, state) => const ProfileScreen()),
       ],
     ),
+    GoRoute(
+        path: '/articles',
+        name: 'articles',
+        builder: (context, state) => ArticlesScreen()),
+
     // Route de scan
     GoRoute(path: '/scan', builder: (context, state) => const ScannerScreen()),
 
