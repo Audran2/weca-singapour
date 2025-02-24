@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../core/data/http/http_client.dart';
 import '../../../../core/data/http/token_provider.dart';
@@ -22,13 +23,13 @@ class HistoryRemoteRepository extends HistoryRepository {
     try {
       final Response<dynamic> response = await httpClient.get("/histories/my-history");
 
-      if (response.statusCode != 200) return Result.failure("Failed to get history");
+      if (response.statusCode != 200) return Result.failure("history.error_get_history".tr());
 
       final test = response.data;
 
       return Result.success();
     } catch (_) {
-      return Result.failure("Failed to get history");
+      return Result.failure("history.error_get_history".tr());
     }
   }
 

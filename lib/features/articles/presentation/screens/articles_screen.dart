@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/colors.dart';
@@ -9,34 +10,34 @@ class ArticlesScreen extends StatelessWidget {
   final List<Map<String, String>> recommendations = [
     {
       "image":
-          "https://www.vacationstravel.com/wp-content/uploads/2023/12/Untitled-design-2-5.jpg",
-      "title": "The Ultimate Guide to Superfoods: Boost Your Health Naturally"
+          "https://www.nebraskamed.com/sites/default/files/images/primary%20care/superfoods_opengraph.jpg",
+      "title": "articles.recommended_articles.articles.one.title".tr()
     },
     {
       "image":
-          "https://www.vacationstravel.com/wp-content/uploads/2023/12/Untitled-design-2-5.jpg",
-      "title": "Meal Prepping: Healthier You, Save Time and Eat Better"
+          "https://blog.cdphp.com/wp-content/uploads/2023/09/01-Header-scaled.jpg",
+      "title": "articles.recommended_articles.articles.two.title".tr()
     }
   ];
 
   final List<Map<String, String>> articles = [
     {
       "image":
-          "https://www.vacationstravel.com/wp-content/uploads/2023/12/Untitled-design-2-5.jpg",
-      "title": "Understanding Macronutrients: The Key to a Balanced Diet...",
-      "time": "5 min"
+          "https://img-3.journaldesfemmes.fr/xBIq30XRp74DudzzkNXBn0edhvc=/1500x/smart/512aa8cb861d4a74a8bb819d32271197/ccmcms-jdf/26505505.jpg",
+      "title": "articles.classic_articles.articles.one.title".tr(),
+      "time": "articles.classic_articles.articles.one.time".tr()
     },
     {
       "image":
-          "https://www.vacationstravel.com/wp-content/uploads/2023/12/Untitled-design-2-5.jpg",
-      "title": "Weight Loss vs. Fat Loss: What’s the Difference and Why...",
-      "time": "5 min"
+          "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/02/exercising-watch-1296x728-header.jpg?w=1155&h=1528",
+      "title": "articles.classic_articles.articles.two.title".tr(),
+      "time": "articles.classic_articles.articles.two.time".tr()
     },
     {
       "image":
-          "https://www.vacationstravel.com/wp-content/uploads/2023/12/Untitled-design-2-5.jpg",
-      "title": "Best Foods for Muscle Growth and Recovery",
-      "time": "5 min"
+          "https://studyactive.co.uk/cdn/shop/articles/Muscle_Food_1024x.jpg?v=1705485508",
+      "title": "articles.classic_articles.articles.three.title".tr(),
+      "time": "articles.classic_articles.articles.three.time".tr()
     }
   ];
 
@@ -48,12 +49,12 @@ class ArticlesScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Padding(
-          padding: EdgeInsets.only(left: 20),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 20),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "Our Articles",
+              "articles.title".tr(),
               style: AppTextStyles.bodyText1,
             ),
           ),
@@ -65,7 +66,7 @@ class ArticlesScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Text(
-              "Recommendations",
+              "articles.recommended_articles.label".tr(),
               style:
               AppTextStyles.subtitleText1.copyWith(color: AppColors.black),
             ),

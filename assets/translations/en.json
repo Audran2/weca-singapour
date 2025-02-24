@@ -247,5 +247,58 @@
         "title": "Best Foods for\nMuscle Growth"
       }
     }
+  },
+  "articles": {
+    "title": "Our articles",
+    "recommended_articles": {
+      "label": "Recommendations",
+      "articles": {
+        "one": {
+          "title": "The Ultimate Guide to Superfoods: Boost Your Health Naturally"
+        },
+        "two": {
+          "title": "Meal Prepping: Healthier You, Save Time and Eat Better"
+        }
+      }
+    },
+    "classic_articles": {
+      "articles": {
+        "one": {
+          "title": "Understanding Macronutrients: The Key to a Balanced Diet...",
+          "time": "5 min"
+        },
+        "two": {
+          "title": "Weight Loss vs. Fat Loss: What’s the Difference and Why...",
+          "time": "8 min"
+        },
+        "three": {
+          "title": "Best Foods for Muscle Growth and Recovery",
+          "time": "6 min"
+        }
+      }
+    }
+  },
+  "scanner": {
+    "dialog": {
+      "default": {
+        "label": "Please, scan your product"
+      }
+    }
+  },
+  "history": {
+    "title": "History",
+    "error": {
+      "no_history": "No history available",
+      "get_history": "An error occurred while getting history"
+    }
+  },
+  "favorite": {
+    "title": "Favorites",
+    "error": {
+      "no_favorites": "No favorites available",
+      "get_favorites": "An error occurred while getting favorites",
+      "add_favorite": "An error occurred while adding to favorites",
+      "remove_favorite": "An error occurred while removing from favorites"
+    }
   }
 }

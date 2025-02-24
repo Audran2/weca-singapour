@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
@@ -12,7 +13,7 @@ import '../widgets/scanner_product_dialog.dart';
 import 'scanner_view_model.dart';
 
 class ScannerScreen extends StatefulWidget {
-  const ScannerScreen({Key? key}) : super(key: key);
+  const ScannerScreen({super.key});
 
   @override
   _ScannerScreenState createState() => _ScannerScreenState();
@@ -96,21 +97,13 @@ class _ScannerScreenState extends State<ScannerScreen>
                 builder: (context, product, _) {
                   return ScannerProductDialog(
                     offsetAnimation: viewModel.productDialogOffsetAnimation,
-                    brand: "Tropicana",
-                    label: "Orange juice",
-                    imageUrl:
-                    "https://i5.walmartimages.com/seo/Tropicana-Pure-Premium-Original-No-Pulp-100-Orange-Juice-46-Fl-Oz-Bottle_6f94bdc3-e12b-4366-bd7c-80001baee01a.b0e55c463b6fb53dd32c9b25df73cd04.jpeg",
+                    product: product,
                   );
                 },
               ),
-              ValueListenableBuilder<String>(
-                valueListenable: viewModel.defaultDialogLabel,
-                builder: (context, label, _) {
-                  return ScannerDefaultDialog(
-                    offsetAnimation: viewModel.defaultDialogOffsetAnimation,
-                    label: label,
-                  );
-                },
+              ScannerDefaultDialog(
+                offsetAnimation: viewModel.defaultDialogOffsetAnimation,
+                label: "scanner.dialog.default.label".tr(),
               ),
             ],
           );

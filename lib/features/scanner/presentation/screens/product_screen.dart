@@ -8,11 +8,31 @@ import '../../../../core/presentation/widgets/modal/modal_bottom_sheet.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/text_styles.dart';
 import '../../domain/product_model.dart';
+import 'product_view_model.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends StatefulWidget {
   final Product product;
 
   const ProductScreen({super.key, required this.product});
+
+  @override
+  _ProductScreenState createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
+  late ProductViewModel viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    viewModel = ProductViewModel(context: context);
+  }
+
+  @override
+  void dispose() {
+    viewModel.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,12 +119,36 @@ class ProductScreen extends StatelessWidget {
                     color: ChartColors.secondary500,
                   ),
                 ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: GestureDetector(
+                      onTap: () => viewModel.toggleLike(widget.product.id),
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: ChartColors.primary50,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/infos/Heart_01.svg',
+                          width: AppTextSize.defaultIcon,
+                          height: AppTextSize.defaultIcon,
+                          colorFilter: const ColorFilter.mode(
+                            ChartColors.primary600,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
           const SizedBox(height: 20),
           Text(
-            product.name,
+            widget.product.name,
             style: AppTextStyles.titleText1,
           ),
           const SizedBox(height: 20),
@@ -122,7 +166,7 @@ class ProductScreen extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 //TODO verify here
-                product.score.toString(),
+                widget.product.score.toString(),
                 style: AppTextStyles.bodyText3.copyWith(
                   color: ChartColors.primary300,
                 ),
@@ -149,10 +193,11 @@ class ProductScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Row(
-            children: product.dangerousComponents.map((component) {
+            children: widget.product.dangerousComponents.map((component) {
               return Padding(
                 padding: const EdgeInsets.only(right: 20),
-                child: _buildTag(component, 'assets/icons/infos/Triangle_Warning.svg'),
+                child: _buildTag(
+                    component, 'assets/icons/infos/Triangle_Warning.svg'),
               );
             }).toList(),
           ),
@@ -163,7 +208,7 @@ class ProductScreen extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            product.ingredients.map((ingredient) => "- $ingredient").join("\n"),
+            widget.product.ingredients.map((ingredient) => "- $ingredient").join("\n"),
             style: AppTextStyles.bodyText2,
           ),
           const SizedBox(height: 20),
@@ -173,12 +218,15 @@ class ProductScreen extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            product.description,
+            widget.product.description,
             style: AppTextStyles.bodyText2,
           ),
           const SizedBox(height: 20),
           Image.asset(
-            'assets/images/ads/${['ads_active_sg.png', 'ads_nature_glory.png'][Random().nextInt(2)]}',
+            'assets/images/ads/${[
+              'ads_active_sg.png',
+              'ads_nature_glory.png'
+            ][Random().nextInt(2)]}',
             fit: BoxFit.cover,
           ),
         ],

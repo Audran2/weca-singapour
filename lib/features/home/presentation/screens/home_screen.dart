@@ -211,16 +211,7 @@ class HomeScreen extends StatelessWidget {
           icon: "assets/icons/infos/favorite.svg",
           title: "home.grid_stats.favorite.label".tr(),
           subtitle: "home.grid_stats.favorite.info".tr(),
-          onTap: () {
-            Fluttertoast.showToast(
-              msg: "Feature not available yet",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              backgroundColor: AppColors.black,
-              textColor: AppColors.white,
-              fontSize: 16.0,
-            );
-          },
+          onTap: () => context.push('/favorites'),
         ),
       ],
     );

@@ -18,8 +18,6 @@ class ScannerViewModel {
   final ValueNotifier<List<Barcode>> detectedBarcodes = ValueNotifier([]);
   ValueNotifier<Product?> product = ValueNotifier(null);
   final ValueNotifier<Size> cameraSize = ValueNotifier(Size.zero);
-  final ValueNotifier<String> defaultDialogLabel =
-      ValueNotifier('Please, scan your products');
 
   late AnimationController defaultDialogController;
   late Animation<Offset> defaultDialogOffsetAnimation;
@@ -112,7 +110,6 @@ class ScannerViewModel {
     defaultDialogController.dispose();
     productDialogController.dispose();
     detectedBarcodes.dispose();
-    defaultDialogLabel.dispose();
     cameraSize.dispose();
     _resetTimer?.cancel();
   }

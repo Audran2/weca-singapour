@@ -4,27 +4,24 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/text_styles.dart';
-import '../../domain/product_history_model.dart';
-import '../widgets/dropdown_menu_button.dart';
-import '../widgets/history_card.dart';
-import 'history_view_model.dart';
+import '../../../scanner/domain/product_model.dart';
+import 'favorite_view_model.dart';
 
-class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({super.key});
+class FavoriteScreen extends StatefulWidget {
+  const FavoriteScreen({super.key});
 
   @override
-  _HistoryScreenState createState() => _HistoryScreenState();
+  _FavoriteScreenState createState() => _FavoriteScreenState();
 }
 
-class _HistoryScreenState extends State<HistoryScreen> {
-  late HistoryViewModel _viewModel;
+class _FavoriteScreenState extends State<FavoriteScreen> {
+  late FavoriteViewModel _viewModel;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _viewModel = HistoryViewModel(context: context);
+    _viewModel = FavoriteViewModel(context: context);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -50,22 +47,26 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           builder: (context, isLoading, _) {
                             if (isLoading) {
                               return const Center(
-                                  child: CircularProgressIndicator());
+                                child: CircularProgressIndicator(),
+                              );
                             }
 
-                            return ValueListenableBuilder<List<ProductHistory>>(
-                              valueListenable: _viewModel.historyList,
+                            return ValueListenableBuilder<List<Product>>(
+                              valueListenable: _viewModel.favoriteList,
                               builder: (context, history, _) {
                                 if (!isLoading && history.isEmpty) {
                                   return Center(
-                                      child: Text("history.error.no_history".tr()));
+                                    child: Text(
+                                      "history.error.no_favorites".tr(),
+                                    ),
+                                  );
                                 }
 
                                 return ListView.separated(
                                   itemCount: history.length,
                                   itemBuilder: (context, index) {
-                                    return HistoryCard(
-                                        productHistory: history[index]);
+                                    // return HistoryCard(
+                                    //     productHistory: history[index]);
                                   },
                                   separatorBuilder: (_, __) =>
                                       const SizedBox(height: 20),
@@ -106,7 +107,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               child: Transform.rotate(
                 angle: -30 * 3.141592653589793 / 180,
                 child: SvgPicture.asset(
-                  'assets/icons/navbar/history.svg',
+                  'assets/icons/infos/Heart_01.svg',
                   width: 180,
                   height: 180,
                   colorFilter:
@@ -121,12 +122,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "history.title".tr(),
+                      "favorite.title".tr(),
                       style: AppTextStyles.titleText1.copyWith(
                         color: AppColors.white,
                       ),
                     ),
-                    const DropdownMenuButton(),
                   ],
                 ),
               ),
