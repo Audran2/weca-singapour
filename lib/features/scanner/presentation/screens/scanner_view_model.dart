@@ -72,7 +72,6 @@ class ScannerViewModel {
 
       if (newBarcodes.isNotEmpty) {
         detectedBarcodes.value = List.from(detectedBarcodes.value)..addAll(newBarcodes);
-        showProductDialog();
 
         final tokenProvider =
             Provider.of<TokenProviderNotifier>(context, listen: false);
@@ -80,7 +79,7 @@ class ScannerViewModel {
             ScannerRemoteRepository(tokenProvider: tokenProvider);
 
         final Result<Product> result =
-            await repository.getProductByBarcodeId(BarcodeId("5787399902942"));
+            await repository.getProductByBarcodeId(BarcodeId("22132031"));
 
         if (result.isFailure) {
           product.value = null;
@@ -88,6 +87,7 @@ class ScannerViewModel {
         }
 
         product.value = result.data;
+        showProductDialog();
       }
 
       if (capture.size != Size.zero) {

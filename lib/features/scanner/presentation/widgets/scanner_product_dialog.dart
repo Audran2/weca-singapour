@@ -67,13 +67,13 @@ class ScannerProductDialog extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          product?.brand ?? "",
+                          product?.getBrand() ?? "",
                           style: AppTextStyles.bodyText2
                               .copyWith(color: AppColors.grey400),
                         ),
                         SizedBox(height: AppDimensions.margin.small),
                         Text(
-                          product?.name ?? "",
+                          product?.getName() ?? "",
                           style: AppTextStyles.subtitleText3,
                         ),
                       ],

@@ -7,7 +7,7 @@ import '../../../../../core/styles/text_styles.dart';
 import '../../screens/onboarding/onboarding_view_model.dart';
 
 class DietaryOptionItem extends StatelessWidget {
-  final String option;
+  final Map<String, String> option;
 
   const DietaryOptionItem({super.key, required this.option});
 
@@ -15,7 +15,7 @@ class DietaryOptionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final OnboardingViewModel viewModel =
     Provider.of<OnboardingViewModel>(context);
-    final bool isSelected = viewModel.dietaryPreferences.contains(option);
+    final bool isSelected = viewModel.dietaryPreferences.contains(option['value']);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -27,7 +27,7 @@ class DietaryOptionItem extends StatelessWidget {
               SvgPicture.asset('assets/icons/infos/Heart_01.svg'),
               const SizedBox(width: 20),
               Text(
-                option,
+                option['title']!,
                 style: AppTextStyles.subtitleText2,
               ),
             ],
@@ -35,7 +35,7 @@ class DietaryOptionItem extends StatelessWidget {
           SwitchButton(
             value: isSelected,
             onChanged: (bool value) {
-              viewModel.toggleDietaryPreference(option);
+              viewModel.toggleDietaryPreference(option['value']!);
             },
           ),
         ],

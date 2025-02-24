@@ -5,7 +5,8 @@ import '../../../../core/data/http/http_client.dart';
 import '../../../../core/data/http/token_provider.dart';
 import '../../../../core/data/result.dart';
 import '../../../scanner/domain/product_id.dart';
-import '../../../scanner/domain/product_model.dart';
+import '../../domain/favorite_product_model.dart';
+import '../dto/favorite_product_response_dto.dart';
 import 'favorite_repository.dart';
 
 class FavoriteRemoteRepository extends FavoriteRepository {
@@ -21,15 +22,17 @@ class FavoriteRemoteRepository extends FavoriteRepository {
             );
 
   @override
-  Future<Result<List<Product>>> getFavorites() async {
+  Future<Result<List<FavoriteProduct>>> getFavorites() async {
     try {
       final Response<dynamic> response = await httpClient.get("/favorites/my-favorite");
 
       if (response.statusCode != 200) return Result.failure("favorite.error.get_favorites".tr());
 
-      final test = response.data;
+      final List<FavoriteProduct> favoriteProducts = (response.data["data"] as List<dynamic>)
+          .map((dynamic e) => FavoriteProductResponseDTO.fromJson(e as Map<String, dynamic>).toDomain())
+          .toList();
 
-      return Result.success();
+      return Result.success(favoriteProducts);
     } catch (_) {
       return Result.failure("favorite.error.get_favorites".tr());
     }
@@ -40,7 +43,7 @@ class FavoriteRemoteRepository extends FavoriteRepository {
     try {
       final Response<dynamic> response = await httpClient.post("/favorites/${productId.value}");
 
-      if (response.statusCode != 200) return Result.failure("favorite.error.add_favorite".tr());
+      if (response.statusCode != 204) return Result.failure("favorite.error.add_favorite".tr());
 
       return Result.success();
     } catch (_) {
@@ -53,7 +56,7 @@ class FavoriteRemoteRepository extends FavoriteRepository {
     try {
       final Response<dynamic> response = await httpClient.delete("/favorites/${productId.value}");
 
-      if (response.statusCode != 200) return Result.failure("favorite.error.remove_favorite".tr());
+      if (response.statusCode != 204) return Result.failure("favorite.error.remove_favorite".tr());
 
       return Result.success();
     } catch (_) {

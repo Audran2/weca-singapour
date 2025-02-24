@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/data/http/token_provider.dart';
+import '../../../../core/data/result.dart';
+import '../../../../core/services/top_dialog_services.dart';
 import '../../../favorites/data/repository/favorite_remote_repository.dart';
 import '../../domain/product_id.dart';
 
@@ -11,20 +14,27 @@ class ProductViewModel {
 
   ProductViewModel({required this.context});
 
-  Future<void> toggleLike(ProductId productId) async {
-    try {
-      final tokenProvider =
-          Provider.of<TokenProviderNotifier>(context, listen: false);
-      final repository = FavoriteRemoteRepository(tokenProvider: tokenProvider);
+  Future<void> toggleLike(BuildContext context, ProductId productId) async {
+    final tokenProvider =
+        Provider.of<TokenProviderNotifier>(context, listen: false);
+    final FavoriteRemoteRepository repository = FavoriteRemoteRepository(tokenProvider: tokenProvider);
 
-      if (isLiked.value) {
-        await repository.removeFavorite(productId);
-      } else {
-        await repository.addFavorite(productId);
-      }
-    } finally {
-      isLiked.value = !isLiked.value;
+    final Result<void> result = isLiked.value
+        ? await repository.removeFavorite(productId)
+        : await repository.addFavorite(productId);
+
+    if (result.isFailure) {
+      DialogService.showTopErrorDialog(context, result.errorMessage!);
+      return;
     }
+
+    DialogService.showTopSuccessDialog(
+        context,
+        isLiked.value
+            ? 'favorite.success.remove_favorite'.tr()
+            : 'favorite.success.add_favorite'.tr());
+
+    isLiked.value = !isLiked.value;
   }
 
   void dispose() {

@@ -162,16 +162,16 @@ class OnboardingViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  bool isItemSelected(int step, String title) {
+  bool isItemSelected(int step, String value) {
     switch (step) {
       case 1:
-        return selectedAllergies.contains(title);
+        return selectedAllergies.contains(value);
       case 2:
-        return selectedIntolerances.contains(title);
+        return selectedIntolerances.contains(value);
       case 3:
-        return selectedDiseases.contains(title);
+        return selectedDiseases.contains(value);
       case 4:
-        return selectedMedicalRestrictions.contains(title);
+        return selectedMedicalRestrictions.contains(value);
       default:
         return false;
     }

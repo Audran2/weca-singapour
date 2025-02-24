@@ -26,9 +26,7 @@ class ScannerRemoteRepository extends ScannerRepository {
 
       if (response.statusCode != 200) return Result.failure("Failed to get product");
 
-      final test = response.data;
-
-     final Product product = ProductResponseDTO.fromJson(response.data).toDomain();
+     final Product product = ProductResponseDTO.fromJson(response.data["data"]).toDomain();
      return Result.success(product);
     } catch (_) {
       return Result.failure("Une erreur est survenue");

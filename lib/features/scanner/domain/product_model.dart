@@ -1,19 +1,20 @@
+import 'item_model.dart';
 import 'product_id.dart';
 
 class Product {
   final ProductId id;
   final String name;
   final String brand;
-  final int score;
+  final String score;
   final String description;
   final String imageUrl;
-  final List<String> allergies;
-  final List<String> preferences;
-  final List<String> intolerances;
-  final List<String> diseases;
-  final List<String> medicalRestrictions;
+  final List<Item> allergies;
+  final List<Item> preferences;
+  final List<Item> intolerances;
+  final List<Item> diseases;
+  final List<Item> medicalRestrictions;
   final List<String> ingredients;
-  final List<String> dangerousComponents;
+  final List<Item> dangerousComponents;
 
   Product({
     required this.id,
@@ -30,4 +31,24 @@ class Product {
     required this.ingredients,
     required this.dangerousComponents,
   });
+
+  String getBrand() {
+    if (brand.length > 15) return "${brand.substring(0, 12)}...";
+
+    return brand;
+  }
+
+  String getName() {
+    if (name.length > 15) return "${name.substring(0, 12)}...";
+
+    return name;
+  }
+
+  String getScore() {
+    return "$score/100 Rating";
+  }
+
+  bool hasProblems() {
+    return allergies.isNotEmpty || intolerances.isNotEmpty || diseases.isNotEmpty || medicalRestrictions.isNotEmpty;
+  }
 }

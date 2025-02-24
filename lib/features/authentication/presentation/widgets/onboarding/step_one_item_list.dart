@@ -41,11 +41,11 @@ class _StepOneItemListState extends State<StepOneItemList> {
             final int index = items.indexOf(item);
             final bool isExpanded = _expandedIndex == index;
             final bool isSelected = onboardingViewModel.isItemSelected(
-                widget.currentSubStep, item["title"]!);
+                widget.currentSubStep, item["value"]!);
 
             return GestureDetector(
               onTap: () => onboardingViewModel.toggleSelection(
-                  widget.currentSubStep, item["title"]!),
+                  widget.currentSubStep, item["value"]!),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,

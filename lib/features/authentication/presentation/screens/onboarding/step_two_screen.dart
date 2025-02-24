@@ -16,7 +16,7 @@ class StepTwoScreen extends StatelessWidget {
     final OnboardingViewModel onboardingViewModel =
         Provider.of<OnboardingViewModel>(context);
 
-    final List<String> dietaryOptions = BoardingStepData.dietaryOptions;
+    final List<Map<String, String>> dietaryOptions = BoardingStepData.dietaryOptions;
 
     return Column(
       children: [
@@ -60,7 +60,7 @@ class StepTwoScreen extends StatelessWidget {
   }
 
   Expanded _buildBody(
-      List<String> dietaryOptions, OnboardingViewModel onboardingViewModel) {
+      List<Map<String, String>> dietaryOptions, OnboardingViewModel onboardingViewModel) {
     return Expanded(
       child: ListView.separated(
         itemCount: dietaryOptions.length + 1,

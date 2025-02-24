@@ -1,10 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/styles/colors.dart';
+import '../../../../core/styles/dimensions.dart';
+import '../../../../core/styles/shadows.dart';
 import '../../../../core/styles/text_styles.dart';
-import '../../../scanner/domain/product_model.dart';
+import '../../domain/favorite_product_model.dart';
 import 'favorite_view_model.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -37,7 +40,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               _buildHeader(widgetWidth, widgetHeight),
               SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.only(top: widgetHeight * 0.14),
+                  padding: EdgeInsets.only(top: widgetHeight * 0.16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -51,25 +54,30 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                               );
                             }
 
-                            return ValueListenableBuilder<List<Product>>(
+                            return ValueListenableBuilder<
+                                List<FavoriteProduct>>(
                               valueListenable: _viewModel.favoriteList,
-                              builder: (context, history, _) {
-                                if (!isLoading && history.isEmpty) {
+                              builder: (context, product, _) {
+                                if (!isLoading && product.isEmpty) {
                                   return Center(
                                     child: Text(
-                                      "history.error.no_favorites".tr(),
+                                      "favorite.error.no_favorites".tr(),
                                     ),
                                   );
                                 }
 
-                                return ListView.separated(
-                                  itemCount: history.length,
-                                  itemBuilder: (context, index) {
-                                    // return HistoryCard(
-                                    //     productHistory: history[index]);
-                                  },
-                                  separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 20),
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: ListView.separated(
+                                    itemCount: product.length,
+                                    itemBuilder: (context, index) {
+                                      return _buildFavoriteCard(
+                                          product, index, context);
+                                    },
+                                    separatorBuilder: (_, __) =>
+                                        const SizedBox(height: 20),
+                                  ),
                                 );
                               },
                             );
@@ -83,6 +91,73 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
             ],
           );
         },
+      ),
+    );
+  }
+
+  Container _buildFavoriteCard(
+      List<FavoriteProduct> product, int index, BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: AppDimensions.padding.extraLarge,
+        vertical: AppDimensions.padding.extraLarge,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(AppDimensions.radius.extraLarge),
+        boxShadow: [AppShadows.historyCardShadow],
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(AppDimensions.radius.large),
+            child: Image.network(
+              product[index].image ?? "",
+              width: AppDimensions.scannerDialog.buttonSize,
+              height: AppDimensions.scannerDialog.buttonSize,
+              fit: BoxFit.cover,
+            ),
+          ),
+          SizedBox(width: AppDimensions.padding.xxLarge),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product[index].getBrand() ?? "",
+                  style: AppTextStyles.bodyText2
+                      .copyWith(color: AppColors.grey400),
+                ),
+                SizedBox(height: AppDimensions.margin.small),
+                Text(
+                  product[index].getName() ?? "",
+                  style: AppTextStyles.subtitleText3,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(width: AppDimensions.padding.large),
+          GestureDetector(
+            onTap: () {
+              context.push('/product', extra: product);
+            },
+            child: Container(
+              width: AppDimensions.scannerDialog.buttonSize,
+              height: AppDimensions.scannerDialog.buttonSize,
+              decoration: BoxDecoration(
+                color: ChartColors.primary500,
+                borderRadius: BorderRadius.circular(AppDimensions.radius.large),
+              ),
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/icons/arrow_next.svg',
+                  width: AppTextSize.defaultIcon,
+                  height: AppTextSize.defaultIcon,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

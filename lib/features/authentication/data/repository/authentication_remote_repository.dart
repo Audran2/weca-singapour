@@ -54,10 +54,9 @@ class AuthenticationRemoteRepository extends AuthenticationRepository {
     try {
       final Response<dynamic> response = await httpClient.post("/users", data: onboardingUserOptionDTO.toJson());
 
-      if (response.statusCode != 200) return Result.failure("Failed to update profile");
+      if (response.statusCode != 204) return Result.failure("Failed to update profile");
 
-      final Map<String, dynamic> responseBody = response.data;
-      return Result.success(responseBody);
+      return Result.success();
     } catch (_) {
       return Result.failure("Failed to update profile");
     }

@@ -1,13 +1,18 @@
 import 'dart:math';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/presentation/widgets/modal/modal_bottom_sheet.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/text_styles.dart';
+import '../../domain/item_model.dart';
 import '../../domain/product_model.dart';
+import '../widgets/allergy_card.dart';
+import '../widgets/allergy_tag.dart';
 import 'product_view_model.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -76,7 +81,7 @@ class _ProductScreenState extends State<ProductScreen> {
             right: 0,
             height: MediaQuery.of(context).size.height * 0.42,
             child: Image.network(
-              'https://images-platform.99static.com/lnz3Ev1acDg9WGpjnv2-CQGK52g=/0x0:2000x2000/500x500/top/smart/99designs-contests-attachments/127/127533/attachment_127533869',
+              widget.product.imageUrl,
               fit: BoxFit.cover,
             ),
           ),
@@ -94,57 +99,28 @@ class _ProductScreenState extends State<ProductScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: ChartColors.primary50,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset(
-                  'assets/icons/infos/Leaf.svg',
-                  width: AppTextSize.defaultIcon,
-                  height: AppTextSize.defaultIcon,
-                  colorFilter: const ColorFilter.mode(
-                    ChartColors.secondary500,
-                    BlendMode.srcIn,
-                  ),
+          Row(
+            children: [
+              if (widget.product.hasProblems()) ...[
+                AllergyCard(
+                  label: "product.alert".tr(),
+                  icon: 'assets/icons/infos/Triangle_Warning.svg',
+                  backgroundColor: ChartColors.secondary900,
+                  fontColor: AppColors.white,
                 ),
-                const SizedBox(width: 4),
-                Text(
-                  "Vegetarian",
-                  style: AppTextStyles.bodyText3.copyWith(
-                    color: ChartColors.secondary500,
-                  ),
-                ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: GestureDetector(
-                      onTap: () => viewModel.toggleLike(widget.product.id),
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: ChartColors.primary50,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: SvgPicture.asset(
-                          'assets/icons/infos/Heart_01.svg',
-                          width: AppTextSize.defaultIcon,
-                          height: AppTextSize.defaultIcon,
-                          colorFilter: const ColorFilter.mode(
-                            ChartColors.primary600,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                const SizedBox(width: 8),
               ],
-            ),
+              for (Item preference in widget.product.preferences)
+                AllergyCard(
+                  label: preference.name,
+                  icon: 'assets/icons/infos/Leaf.svg',
+                  backgroundColor: ChartColors.primary50,
+                  fontColor: ChartColors.secondary500,
+                ),
+              if (widget.product.allergies.isEmpty) ...[
+                _buildFavoriteIcon(),
+              ],
+            ],
           ),
           const SizedBox(height: 20),
           Text(
@@ -165,61 +141,95 @@ class _ProductScreenState extends State<ProductScreen> {
               ),
               const SizedBox(width: 8),
               Text(
-                //TODO verify here
-                widget.product.score.toString(),
+                widget.product.getScore(),
                 style: AppTextStyles.bodyText3.copyWith(
                   color: ChartColors.primary300,
                 ),
               ),
               const SizedBox(width: 16),
-              SvgPicture.asset(
-                'assets/icons/infos/Health.svg',
-                width: AppTextSize.defaultIcon,
-                height: AppTextSize.defaultIcon,
-                colorFilter: const ColorFilter.mode(
-                  ChartColors.primary500,
-                  BlendMode.srcIn,
+              if (widget.product.allergies.isEmpty) ...[
+                SvgPicture.asset(
+                  'assets/icons/infos/Health.svg',
+                  width: AppTextSize.defaultIcon,
+                  height: AppTextSize.defaultIcon,
+                  colorFilter: const ColorFilter.mode(
+                    ChartColors.primary500,
+                    BlendMode.srcIn,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                //TODO and here ?
-                "Allergen free",
-                style: AppTextStyles.bodyText3.copyWith(
-                  color: ChartColors.primary300,
+                const SizedBox(width: 8),
+                Text(
+                  "Allergen free",
+                  style: AppTextStyles.bodyText3.copyWith(
+                    color: ChartColors.primary300,
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
-          const SizedBox(height: 20),
-          Row(
-            children: widget.product.dangerousComponents.map((component) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: _buildTag(
-                    component, 'assets/icons/infos/Triangle_Warning.svg'),
-              );
-            }).toList(),
-          ),
-          const SizedBox(height: 20),
-          const Text(
-            "Ingredients:",
-            style: AppTextStyles.subtitleText3,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            widget.product.ingredients.map((ingredient) => "- $ingredient").join("\n"),
-            style: AppTextStyles.bodyText2,
-          ),
+          if (widget.product.dangerousComponents.isNotEmpty ||
+              widget.product.intolerances.isNotEmpty) ...[
+            const SizedBox(height: 20),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ...widget.product.intolerances.map((intolerance) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: AllergyTag(
+                        label: intolerance.name,
+                        icon: 'assets/icons/infos/Octagon_Warning.svg',
+                        backgroundColor: ChartColors.secondary900,
+                        iconColor: AppColors.white,
+                        fontColor: ChartColors.secondary900,
+                      ),
+                    );
+                  }).toList(),
+                  ...widget.product.dangerousComponents.map((component) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: AllergyTag(
+                        label: component.name,
+                        icon: 'assets/icons/infos/Triangle_Warning.svg',
+                        backgroundColor: ChartColors.secondary50,
+                        iconColor: ChartColors.secondary500,
+                        fontColor: ChartColors.secondary500,
+                      ),
+                    );
+                  }).toList(),
+                ],
+              ),
+            ),
+          ],
+          if (widget.product.ingredients.isNotEmpty) ...[
+            const SizedBox(height: 20),
+            const Text(
+              "Ingredients:",
+              style: AppTextStyles.subtitleText3,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              widget.product.ingredients
+                  .map((ingredient) => "- $ingredient")
+                  .join("\n"),
+              style: AppTextStyles.bodyText2,
+            ),
+          ],
           const SizedBox(height: 20),
           const Text(
             "Description:",
             style: AppTextStyles.subtitleText3,
           ),
           const SizedBox(height: 4),
-          Text(
-            widget.product.description,
-            style: AppTextStyles.bodyText2,
+          MarkdownBody(
+            data: widget.product.description,
+            styleSheet: MarkdownStyleSheet(
+              p: AppTextStyles.bodyText2,
+              strong:
+                  AppTextStyles.bodyText2.copyWith(fontWeight: FontWeight.bold),
+              em: AppTextStyles.bodyText2.copyWith(fontStyle: FontStyle.italic),
+            ),
           ),
           const SizedBox(height: 20),
           Image.asset(
@@ -234,35 +244,30 @@ class _ProductScreenState extends State<ProductScreen> {
     );
   }
 
-  Widget _buildTag(String text, String icon) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(8),
-          decoration: const BoxDecoration(
-            color: ChartColors.secondary50,
-            shape: BoxShape.circle,
-          ),
-          child: Center(
+  Expanded _buildFavoriteIcon() {
+    return Expanded(
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: GestureDetector(
+          onTap: () => viewModel.toggleLike(context, widget.product.id),
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: ChartColors.primary50,
+              borderRadius: BorderRadius.circular(24),
+            ),
             child: SvgPicture.asset(
-              icon,
+              'assets/icons/infos/Heart_01.svg',
               width: AppTextSize.defaultIcon,
               height: AppTextSize.defaultIcon,
               colorFilter: const ColorFilter.mode(
-                ChartColors.secondary500,
+                ChartColors.primary600,
                 BlendMode.srcIn,
               ),
             ),
           ),
         ),
-        const SizedBox(height: 4),
-        Text(
-          text,
-          style: AppTextStyles.subtitleText5.copyWith(
-            color: ChartColors.secondary500,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

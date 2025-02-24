@@ -1,3 +1,4 @@
+import '../../domain/item_model.dart';
 import '../../domain/product_id.dart';
 import '../../domain/product_model.dart';
 
@@ -5,16 +6,16 @@ class ProductResponseDTO {
   final ProductId id;
   final String name;
   final String brand;
-  final int score;
+  final String score;
   final String description;
   final String imageUrl;
-  final List<String> allergies;
-  final List<String> preferences;
-  final List<String> intolerances;
-  final List<String> diseases;
-  final List<String> medicalRestrictions;
+  final List<Item> allergies;
+  final List<Item> preferences;
+  final List<Item> intolerances;
+  final List<Item> diseases;
+  final List<Item> medicalRestrictions;
   final List<String> ingredients;
-  final List<String> dangerousComponents;
+  final List<Item> dangerousComponents;
 
   ProductResponseDTO({
     required this.id,
@@ -33,20 +34,24 @@ class ProductResponseDTO {
   });
 
   factory ProductResponseDTO.fromJson(Map<String, dynamic> json) {
+    List<Item> extractItems(List<dynamic> items) {
+      return items.map((item) => Item.fromJson(item)).toList();
+    }
+
     return ProductResponseDTO(
       id: ProductId(json['id']),
       name: json['name'],
       brand: json['brand'],
       score: json['score'],
-      description: json['description'],
-      imageUrl: json['image'],
-      allergies: List<String>.from(json['allergies']),
-      preferences: List<String>.from(json['preferences']),
-      intolerances: List<String>.from(json['intolerances']),
-      diseases: List<String>.from(json['diseases']),
-      medicalRestrictions: List<String>.from(json['medical_restrictions']),
-      ingredients: List<String>.from(json['ingredients']),
-      dangerousComponents: List<String>.from(json['dangerous_components']),
+      description: json['description'] ?? "",
+      imageUrl: json['image'] ?? "https://tinasbotanicals.com/wp-content/uploads/2025/01/No-Product-Image-Available.png",
+      allergies: json['allergies'] != null ? extractItems(json['allergies']) : [],
+      preferences: json['preferences'] != null ? extractItems(json['preferences']) : [],
+      intolerances: json['intolerances'] != null ? extractItems(json['intolerances']) : [],
+      diseases: json['diseases'] != null ? extractItems(json['diseases']) : [],
+      medicalRestrictions: json['medicalRestrictions'] != null ? extractItems(json['medicalRestrictions']) : [],
+      ingredients: json['ingredients'] != null ? List<String>.from(json['ingredients']) : [],
+      dangerousComponents: json['dangerousComponents'] != null ? extractItems(json['dangerousComponents']) : [],
     );
   }
 

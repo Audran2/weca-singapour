@@ -146,7 +146,7 @@ class HomeScreen extends StatelessWidget {
               style: AppTextStyles.titleText3,
             ),
             const Text(
-              "John",
+              "Audran",
               style: AppTextStyles.bodyText1,
             ),
           ],

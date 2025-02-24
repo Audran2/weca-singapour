@@ -23,13 +23,13 @@ class HistoryRemoteRepository extends HistoryRepository {
     try {
       final Response<dynamic> response = await httpClient.get("/histories/my-history");
 
-      if (response.statusCode != 200) return Result.failure("history.error_get_history".tr());
+      if (response.statusCode != 200) return Result.failure("history.error.get_history".tr());
 
       final test = response.data;
 
       return Result.success();
     } catch (_) {
-      return Result.failure("history.error_get_history".tr());
+      return Result.failure("history.error.get_history".tr());
     }
   }
 

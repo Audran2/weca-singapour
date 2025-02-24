@@ -299,6 +299,13 @@
       "get_favorites": "An error occurred while getting favorites",
       "add_favorite": "An error occurred while adding to favorites",
       "remove_favorite": "An error occurred while removing from favorites"
+    },
+    "success": {
+      "add_favorite": "Added to favorites",
+      "remove_favorite": "Removed from favorites"
     }
+  },
+  "product": {
+    "alert": "Not compatible"
   }
 }
