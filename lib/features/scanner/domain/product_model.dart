@@ -15,6 +15,7 @@ class Product {
   final List<Item> medicalRestrictions;
   final List<String> ingredients;
   final List<Item> dangerousComponents;
+  final bool isFavorite;
 
   Product({
     required this.id,
@@ -30,6 +31,7 @@ class Product {
     required this.medicalRestrictions,
     required this.ingredients,
     required this.dangerousComponents,
+    required this.isFavorite,
   });
 
   String getBrand() {

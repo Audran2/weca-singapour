@@ -1,7 +1,8 @@
 {
   "default": {
     "action": {
-      "next": "Suivant"
+      "next": "Suivant",
+      "explore": "Explorer plus"
     }
   },
   "authentication": {
@@ -16,15 +17,15 @@
         },
         "slide2": {
           "title": {
-            "text": "La santé rendue ",
-            "highlight": "simple"
+            "text": "La santé devient ",
+            "highlight": "Simple"
           },
           "description": "Déchiffrez les étiquettes, évitez les allergènes et mangez plus intelligemment."
         },
         "slide3": {
           "title": {
-            "text": "Des choix ",
-            "highlight": "plus avisés"
+            "text": "Des choix plus ",
+            "highlight": "intelligents"
           },
           "description": "Recevez des conseils personnalisés et des options plus saines."
         }
@@ -32,9 +33,9 @@
       "button_action": "Commencer"
     },
     "login": {
-      "label": "Salut\nContent de te revoir",
+      "label": "Salut\nBon retour",
       "form": {
-        "email": "Entrez votre email",
+        "email": "Entrez votre e-mail",
         "password": "Entrez votre mot de passe"
       },
       "login_alternative": "Ou continuez avec",
@@ -48,10 +49,10 @@
       }
     },
     "signup": {
-      "label": "Créons\nvotre compte",
+      "label": "Créons,\nvotre compte",
       "form": {
         "name": "Entrez votre nom",
-        "email": "Entrez votre email",
+        "email": "Entrez votre e-mail",
         "password": "Entrez votre mot de passe",
         "confirm_password": "Confirmez votre mot de passe"
       },
@@ -59,84 +60,89 @@
         "signup": "Créer le compte",
         "login": {
           "text": "Vous avez déjà un compte ? ",
-          "link": "Connectez-vous"
+          "link": "Se connecter"
         }
       }
     },
     "boarding": {
+      "action_button": {
+        "next": "Étape suivante",
+        "last": "Dernière étape",
+        "start": "Commencer maintenant"
+      },
       "step1": {
         "subStep1": {
           "label": "Allergies",
           "list_data": {
             "animal_proteins": {
               "title": "Protéines animales",
-              "description": "Allergie aux protéines animales : réaction aux protéines présentes dans la viande, les produits laitiers, les œufs et le poisson, pouvant provoquer des symptômes cutanés et digestifs."
+              "description": "Allergie aux protéines animales : une réaction aux protéines présentes dans la viande, les produits laitiers, les œufs et le poisson, pouvant provoquer des symptômes cutanés et digestifs."
             },
             "cereals_and_gluten": {
               "title": "Céréales et gluten",
-              "description": "Allergie aux céréales et au gluten : sensibilité aux protéines du blé, de l’orge et du seigle, affectant pains, pâtes et pâtisseries."
+              "description": "Allergie aux céréales et au gluten : sensibilité aux protéines du blé, de l'orge et du seigle, affectant les pains, les pâtes et les produits de boulangerie."
             },
             "pulses_and_seeds": {
               "title": "Légumineuses et graines",
-              "description": "Allergie aux légumineuses et graines : réaction défavorable aux pois, lentilles, haricots ou sésame, pouvant entraîner des troubles digestifs."
+              "description": "Allergie aux légumineuses et graines : réaction indésirable aux légumineuses et graines (par exemple, pois, lentilles, haricots, sésame), pouvant entraîner des problèmes digestifs."
             },
             "dried_nuts": {
               "title": "Fruits à coque",
-              "description": "Allergie aux fruits à coque : sensibilité aux noix telles que les noix, amandes et noisettes, avec un risque de réactions sévères, voire d'anaphylaxie."
+              "description": "Allergie aux fruits à coque : sensibilité aux noix telles que les noix, amandes et noisettes, avec un risque de réactions sévères telles que l'anaphylaxie."
             },
             "fruit_and_vegetables": {
               "title": "Fruits et légumes",
-              "description": "Allergie aux fruits et légumes : réaction allergique aux protéines de divers fruits et légumes (comme les fraises, tomates, poivrons), pouvant provoquer des irritations ou des démangeaisons."
+              "description": "Allergie aux fruits et légumes : réaction allergique aux protéines présentes dans divers fruits et légumes (comme les fraises, tomates, poivrons), pouvant provoquer des irritations ou des démangeaisons."
             },
             "spices_and_condiments": {
               "title": "Épices et condiments",
-              "description": "Allergie aux épices et condiments : hypersensibilité aux assaisonnements courants tels que le poivre, le paprika ou le curcuma, pouvant affecter la digestion ou provoquer des irritations."
+              "description": "Allergie aux épices et condiments : hypersensibilité aux assaisonnements courants comme le poivre, le paprika ou le curcuma, pouvant affecter la digestion ou provoquer des irritations."
             }
           }
         },
         "subStep2": {
-          "label": "Intolerance",
+          "label": "Intolérance",
           "list_data": {
             "gluten_intolerance": {
               "title": "Intolérance au gluten",
-              "description": "Intolérance au gluten : difficulté à digérer le gluten présent dans le blé, l’orge et le seigle, entraînant ballonnements et diarrhée."
+              "description": "Intolérance au gluten : difficulté à digérer le gluten présent dans le blé, l'orge et le seigle, entraînant ballonnements et diarrhée."
             },
             "lactose_intolerance": {
               "title": "Intolérance au lactose",
-              "description": "Intolérance au lactose : incapacité à digérer le lactose contenu dans les produits laitiers, provoquant douleurs abdominales et ballonnements."
+              "description": "Intolérance au lactose : incapacité à digérer le lactose dans les produits laitiers, entraînant douleurs abdominales et ballonnements."
             },
             "sorbitol_intolerance": {
               "title": "Intolérance au sorbitol",
-              "description": "Intolérance au sorbitol : mauvaise absorption du sucre naturel sorbitol, présent dans certains fruits et utilisé comme édulcorant, pouvant causer des inconforts digestifs."
+              "description": "Intolérance au sorbitol : mauvaise absorption du sucre naturel sorbitol, présent dans certains fruits et utilisé comme édulcorant, pouvant causer un inconfort digestif."
             },
             "soy_intolerance": {
               "title": "Intolérance au soja",
-              "description": "Intolérance au soja : troubles digestifs déclenchés par les produits à base de soja tels que le tofu ou le lait de soja, entraînant un inconfort gastro-intestinal."
+              "description": "Intolérance au soja : problèmes digestifs déclenchés par les produits à base de soja tels que le tofu ou le lait de soja, provoquant des inconforts gastro-intestinaux."
             },
             "histamine_intolerance": {
               "title": "Intolérance à l'histamine",
-              "description": "Intolérance à l'histamine : incapacité à décomposer l'histamine présente dans les aliments fermentés ou vieillis (comme les fromages, vins, saucisses), provoquant maux de tête et rougeurs."
+              "description": "Intolérance à l'histamine : incapacité à décomposer l'histamine présente dans les aliments fermentés ou vieillis (comme les fromages, vins, saucisses), entraînant maux de tête et bouffées de chaleur."
             },
             "fructose_intolerance": {
               "title": "Intolérance au fructose",
-              "description": "Intolérance au fructose : difficulté à absorber le fructose contenu dans les fruits, certains légumes et le miel, pouvant entraîner ballonnements et diarrhée."
+              "description": "Intolérance au fructose : difficulté à absorber le fructose présent dans les fruits, certains légumes et le miel, pouvant entraîner ballonnements et diarrhée."
             }
           }
         },
         "subStep3": {
-          "label": "Maladies",
+          "label": "Maladie",
           "list_data": {
             "diabetes": {
               "title": "Diabète (Type 1 ou Type 2)",
-              "description": "Diabète (Type 1 ou Type 2) : affection impactant la régulation de la glycémie, nécessitant une gestion attentive des apports en glucides et en sucres."
+              "description": "Diabète (Type 1 ou Type 2) : une condition affectant la régulation du sucre dans le sang, nécessitant une gestion attentive des apports en glucides et en sucres."
             },
             "hypertension": {
               "title": "Hypertension",
-              "description": "Hypertension : pression artérielle élevée qui impose de limiter la consommation de sel et de graisses saturées, notamment issues des aliments transformés."
+              "description": "Hypertension : une pression artérielle élevée qui nécessite de limiter la consommation de sel et de graisses saturées, en particulier provenant des aliments transformés."
             },
             "celiac_disease": {
               "title": "Maladie cœliaque",
-              "description": "Maladie cœliaque : réaction auto-immune au gluten contenu dans le blé, l’orge et le seigle. Un régime strict sans gluten est indispensable pour prévenir les lésions intestinales."
+              "description": "Maladie cœliaque : une réaction auto-immune au gluten présent dans le blé, l'orge et le seigle. Un régime strict sans gluten est essentiel pour prévenir les lésions intestinales."
             }
           }
         },
@@ -145,11 +151,11 @@
           "list_data": {
             "sodium_and_saturated_fat_reduction": {
               "title": "Réduction du sodium et des graisses saturées",
-              "description": "Réduction du sodium et des graisses saturées : diminuer la consommation d'aliments transformés, de sel et de graisses animales afin de soutenir la santé cardiovasculaire."
+              "description": "Réduction du sodium et des graisses saturées : diminuer la consommation d'aliments transformés, de sel et de graisses animales pour soutenir la santé cardiovasculaire."
             },
             "low_fodmap_diet": {
-              "title": "Régime Low FODMAP",
-              "description": "Régime Low FODMAP : approche nutritionnelle limitant certains glucides fermentescibles (ex. ail, oignons, certains fruits, produits laitiers) pour soulager les symptômes digestifs."
+              "title": "Régime pauvre en FODMAP",
+              "description": "Régime pauvre en FODMAP : une approche alimentaire qui limite certains glucides fermentescibles (par exemple, ail, oignons, certains fruits, produits laitiers) pour atténuer les symptômes digestifs."
             },
             "added_sugar_reduction": {
               "title": "Réduction des sucres ajoutés",
@@ -169,19 +175,19 @@
           "halal": "Halal",
           "kosher": "Casher",
           "ketogenic": "Cétogène",
-          "paleo": "Paléo"
+          "paleo": "Paléolithique"
         }
       },
       "step3": {
         "nutri_grade": {
           "question": "Le Nutri-Grade est-il important\npour vous ?",
-          "description": "Le Nutri-Grade évalue vos boissons en fonction de leur teneur en sucres et en graisses saturées, « A » indiquant les niveaux les plus bas et « D » les plus élevés."
+          "description": "Le Nutri-Grade « note » vos boissons en fonction de leur teneur en sucre et en graisses saturées, avec « A » indiquant les niveaux les plus bas et « D » les plus élevés."
         },
         "eco_grade": {
-          "question": "L'Eco-Grade vous importe-t-il ?",
-          "description": "L'Eco-Grade signifie que le produit est de qualité économique ou moins qu'idéal."
+          "question": "Vous souciez-vous de l'Eco-Grade ?",
+          "description": "Eco-Grade signifie que le produit est de qualité économique ou moins parfait."
         },
-        "affect": "Votre sélection influera sur les informations affichées dans l'application.",
+        "affect": "Votre sélection influencera les informations affichées dans l'application.",
         "action_button": {
           "yes": "Oui, pourquoi pas ?",
           "sometimes": "Parfois, cela dépend du produit",
@@ -189,5 +195,123 @@
         }
       }
     }
+  },
+  "home": {
+    "welcome": "Bonjour \uD83D\uDC4B\uD83C\uDFFB",
+    "grid_stats": {
+      "label": "Vos aperçus",
+      "scan": {
+        "label": "Scanner nouveau",
+        "info": "Scanné"
+      },
+      "not_found": {
+        "label": "Non trouvé",
+        "info": "produits"
+      },
+      "success": {
+        "label": "Réussite",
+        "info": "produits"
+      },
+      "favorite": {
+        "label": "Favoris",
+        "info": "produits"
+      }
+    },
+    "shop_card": {
+      "brand_center": {
+        "title": "Découvrez notre Brand Center",
+        "description": "La meilleure boutique pour le \nmeilleur corps que nous soutenons"
+      },
+      "quality_supplements": {
+        "title": "Achetez dès maintenant \ndes compléments de qualité"
+      },
+      "quality_gym": {
+        "title": "Achetez dès maintenant \ndes vêtements de sport de qualité"
+      }
+    },
+    "dietitians": {
+      "title": "Consultez des diététiciens",
+      "description": "Conseils nutritionnels experts\n& plans personnalisés"
+    },
+    "faq": {
+      "title": "FAQ sur les allergies",
+      "description": "Renforcez votre corps,\natteignez vos objectifs"
+    },
+    "articles": {
+      "action_button": {
+        "all": "Tous les articles"
+      },
+      "macronutriments": {
+        "title": "Comprendre\nles macronutriments"
+      },
+      "muscle_growth": {
+        "title": "Les meilleurs aliments\npour la croissance musculaire"
+      }
+    }
+  },
+  "articles": {
+    "title": "Nos articles",
+    "recommended_articles": {
+      "label": "Recommandations",
+      "articles": {
+        "one": {
+          "title": "Le guide ultime des superaliments : Boostez votre santé naturellement"
+        },
+        "two": {
+          "title": "Préparation de repas : Une vie plus saine, gagnez du temps et mangez mieux"
+        }
+      }
+    },
+    "classic_articles": {
+      "articles": {
+        "one": {
+          "title": "Comprendre les macronutriments : La clé d'une alimentation équilibrée...",
+          "time": "5 min"
+        },
+        "two": {
+          "title": "Perte de poids vs. perte de graisse : Quelle est la différence et pourquoi...",
+          "time": "8 min"
+        },
+        "three": {
+          "title": "Les meilleurs aliments pour la croissance et la récupération musculaire",
+          "time": "6 min"
+        }
+      }
+    }
+  },
+  "scanner": {
+    "dialog": {
+      "default": {
+        "label": "Veuillez scanner votre produit"
+      }
+    }
+  },
+  "history": {
+    "title": "Historique",
+    "error": {
+      "no_history": "Aucun historique disponible",
+      "get_history": "Une erreur est survenue lors de la récupération de l'historique"
+    },
+    "product": {
+      "score": "Note",
+      "intolerance": "Contient",
+      "allergies": "Non compatible avec vos\nallergies"
+    }
+  },
+  "favorite": {
+    "title": "Favoris",
+    "error": {
+      "no_favorites": "Aucun favori disponible",
+      "get_favorites": "Une erreur est survenue lors de la récupération des favoris",
+      "add_favorite": "Une erreur est survenue lors de l'ajout aux favoris",
+      "remove_favorite": "Une erreur est survenue lors de la suppression des favoris"
+    },
+    "success": {
+      "add_favorite": "Ajouté aux favoris",
+      "remove_favorite": "Supprimé des favoris"
+    }
+  },
+  "product": {
+    "alert": "Non compatible"
   }
 }

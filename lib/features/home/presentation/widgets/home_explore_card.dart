@@ -9,28 +9,34 @@ class HomeExploreCard extends StatelessWidget {
   final String description;
   final String imageUrl;
   final Color color;
+  final Function? onTap;
 
-  const HomeExploreCard(
-      {super.key,
-      required this.title,
-      required this.description,
-      required this.imageUrl,
-      required this.color});
+  const HomeExploreCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.imageUrl,
+    required this.color,
+    this.onTap,
+  });
 
-  @override
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Fluttertoast.showToast(
-          msg: "Feature not available yet",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: AppColors.black,
-          textColor: AppColors.white,
-          fontSize: 16.0,
-        );
+        if (onTap != null) {
+          onTap!();
+        } else {
+          Fluttertoast.showToast(
+            msg: "Feature not available yet",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: AppColors.black,
+            textColor: AppColors.white,
+            fontSize: 16.0,
+          );
+        }
       },
       child: Stack(
         clipBehavior: Clip.none,

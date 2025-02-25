@@ -52,8 +52,8 @@ class HistoryCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      "ChocoFit Cereal Bar",
+                    Text(
+                      productHistory.name,
                       style: AppTextStyles.subtitleText3,
                     ),
                   ],
@@ -81,8 +81,8 @@ class HistoryCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      "Nutri-Score : B",
+                    Text(
+                      productHistory.getProductScore(),
                       style: AppTextStyles.subtitleText3,
                     ),
                   ],
@@ -108,8 +108,8 @@ class HistoryCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      "Contains traces of gluten",
+                    Text(
+                      productHistory.getIntolerances(),
                       style: AppTextStyles.subtitleText3,
                     ),
                   ],
@@ -156,8 +156,8 @@ class HistoryCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      "Not compatible with your Halal diet",
+                    Text(
+                      productHistory.getAllergies(),
                       style: AppTextStyles.bodyText3,
                     ),
                   ],

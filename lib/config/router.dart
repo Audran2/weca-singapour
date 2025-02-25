@@ -15,6 +15,7 @@ import '../features/profile/presentation/screens/profile_screen.dart';
 import '../features/scanner/domain/product_model.dart';
 import '../features/scanner/presentation/screens/product_screen.dart';
 import '../features/scanner/presentation/screens/scanner_screen.dart';
+import '../features/shop/presentation/screens/brand_center_screen.dart';
 import '../features/splash/presentation/screens/splash_screen.dart';
 
 final GoRouter appRouter = GoRouter(
@@ -80,6 +81,11 @@ final GoRouter appRouter = GoRouter(
         path: '/articles',
         name: 'articles',
         builder: (context, state) => ArticlesScreen()),
+    GoRoute(
+      path: '/brandCenter',
+      name: 'brandCenter',
+      builder: (context, state) => BrandCenterScreen(),
+    ),
 
     // Route de scan
     GoRoute(path: '/scan', builder: (context, state) => const ScannerScreen()),

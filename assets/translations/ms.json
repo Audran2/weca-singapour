@@ -1,33 +1,39 @@
 {
+  "default": {
+    "action": {
+      "next": "Seterusnya",
+      "explore": "Terokai Lagi"
+    }
+  },
   "authentication": {
     "start_up": {
       "slider": {
         "slide1": {
           "title": {
-            "text": "Selamat datang ke ",
+            "text": "Selamat Datang ke ",
             "highlight": "WECA"
           },
-          "description": "Imbas, analisis, dan pilih dengan lebih bijak. Mulakan hari ini."
+          "description": "Imbas, analisa, dan pilih dengan lebih baik. Mulakan hari ini."
         },
         "slide2": {
           "title": {
-            "text": "Kesihatan Menjadi ",
+            "text": "Kesihatan Jadi ",
             "highlight": "Mudah"
           },
           "description": "Tafsirkan label, elakkan alergen, dan makan dengan lebih bijak."
         },
         "slide3": {
           "title": {
-            "text": "Pilihan yang lebih ",
-            "highlight": "Bijak"
+            "text": "Pilihan ",
+            "highlight": "Pintar"
           },
-          "description": "Dapatkan nasihat yang diperibadikan dan pilihan yang lebih sihat."
+          "description": "Dapatkan nasihat peribadi dan pilihan yang lebih sihat."
         }
       },
       "button_action": "Mulakan"
     },
     "login": {
-      "label": "Hai\nSelamat Datang Kembali",
+      "label": "Hai\nSelamat Kembali",
       "form": {
         "email": "Masukkan e-mel anda",
         "password": "Masukkan kata laluan anda"
@@ -37,7 +43,7 @@
         "login": "Log Masuk",
         "password_forgot": "Lupa Kata Laluan?",
         "signup": {
-          "text": "Belum ada akaun? ",
+          "text": "Tidak ada akaun? ",
           "link": "Daftar"
         }
       }
@@ -53,26 +59,259 @@
       "action_button": {
         "signup": "Cipta Akaun",
         "login": {
-          "text": "Sudah mempunyai akaun? ",
+          "text": "Sudah ada akaun? ",
           "link": "Log Masuk"
         }
       }
     },
     "boarding": {
+      "action_button": {
+        "next": "Langkah Seterusnya",
+        "last": "Langkah Terakhir",
+        "start": "Mulakan Sekarang"
+      },
       "step1": {
         "subStep1": {
-          "label": "Alergi"
+          "label": "Alahan",
+          "list_data": {
+            "animal_proteins": {
+              "title": "Protein Haiwan",
+              "description": "Alahan protein haiwan: reaksi terhadap protein yang terdapat dalam daging, produk tenusu, telur dan ikan, yang boleh menyebabkan simptom kulit dan pencernaan."
+            },
+            "cereals_and_gluten": {
+              "title": "Bijirin dan Gluten",
+              "description": "Alahan bijirin dan gluten: kepekaan terhadap protein dalam gandum, barli dan rai, yang memberi kesan kepada roti, pasta dan produk bakar."
+            },
+            "pulses_and_seeds": {
+              "title": "Legum dan Biji",
+              "description": "Alahan legum dan biji: reaksi tidak diingini terhadap kekacangan dan biji-bijian (contohnya, kacang pea, lentil, kacang, biji bijan), yang berpotensi menyebabkan masalah pencernaan."
+            },
+            "dried_nuts": {
+              "title": "Kacang Kering",
+              "description": "Alahan kacang kering: kepekaan terhadap kacang pokok seperti walnut, badam, dan hazelnut, dengan risiko reaksi teruk seperti anafilaksis."
+            },
+            "fruit_and_vegetables": {
+              "title": "Buah-buahan dan Sayur-sayuran",
+              "description": "Alahan buah-buahan dan sayur-sayuran: reaksi alergi terhadap protein dalam pelbagai buah dan sayuran (contohnya, strawberi, tomato, lada benggala), yang boleh menyebabkan kerengsaan atau kegatalan."
+            },
+            "spices_and_condiments": {
+              "title": "Rempah dan Perasa",
+              "description": "Alahan rempah dan perasa: hipersensitiviti terhadap perasa biasa seperti lada, paprika atau kunyit, yang berpotensi menjejaskan pencernaan atau menyebabkan kerengsaan."
+            }
+          }
         },
         "subStep2": {
-          "label": "Intoleransi"
+          "label": "Intoleransi",
+          "list_data": {
+            "gluten_intolerance": {
+              "title": "Intoleransi Gluten",
+              "description": "Intoleransi gluten: kesukaran mencerna gluten yang terdapat dalam gandum, barli dan rai, menyebabkan kembung dan cirit-birit."
+            },
+            "lactose_intolerance": {
+              "title": "Intoleransi Laktosa",
+              "description": "Intoleransi laktosa: ketidakmampuan mencerna laktosa dalam produk tenusu, mengakibatkan sakit perut dan kembung."
+            },
+            "sorbitol_intolerance": {
+              "title": "Intoleransi Sorbitol",
+              "description": "Intoleransi sorbitol: penyerapan yang lemah terhadap gula semulajadi sorbitol, yang terdapat dalam beberapa buah dan digunakan sebagai pemanis, yang boleh menyebabkan ketidakselesaan pencernaan."
+            },
+            "soy_intolerance": {
+              "title": "Intoleransi Kedelai",
+              "description": "Intoleransi kedelai: masalah pencernaan yang dicetuskan oleh produk kedelai seperti tauhu atau susu kedelai, menyebabkan ketidakselesaan gastrousus."
+            },
+            "histamine_intolerance": {
+              "title": "Intoleransi Histamin",
+              "description": "Intoleransi histamin: ketidakmampuan untuk menguraikan histamin yang terdapat dalam makanan yang ditapai atau berumur (contohnya, keju, wain, sosej), menyebabkan sakit kepala dan kemerahan."
+            },
+            "fructose_intolerance": {
+              "title": "Intoleransi Fruktosa",
+              "description": "Intoleransi fruktosa: kesukaran menyerap fruktosa yang terdapat dalam buah-buahan, beberapa sayur dan madu, yang boleh mengakibatkan kembung dan cirit-birit."
+            }
+          }
         },
         "subStep3": {
-          "label": "Penyakit"
+          "label": "Penyakit",
+          "list_data": {
+            "diabetes": {
+              "title": "Diabetes (Jenis 1 atau Jenis 2)",
+              "description": "Diabetes (Jenis 1 atau Jenis 2): keadaan yang mempengaruhi pengawalan gula dalam darah, memerlukan pengurusan pengambilan karbohidrat dan gula dengan berhati-hati."
+            },
+            "hypertension": {
+              "title": "Hipertensi",
+              "description": "Hipertensi: tekanan darah tinggi yang memerlukan pengurangan pengambilan garam dan lemak tepu, terutamanya daripada makanan diproses."
+            },
+            "celiac_disease": {
+              "title": "Penyakit Celiac",
+              "description": "Penyakit celiac: reaksi autoimun terhadap gluten yang terdapat dalam gandum, barli dan rai. Diet bebas gluten yang ketat adalah penting untuk mengelakkan kerosakan usus."
+            }
+          }
         },
         "subStep4": {
-          "label": "Sekatan\nperubatan"
+          "label": "Sekatan\nPerubatan",
+          "list_data": {
+            "sodium_and_saturated_fat_reduction": {
+              "title": "Pengurangan Natrium dan Lemak Tepu",
+              "description": "Pengurangan natrium dan lemak tepu: mengurangkan makanan diproses, garam, dan lemak haiwan untuk menyokong kesihatan kardiovaskular."
+            },
+            "low_fodmap_diet": {
+              "title": "Diet Rendah FODMAP",
+              "description": "Diet rendah FODMAP: pendekatan pemakanan yang mengehadkan karbohidrat fermentasi tertentu (contohnya, bawang putih, bawang, beberapa buah, produk tenusu) untuk mengurangkan simptom pencernaan."
+            },
+            "added_sugar_reduction": {
+              "title": "Pengurangan Gula Tambahan",
+              "description": "Pengurangan gula tambahan: mengurangkan pengambilan minuman bergula dan makanan diproses untuk pengurusan tenaga dan kesihatan keseluruhan yang lebih baik."
+            }
+          }
+        }
+      },
+      "step2": {
+        "list_data": {
+          "vegetarian": "Vegetarian",
+          "vegan": "Vegan",
+          "pescetarian": "Pescetarian",
+          "flexitarian": "Flexitarian",
+          "gluten_free": "Bebas Gluten",
+          "lactose_free": "Bebas Laktosa",
+          "halal": "Halal",
+          "kosher": "Kosher",
+          "ketogenic": "Ketogenik",
+          "paleo": "Paleo"
+        }
+      },
+      "step3": {
+        "nutri_grade": {
+          "question": "Adakah Nutri-Grade penting\nbagi anda ?",
+          "description": "Nutri-Grade memberikan penilaian kepada minuman anda berdasarkan kandungan gula dan lemak tepu, di mana “A” menunjukkan tahap terendah dan “D” yang tertinggi."
+        },
+        "eco_grade": {
+          "question": "Adakah anda mengambil berat tentang Eco-Grade ?",
+          "description": "Eco-Grade bermaksud produk itu adalah Gred Ekonomi atau kurang sempurna."
+        },
+        "affect": "Pilihan anda akan mempengaruhi maklumat yang dipaparkan dalam aplikasi.",
+        "action_button": {
+          "yes": "Ya, kenapa tidak?",
+          "sometimes": "Kadang-kadang, bergantung kepada produk",
+          "no": "Tidak, saya semak bahan-bahannya sahaja"
         }
       }
     }
+  },
+  "home": {
+    "welcome": "Halo \uD83D\uDC4B\uD83C\uDFFB",
+    "grid_stats": {
+      "label": "Wawasan Anda",
+      "scan": {
+        "label": "Imbas Baru",
+        "info": "Diimbas"
+      },
+      "not_found": {
+        "label": "Tidak Ditemui",
+        "info": "produk"
+      },
+      "success": {
+        "label": "Berjaya",
+        "info": "produk"
+      },
+      "favorite": {
+        "label": "Kegemaran",
+        "info": "produk"
+      }
+    },
+    "shop_card": {
+      "brand_center": {
+        "title": "Terokai Pusat Jenama Kami",
+        "description": "Kedai terbaik untuk\nbadan terbaik yang kami sokong"
+      },
+      "quality_supplements": {
+        "title": "Beli Suplemen Berkualiti\nSekarang"
+      },
+      "quality_gym": {
+        "title": "Beli Pakaian Gim Berkualiti\nSekarang"
+      }
+    },
+    "dietitians": {
+      "title": "Rujuk Pakar Diet",
+      "description": "Panduan pemakanan pakar\n& pelan peribadi"
+    },
+    "faq": {
+      "title": "Soalan Lazim tentang Alahan",
+      "description": "Perkasakan Tubuh Anda,\nCapai Matlamat Anda"
+    },
+    "articles": {
+      "action_button": {
+        "all": "Semua Artikel"
+      },
+      "macronutriments": {
+        "title": "Memahami\nMakronutrien"
+      },
+      "muscle_growth": {
+        "title": "Makanan Terbaik untuk\nPertumbuhan Otot"
+      }
+    }
+  },
+  "articles": {
+    "title": "Artikel Kami",
+    "recommended_articles": {
+      "label": "Cadangan",
+      "articles": {
+        "one": {
+          "title": "Panduan Utama kepada Superfood: Tingkatkan Kesihatan Anda Secara Semulajadi"
+        },
+        "two": {
+          "title": "Penyediaan Makanan: Anda yang Lebih Sihat, Jimatkan Masa dan Makan dengan Lebih Baik"
+        }
+      }
+    },
+    "classic_articles": {
+      "articles": {
+        "one": {
+          "title": "Memahami Makronutrien: Kunci kepada Diet Seimbang...",
+          "time": "5 min"
+        },
+        "two": {
+          "title": "Penurunan Berat vs. Penurunan Lemak: Apakah Bezanya dan Kenapa...",
+          "time": "8 min"
+        },
+        "three": {
+          "title": "Makanan Terbaik untuk Pertumbuhan dan Pemulihan Otot",
+          "time": "6 min"
+        }
+      }
+    }
+  },
+  "scanner": {
+    "dialog": {
+      "default": {
+        "label": "Sila imbas produk anda"
+      }
+    }
+  },
+  "history": {
+    "title": "Sejarah",
+    "error": {
+      "no_history": "Tiada sejarah tersedia",
+      "get_history": "Ralat semasa mendapatkan sejarah"
+    },
+    "product": {
+      "score": "Penilaian",
+      "intolerance": "Mengandungi",
+      "allergies": "Tidak serasi dengan\nalahan anda"
+    }
+  },
+  "favorite": {
+    "title": "Kegemaran",
+    "error": {
+      "no_favorites": "Tiada kegemaran tersedia",
+      "get_favorites": "Ralat semasa mendapatkan kegemaran",
+      "add_favorite": "Ralat semasa menambah kepada kegemaran",
+      "remove_favorite": "Ralat semasa mengeluarkan dari kegemaran"
+    },
+    "success": {
+      "add_favorite": "Ditambah kepada kegemaran",
+      "remove_favorite": "Dikeluarkan daripada kegemaran"
+    }
+  },
+  "product": {
+    "alert": "Tidak serasi"
   }
 }

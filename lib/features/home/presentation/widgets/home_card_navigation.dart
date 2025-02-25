@@ -3,12 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/text_styles.dart';
+import 'shimmer_loading.dart';
 
 class HomeCardNavigation extends StatelessWidget {
   final String icon;
   final String title;
   final String subtitle;
   final void Function() onTap;
+  final bool isData;
 
   const HomeCardNavigation({
     super.key,
@@ -16,6 +18,7 @@ class HomeCardNavigation extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.onTap,
+    required this.isData,
   });
 
   @override
@@ -54,9 +57,12 @@ class HomeCardNavigation extends StatelessWidget {
                 style: AppTextStyles.subtitleText3,
               ),
               const SizedBox(height: 4),
-              Text(
+              if (isData) Text(
                 subtitle,
                 style: AppTextStyles.subtitleText5,
+              ) else const ShimmerLoading(
+                width: 60,
+                height: 12,
               ),
             ],
           ),

@@ -1,4 +1,10 @@
 {
+  "default": {
+    "action": {
+      "next": "下一步",
+      "explore": "探索更多"
+    }
+  },
   "authentication": {
     "start_up": {
       "slider": {
@@ -7,72 +13,305 @@
             "text": "欢迎来到 ",
             "highlight": "WECA"
           },
-          "description": "扫描、分析，做出更好的选择。立即开始。"
+          "description": "扫描、分析，并做出更好的选择。今天就开始吧。"
         },
         "slide2": {
           "title": {
             "text": "健康变得 ",
             "highlight": "简单"
           },
-          "description": "解读标签，避开过敏原，并选择更明智的饮食。"
+          "description": "解读标签，避免过敏原，吃得更聪明。"
         },
         "slide3": {
           "title": {
-            "text": "更明智的 ",
+            "text": "更聪明的 ",
             "highlight": "选择"
           },
-          "description": "获取个性化建议，并选择更健康的选项。"
+          "description": "获得个性化建议和更健康的选项。"
         }
       },
-      "button_action": "开始"
+      "button_action": "开始使用"
     },
     "login": {
-      "label": "你好，\n欢迎回来",
+      "label": "嘿\n欢迎回来",
       "form": {
         "email": "请输入您的邮箱",
         "password": "请输入您的密码"
       },
-      "login_alternative": "或者使用",
+      "login_alternative": "或使用以下方式继续",
       "action_button": {
         "login": "登录",
         "password_forgot": "忘记密码？",
         "signup": {
-          "text": "没有账号？ ",
+          "text": "还没有账户？ ",
           "link": "注册"
         }
       }
     },
     "signup": {
-      "label": "让我们，\n创建您的账号",
+      "label": "来吧，\n创建您的账户",
       "form": {
         "name": "请输入您的姓名",
         "email": "请输入您的邮箱",
         "password": "请输入您的密码",
-        "confirm_password": "请确认您的密码"
+        "confirm_password": "确认您的密码"
       },
       "action_button": {
-        "signup": "创建账号",
+        "signup": "创建账户",
         "login": {
-          "text": "已有账号？ ",
+          "text": "已有账户？ ",
           "link": "登录"
         }
       }
     },
     "boarding": {
+      "action_button": {
+        "next": "下一步",
+        "last": "最后一步",
+        "start": "立即开始"
+      },
       "step1": {
         "subStep1": {
-          "label": "过敏"
+          "label": "过敏",
+          "list_data": {
+            "animal_proteins": {
+              "title": "动物蛋白",
+              "description": "动物蛋白过敏：对肉类、乳制品、鸡蛋和鱼类中的蛋白质产生反应，可能引起皮肤和消化系统症状。"
+            },
+            "cereals_and_gluten": {
+              "title": "谷物与麸质",
+              "description": "谷物和麸质过敏：对小麦、大麦和黑麦中的蛋白质敏感，会影响面包、意大利面和烘焙食品。"
+            },
+            "pulses_and_seeds": {
+              "title": "豆类和种子",
+              "description": "豆类和种子过敏：对豌豆、扁豆、豆类和芝麻等产生不良反应，可能导致消化问题。"
+            },
+            "dried_nuts": {
+              "title": "坚果",
+              "description": "坚果过敏：对核桃、杏仁和榛子等坚果敏感，可能引起严重反应，如过敏性休克。"
+            },
+            "fruit_and_vegetables": {
+              "title": "水果和蔬菜",
+              "description": "水果和蔬菜过敏：对各种水果和蔬菜中的蛋白质产生过敏反应（例如草莓、番茄、彩椒），可能引起刺激或瘙痒。"
+            },
+            "spices_and_condiments": {
+              "title": "香料和调味品",
+              "description": "香料和调味品过敏：对胡椒、辣椒粉或姜黄等常见调味品过敏，可能影响消化或引起刺激。"
+            }
+          }
         },
         "subStep2": {
-          "label": "不耐症"
+          "label": "不耐症",
+          "list_data": {
+            "gluten_intolerance": {
+              "title": "麸质不耐受",
+              "description": "麸质不耐受：难以消化小麦、大麦和黑麦中的麸质，导致腹胀和腹泻。"
+            },
+            "lactose_intolerance": {
+              "title": "乳糖不耐受",
+              "description": "乳糖不耐受：无法消化乳制品中的乳糖，导致腹痛和腹胀。"
+            },
+            "sorbitol_intolerance": {
+              "title": "山梨醇不耐受",
+              "description": "山梨醇不耐受：对某些水果中作为甜味剂的天然糖山梨醇吸收不良，可能引起消化不适。"
+            },
+            "soy_intolerance": {
+              "title": "大豆不耐受",
+              "description": "大豆不耐受：食用豆腐或豆奶等大豆制品引起消化问题，导致胃肠不适。"
+            },
+            "histamine_intolerance": {
+              "title": "组胺不耐受",
+              "description": "组胺不耐受：无法分解发酵或陈年食品（如奶酪、葡萄酒、香肠）中的组胺，导致头痛和潮红。"
+            },
+            "fructose_intolerance": {
+              "title": "果糖不耐受",
+              "description": "果糖不耐受：难以吸收水果、部分蔬菜和蜂蜜中的果糖，可能导致腹胀和腹泻。"
+            }
+          }
         },
         "subStep3": {
-          "label": "疾病"
+          "label": "疾病",
+          "list_data": {
+            "diabetes": {
+              "title": "糖尿病（1型或2型）",
+              "description": "糖尿病（1型或2型）：影响血糖调节的状况，需要仔细管理碳水化合物和糖的摄入。"
+            },
+            "hypertension": {
+              "title": "高血压",
+              "description": "高血压：高血压需要限制盐和饱和脂肪的摄入，尤其是加工食品中的含量。"
+            },
+            "celiac_disease": {
+              "title": "乳糜泻",
+              "description": "乳糜泻：对小麦、大麦和黑麦中麸质产生的自身免疫反应，严格的无麸质饮食对防止肠道损伤至关重要。"
+            }
+          }
         },
         "subStep4": {
-          "label": "医疗\n限制"
+          "label": "医疗\n限制",
+          "list_data": {
+            "sodium_and_saturated_fat_reduction": {
+              "title": "减少钠和饱和脂肪",
+              "description": "减少钠和饱和脂肪：减少加工食品、盐和动物脂肪的摄入，以支持心血管健康。"
+            },
+            "low_fodmap_diet": {
+              "title": "低FODMAP饮食",
+              "description": "低FODMAP饮食：一种限制某些可发酵碳水化合物（如大蒜、洋葱、部分水果、乳制品）以缓解消化症状的饮食方法。"
+            },
+            "added_sugar_reduction": {
+              "title": "减少添加糖",
+              "description": "减少添加糖：减少含糖饮料和加工食品的摄入，以更好地管理能量和整体健康。"
+            }
+          }
+        }
+      },
+      "step2": {
+        "list_data": {
+          "vegetarian": "素食主义",
+          "vegan": "纯素食",
+          "pescetarian": "鱼素食者",
+          "flexitarian": "弹性素食者",
+          "gluten_free": "无麸质",
+          "lactose_free": "无乳糖",
+          "halal": "清真",
+          "kosher": "犹太洁食",
+          "ketogenic": "生酮饮食",
+          "paleo": "古饮食"
+        }
+      },
+      "step3": {
+        "nutri_grade": {
+          "question": "Nutri-Grade 对您重要吗？",
+          "description": "Nutri-Grade 根据饮品中的糖分和饱和脂肪含量进行评分，其中“A”代表最低含量，“D”代表最高。"
+        },
+        "eco_grade": {
+          "question": "您在意 Eco-Grade 吗？",
+          "description": "Eco-Grade 表示该产品为经济级或不完美。"
+        },
+        "affect": "您的选择将影响应用中显示的信息。",
+        "action_button": {
+          "yes": "是的，为什么不呢？",
+          "sometimes": "有时，视产品而定",
+          "no": "不，我更关注成分"
         }
       }
     }
+  },
+  "home": {
+    "welcome": "你好 👋🏻",
+    "grid_stats": {
+      "label": "您的洞察",
+      "scan": {
+        "label": "扫描新产品",
+        "info": "已扫描"
+      },
+      "not_found": {
+        "label": "未找到",
+        "info": "产品"
+      },
+      "success": {
+        "label": "成功",
+        "info": "产品"
+      },
+      "favorite": {
+        "label": "收藏",
+        "info": "产品"
+      }
+    },
+    "shop_card": {
+      "brand_center": {
+        "title": "探索我们的品牌中心",
+        "description": "支持您实现最佳体型的顶级商店"
+      },
+      "quality_supplements": {
+        "title": "立即选购优质补充品"
+      },
+      "quality_gym": {
+        "title": "立即选购优质健身服饰"
+      }
+    },
+    "dietitians": {
+      "title": "咨询营养师",
+      "description": "专家级营养指导\n及个性化方案"
+    },
+    "faq": {
+      "title": "过敏常见问题",
+      "description": "赋能您的身体，\n实现您的目标"
+    },
+    "articles": {
+      "action_button": {
+        "all": "所有文章"
+      },
+      "macronutriments": {
+        "title": "了解\n宏量营养素"
+      },
+      "muscle_growth": {
+        "title": "肌肉增长的\n最佳食物"
+      }
+    }
+  },
+  "articles": {
+    "title": "我们的文章",
+    "recommended_articles": {
+      "label": "推荐",
+      "articles": {
+        "one": {
+          "title": "超级食物终极指南：自然提升您的健康"
+        },
+        "two": {
+          "title": "餐前准备：更健康的你，节省时间，吃得更好"
+        }
+      }
+    },
+    "classic_articles": {
+      "articles": {
+        "one": {
+          "title": "了解宏量营养素：均衡饮食的关键...",
+          "time": "5 分钟"
+        },
+        "two": {
+          "title": "减重与减脂：区别何在以及原因...",
+          "time": "8 分钟"
+        },
+        "three": {
+          "title": "肌肉增长与恢复的最佳食物",
+          "time": "6 分钟"
+        }
+      }
+    }
+  },
+  "scanner": {
+    "dialog": {
+      "default": {
+        "label": "请扫描您的产品"
+      }
+    }
+  },
+  "history": {
+    "title": "历史记录",
+    "error": {
+      "no_history": "暂无历史记录",
+      "get_history": "获取历史记录时发生错误"
+    },
+    "product": {
+      "score": "评分",
+      "intolerance": "含有",
+      "allergies": "与您的过敏原不兼容"
+    }
+  },
+  "favorite": {
+    "title": "收藏夹",
+    "error": {
+      "no_favorites": "暂无收藏",
+      "get_favorites": "获取收藏时发生错误",
+      "add_favorite": "添加到收藏时发生错误",
+      "remove_favorite": "从收藏中移除时发生错误"
+    },
+    "success": {
+      "add_favorite": "已添加到收藏",
+      "remove_favorite": "已从收藏中移除"
+    }
+  },
+  "product": {
+    "alert": "不兼容"
   }
 }

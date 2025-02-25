@@ -79,7 +79,7 @@ class ScannerViewModel {
             ScannerRemoteRepository(tokenProvider: tokenProvider);
 
         final Result<Product> result =
-            await repository.getProductByBarcodeId(BarcodeId("22132031"));
+            await repository.getProductByBarcodeId(BarcodeId(detectedBarcodes.value.first.displayValue!));
 
         if (result.isFailure) {
           product.value = null;

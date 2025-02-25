@@ -199,21 +199,22 @@
   "home": {
     "welcome": "Hello \uD83D\uDC4B\uD83C\uDFFB",
     "grid_stats": {
+      "label": "Your Insights",
       "scan": {
         "label": "Scan new",
-        "info": "Scanned 110"
+        "info": "Scanned"
       },
       "not_found": {
         "label": "Not found",
-        "info": "23 products"
+        "info": "products"
       },
       "success": {
         "label": "Success",
-        "info": "87 products"
+        "info": "products"
       },
       "favorite": {
         "label": "Favorite",
-        "info": "12 products"
+        "info": "products"
       }
     },
     "shop_card": {
@@ -290,6 +291,11 @@
     "error": {
       "no_history": "No history available",
       "get_history": "An error occurred while getting history"
+    },
+    "product": {
+      "score": "Rating",
+      "intolerance": "Contains",
+      "allergies": "Not compatible with your\nallergies"
     }
   },
   "favorite": {

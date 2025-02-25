@@ -10,9 +10,12 @@ import '../../domain/product_id.dart';
 
 class ProductViewModel {
   final BuildContext context;
-  final ValueNotifier<bool> isLiked = ValueNotifier(false);
+  final bool isFavorite;
+  ValueNotifier<bool> isLiked = ValueNotifier(false);
 
-  ProductViewModel({required this.context});
+  ProductViewModel({required this.context, required this.isFavorite}) {
+    isLiked = ValueNotifier(isFavorite);
+  }
 
   Future<void> toggleLike(BuildContext context, ProductId productId) async {
     final tokenProvider =

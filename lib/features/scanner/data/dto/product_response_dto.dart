@@ -16,6 +16,7 @@ class ProductResponseDTO {
   final List<Item> medicalRestrictions;
   final List<String> ingredients;
   final List<Item> dangerousComponents;
+  final bool isFavorite;
 
   ProductResponseDTO({
     required this.id,
@@ -31,12 +32,15 @@ class ProductResponseDTO {
     required this.medicalRestrictions,
     required this.ingredients,
     required this.dangerousComponents,
+    required this.isFavorite
   });
 
   factory ProductResponseDTO.fromJson(Map<String, dynamic> json) {
     List<Item> extractItems(List<dynamic> items) {
       return items.map((item) => Item.fromJson(item)).toList();
     }
+
+    print(json['isFavorite'].runtimeType);
 
     return ProductResponseDTO(
       id: ProductId(json['id']),
@@ -52,6 +56,7 @@ class ProductResponseDTO {
       medicalRestrictions: json['medicalRestrictions'] != null ? extractItems(json['medicalRestrictions']) : [],
       ingredients: json['ingredients'] != null ? List<String>.from(json['ingredients']) : [],
       dangerousComponents: json['dangerousComponents'] != null ? extractItems(json['dangerousComponents']) : [],
+      isFavorite: json['isFavorite']
     );
   }
 
@@ -70,6 +75,7 @@ class ProductResponseDTO {
       medicalRestrictions: medicalRestrictions,
       ingredients: ingredients,
       dangerousComponents: dangerousComponents,
+      isFavorite: isFavorite
     );
   }
 }

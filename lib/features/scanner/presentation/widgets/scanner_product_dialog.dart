@@ -59,6 +59,14 @@ class ScannerProductDialog extends StatelessWidget {
                       width: AppDimensions.scannerDialog.buttonSize,
                       height: AppDimensions.scannerDialog.buttonSize,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.network(
+                          "https://tinasbotanicals.com/wp-content/uploads/2025/01/No-Product-Image-Available.png",
+                          width: AppDimensions.scannerDialog.buttonSize,
+                          height: AppDimensions.scannerDialog.buttonSize,
+                          fit: BoxFit.cover,
+                        );
+                      },
                     ),
                   ),
                   SizedBox(width: AppDimensions.padding.xxLarge),

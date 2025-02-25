@@ -43,40 +43,66 @@ class ArticlesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "articles.title".tr(),
-              style: AppTextStyles.bodyText1,
+    final double widgetWidth = MediaQuery.of(context).size.width;
+    final double widgetHeight = MediaQuery.of(context).size.height;
+
+    return Stack(
+      children: [
+        Positioned.fill(child: Container(color: AppColors.white)),
+        Positioned(
+          child: Container(
+            width: widgetWidth,
+            height: widgetHeight * 0.2,
+            decoration: const BoxDecoration(
+              color: ChartColors.primary500,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(32),
+                bottomRight: Radius.circular(32),
+              ),
             ),
           ),
         ),
-      ),
-      body: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
-            child: Text(
-              "articles.recommended_articles.label".tr(),
-              style:
-              AppTextStyles.subtitleText1.copyWith(color: AppColors.black),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            title: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "articles.title".tr(),
+                  style: AppTextStyles.bodyText1.copyWith(
+                    color: AppColors.white,
+                  ),
+                ),
+              ),
             ),
           ),
-          const SizedBox(height: 16),
-          _buildHorizontalSlider(),
-          const SizedBox(height: 32),
-          ...articles.map((article) => ArticleCard(article: article)).toList(),
-        ],
-      ),
+          body: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: Text(
+                  "articles.recommended_articles.label".tr(),
+                  style: AppTextStyles.subtitleText1.copyWith(
+                    color: AppColors.white,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              _buildHorizontalSlider(),
+              const SizedBox(height: 32),
+              ...articles
+                  .map((article) => ArticleCard(article: article))
+                  .toList(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -88,7 +114,8 @@ class ArticlesScreen extends StatelessWidget {
         itemCount: recommendations.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return RecommendedArticleCard(recommendedArticle: recommendations[index]);
+          return RecommendedArticleCard(
+              recommendedArticle: recommendations[index]);
         },
       ),
     );

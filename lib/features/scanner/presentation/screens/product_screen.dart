@@ -30,7 +30,7 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   void initState() {
     super.initState();
-    viewModel = ProductViewModel(context: context);
+    viewModel = ProductViewModel(context: context, isFavorite: widget.product.isFavorite);
   }
 
   @override
