@@ -295,7 +295,8 @@
     "product": {
       "score": "Note",
       "intolerance": "Contient",
-      "allergies": "Non compatible avec vos\nallergies"
+      "allergies": "Non compatible avec vos\nallergies",
+      "match": "Correspond à vos préférences"
     }
   },
   "favorite": {

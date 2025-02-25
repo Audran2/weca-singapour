@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
+import '../../../../core/styles/colors.dart';
 import '../../../authentication/presentation/screens/onboarding/startup_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -65,6 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Center(
         child: Stack(
           children: <Widget>[

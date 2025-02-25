@@ -18,11 +18,15 @@ class ProductHistory {
   });
 
   String getProductScore() {
-    return "${"history.product.score"} : $score/100";
+    return "${"history.product.score".tr()} : $score/100";
   }
 
   String getIntolerances() {
-    return "${"history.product.intolerance".tr()} : ${intolerances.join(", ")}";
+    if (intolerances.isNotEmpty) {
+      return "${"history.product.intolerance".tr()} : ${intolerances.join(", ")}";
+    }
+
+    return "history.product.match".tr();
   }
 
   String getAllergies() {

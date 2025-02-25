@@ -295,7 +295,8 @@
     "product": {
       "score": "评分",
       "intolerance": "含有",
-      "allergies": "与您的过敏原不兼容"
+      "allergies": "与您的过敏原不兼容",
+      "match": "符合您的偏好"
     }
   },
   "favorite": {

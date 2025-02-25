@@ -295,7 +295,8 @@
     "product": {
       "score": "Penilaian",
       "intolerance": "Mengandungi",
-      "allergies": "Tidak serasi dengan\nalahan anda"
+      "allergies": "Tidak serasi dengan\nalahan anda",
+      "match": "Padanan dengan pilihan anda"
     }
   },
   "favorite": {
