@@ -16,6 +16,7 @@ class ScannerViewModel {
   ScannerViewModel({required this.context});
 
   final ValueNotifier<List<Barcode>> detectedBarcodes = ValueNotifier([]);
+  ValueNotifier<BarcodeId?> barcode = ValueNotifier(null);
   ValueNotifier<Product?> product = ValueNotifier(null);
   final ValueNotifier<Size> cameraSize = ValueNotifier(Size.zero);
 
@@ -23,6 +24,8 @@ class ScannerViewModel {
   late Animation<Offset> defaultDialogOffsetAnimation;
   late AnimationController productDialogController;
   late Animation<Offset> productDialogOffsetAnimation;
+  late AnimationController askToAddDialogController;
+  late Animation<Offset> askToAddDialogOffsetAnimation;
   Timer? _resetTimer;
 
   void initializeAnimation(TickerProvider vsync) {
@@ -32,12 +35,13 @@ class ScannerViewModel {
       vsync: vsync,
     );
     defaultDialogOffsetAnimation = Tween<Offset>(
-      begin: const Offset(0, 0),
-      end: const Offset(0, 100),
+      begin: const Offset(0, 100),
+      end: const Offset(0, 0),
     ).animate(CurvedAnimation(
       parent: defaultDialogController,
       curve: Curves.easeInOut,
     ));
+
     productDialogController = AnimationController(
       duration: const Duration(milliseconds: 400),
       reverseDuration: const Duration(milliseconds: 400),
@@ -50,36 +54,63 @@ class ScannerViewModel {
       parent: productDialogController,
       curve: Curves.easeInOut,
     ));
+
+    askToAddDialogController = AnimationController(
+      duration: const Duration(milliseconds: 400),
+      reverseDuration: const Duration(milliseconds: 400),
+      vsync: vsync,
+    );
+    askToAddDialogOffsetAnimation = Tween<Offset>(
+      begin: const Offset(0, 100),
+      end: const Offset(0, 0),
+    ).animate(CurvedAnimation(
+      parent: askToAddDialogController,
+      curve: Curves.easeInOut,
+    ));
+
     showDefaultDialog();
   }
 
   void showDefaultDialog() {
-    defaultDialogController.reverse();
+    defaultDialogController.forward();
     productDialogController.reverse();
+    askToAddDialogController.reverse();
   }
 
   void showProductDialog() {
+    defaultDialogController.reverse();
     productDialogController.forward();
-    defaultDialogController.forward();
+    askToAddDialogController.reverse();
+  }
+
+  void showAskToAddDialog() {
+    defaultDialogController.reverse();
+    productDialogController.reverse();
+    askToAddDialogController.forward();
   }
 
   Future<void> onBarcodeDetected(BarcodeCapture capture) async {
     if (capture.barcodes.isNotEmpty) {
       final List<Barcode> newBarcodes = capture.barcodes.where((barcode) {
         return !detectedBarcodes.value.any((existingBarcode) =>
-        existingBarcode.displayValue == barcode.displayValue);
+            existingBarcode.displayValue == barcode.displayValue);
       }).toList();
 
       if (newBarcodes.isNotEmpty) {
-        detectedBarcodes.value = List.from(detectedBarcodes.value)..addAll(newBarcodes);
+        detectedBarcodes.value = List.from(detectedBarcodes.value)
+          ..addAll(newBarcodes);
 
         final tokenProvider =
             Provider.of<TokenProviderNotifier>(context, listen: false);
         final repository =
             ScannerRemoteRepository(tokenProvider: tokenProvider);
 
-        final Result<Product> result =
-            await repository.getProductByBarcodeId(BarcodeId(detectedBarcodes.value.first.displayValue!));
+        final Result<Product> result = await repository.getProductByBarcodeId(
+            BarcodeId(detectedBarcodes.value.first.displayValue!));
+
+        if (result.isNotFound) {
+          barcode.value = BarcodeId(detectedBarcodes.value.first.displayValue!);
+        }
 
         if (result.isFailure) {
           product.value = null;
@@ -101,16 +132,19 @@ class ScannerViewModel {
     _resetTimer = Timer(const Duration(seconds: 45), () {
       detectedBarcodes.value = [];
       product.value = null;
+      barcode.value = null;
       showDefaultDialog();
     });
-
   }
 
   void dispose() {
     defaultDialogController.dispose();
     productDialogController.dispose();
+    askToAddDialogController.dispose();
     detectedBarcodes.dispose();
     cameraSize.dispose();
+    barcode.dispose();
+    product.dispose();
     _resetTimer?.cancel();
   }
 }

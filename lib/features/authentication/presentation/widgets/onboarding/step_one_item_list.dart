@@ -49,7 +49,7 @@ class _StepOneItemListState extends State<StepOneItemList> {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
-                width: isExpanded ? screenWidth : screenWidth / 2.6,
+                width: isExpanded ? screenWidth : ((screenWidth / 2) - AppDimensions.padding.xxxLarge * 2 - 2),
                 child: _buildCard(item, index, isExpanded, isSelected),
               ),
             );
