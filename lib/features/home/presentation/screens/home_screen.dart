@@ -24,8 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
   late HomeViewModel _viewModel;
 
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _viewModel = HomeViewModel(context: context);
   }
 
@@ -230,14 +230,15 @@ class _HomeScreenState extends State<HomeScreen> {
               title: "home.grid_stats.not_found.label".tr(),
               subtitle: userData?.getProductScannedFailed() ?? "",
               onTap: () {
-                Fluttertoast.showToast(
+                context.push("/ask-to-add");
+                /*Fluttertoast.showToast(
                   msg: "Feature not available yet",
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.BOTTOM,
                   backgroundColor: AppColors.black,
                   textColor: AppColors.white,
                   fontSize: 16.0,
-                );
+                );*/
               },
               isData: isData,
             ),

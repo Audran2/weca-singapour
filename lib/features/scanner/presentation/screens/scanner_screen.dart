@@ -6,7 +6,9 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/dimensions.dart';
 import '../../../../core/styles/text_styles.dart';
+import '../../domain/barcode_id.dart';
 import '../../domain/product_model.dart';
+import '../widgets/scanner_ask_to_add_dialog.dart';
 import '../widgets/scanner_default_dialog.dart';
 import '../widgets/scanner_overlay_painter.dart';
 import '../widgets/scanner_product_dialog.dart';
@@ -104,6 +106,15 @@ class _ScannerScreenState extends State<ScannerScreen>
               ScannerDefaultDialog(
                 offsetAnimation: viewModel.defaultDialogOffsetAnimation,
                 label: "scanner.dialog.default.label".tr(),
+              ),
+              ValueListenableBuilder<BarcodeId?>(
+                valueListenable: viewModel.barcode,
+                builder: (context, barcode, _) {
+                  return ScannerAskToAddDialog(
+                    offsetAnimation: viewModel.productDialogOffsetAnimation,
+                    barcode: barcode,
+                  );
+                },
               ),
             ],
           );

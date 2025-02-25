@@ -12,7 +12,9 @@ import '../features/history/presentation/screens/history_screen.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 import '../features/notifications/presentation/screens/notification_screen.dart';
 import '../features/profile/presentation/screens/profile_screen.dart';
+import '../features/scanner/domain/barcode_id.dart';
 import '../features/scanner/domain/product_model.dart';
+import '../features/scanner/presentation/screens/ask_to_add_screen.dart';
 import '../features/scanner/presentation/screens/product_screen.dart';
 import '../features/scanner/presentation/screens/scanner_screen.dart';
 import '../features/shop/presentation/screens/brand_center_screen.dart';
@@ -89,6 +91,14 @@ final GoRouter appRouter = GoRouter(
 
     // Route de scan
     GoRoute(path: '/scan', builder: (context, state) => const ScannerScreen()),
+
+    // Route d'ajout d'un produit
+    GoRoute(
+        path: '/ask-to-add',
+        builder: (context, state) {
+          final BarcodeId barcode = state.extra as BarcodeId;
+          return AskToAddScreen(barcode: barcode);
+        }),
 
     GoRoute(
       path: '/product',
