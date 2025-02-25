@@ -314,5 +314,30 @@
   },
   "product": {
     "alert": "不兼容"
+  },
+  "brand_center": {
+    "label": "发现您的最佳",
+    "action": {
+      "search": "您在寻找什么？"
+    },
+    "offer": {
+      "title": "经典干燥有机坚果\n黑色木薯",
+      "value": "八折优惠",
+      "type": "最佳优惠！"
+    },
+    "categories": {
+      "all": "全部",
+      "nutrition": "营养",
+      "courses": "课程",
+      "lamp": "灯具"
+    },
+    "item_data": {
+      "first": {
+        "title": "营养课程"
+      },
+      "second": {
+        "title": "会员"
+      }
+    }
   }
 }

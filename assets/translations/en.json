@@ -314,5 +314,30 @@
   },
   "product": {
     "alert": "Not compatible"
+  },
+  "brand_center": {
+    "label": "FIND Your MOST",
+    "action": {
+      "search": "What are you looking for ?"
+    },
+    "offer": {
+      "title": "Classic dried bio nuts\nNoir tapioca",
+      "value": "80% off",
+      "type": "BEST OFFER !"
+    },
+    "categories": {
+      "all": "All",
+      "nutrition": "Nutrition",
+      "courses": "Courses",
+      "lamp": "Lamp"
+    },
+    "item_data": {
+      "first": {
+        "title": "Nutrition course"
+      },
+      "second": {
+        "title": "Membership"
+      }
+    }
   }
 }

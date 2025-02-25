@@ -314,5 +314,30 @@
   },
   "product": {
     "alert": "Tidak serasi"
+  },
+  "brand_center": {
+    "label": "TEMUI Yang TERBAIK",
+    "action": {
+      "search": "Apa yang anda cari?"
+    },
+    "offer": {
+      "title": "Kacang bio kering klasik\nNoir tapioca",
+      "value": "Diskaun 80%",
+      "type": "TAWARAN TERBAIK!"
+    },
+    "categories": {
+      "all": "Semua",
+      "nutrition": "Pemakanan",
+      "courses": "Kursus",
+      "lamp": "Lampu"
+    },
+    "item_data": {
+      "first": {
+        "title": "Kursus pemakanan"
+      },
+      "second": {
+        "title": "Keahlian"
+      }
+    }
   }
 }

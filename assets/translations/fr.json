@@ -314,5 +314,30 @@
   },
   "product": {
     "alert": "Non compatible"
+  },
+  "brand_center": {
+    "label": "TROUVEZ VOTRE PLUS",
+    "action": {
+      "search": "Que cherchez-vous ?"
+    },
+    "offer": {
+      "title": "Noix bio séchées classiques\nNoir tapioca",
+      "value": "80% de réduction",
+      "type": "MEILLEURE OFFRE !"
+    },
+    "categories": {
+      "all": "Tous",
+      "nutrition": "Nutrition",
+      "courses": "Cours",
+      "lamp": "Lampe"
+    },
+    "item_data": {
+      "first": {
+        "title": "Cours de nutrition"
+      },
+      "second": {
+        "title": "Adhésion"
+      }
+    }
   }
 }
