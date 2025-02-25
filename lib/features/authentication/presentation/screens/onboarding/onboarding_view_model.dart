@@ -201,7 +201,6 @@ class OnboardingViewModel with ChangeNotifier {
 
     try {
       final OnboardingUserOptionDTO userOptionDTO = OnboardingUserOptionDTO(
-        name: "Audran",
         allergies: selectedAllergies,
         preferences: dietaryPreferences,
         options: [

@@ -1,5 +1,4 @@
 class OnboardingUserOptionDTO {
-  final String name;
   final List<String> allergies;
   final List<String> preferences;
   final List<Map<String, String>> options;
@@ -8,7 +7,6 @@ class OnboardingUserOptionDTO {
   final List<String> medicalRestrictions;
 
   OnboardingUserOptionDTO({
-    required this.name,
     required this.allergies,
     required this.preferences,
     required this.options,
@@ -19,7 +17,6 @@ class OnboardingUserOptionDTO {
 
   Map<String, dynamic> toJson() {
     return {
-      'name': name,
       'allergies': allergies,
       'preferences': preferences,
       'options': options,
