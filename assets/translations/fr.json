@@ -339,5 +339,16 @@
         "title": "Adhésion"
       }
     }
+  },
+  "ask_to_add": {
+    "title": "Demande d'ajout de produit",
+    "empty_grid": "Aucune photo",
+    "take_picture": "Prendre une photo",
+    "indication": "Veuillez prendre une photo claire de l'étiquette du produit.",
+    "advice": "Assurez-vous que l'étiquette soit bien visible et lisible. Cela nous permettra d'ajouter rapidement le produit à notre système.",
+    "submit": "Envoyer",
+    "dialog": {
+      "info": "Veuillez prendre une photo de l'étiquette du produit."
+    }
   }
 }

@@ -39,7 +39,12 @@ class ScannerRemoteRepository extends ScannerRepository {
       final Product product =
           ProductResponseDTO.fromJson(response.data["data"]).toDomain();
       return Result.success(product);
-    } catch (_) {
+    } catch (error) {
+      if (error is DioException) {
+        if (error.response?.statusCode == 404) {
+          return Result.isNotFound("Error");
+        }
+      }
       return Result.failure("Une erreur est survenue");
     }
   }
@@ -48,14 +53,21 @@ class ScannerRemoteRepository extends ScannerRepository {
   Future<Result<void>> askToAddProduct(
       AskToAddProductDTO askToAddProductDTO) async {
     try {
+      final FormData formData = FormData.fromMap(askToAddProductDTO.toJson());
+
       final Response<dynamic> response =
-          await httpClient.post("/products", data: askToAddProductDTO.toJson());
+          await httpClient.post("/products", data: formData);
 
       if (response.statusCode != 200)
         return Result.failure("Failed to get product");
 
       return Result.success();
-    } catch (_) {
+    } catch (error) {
+      if (error is DioException) {
+        print("=== ERROR IN THE QUERY ===");
+        print(error.response);
+        print("==========================");
+      }
       return Result.failure("Une erreur est survenue");
     }
   }

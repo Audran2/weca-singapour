@@ -339,5 +339,16 @@
         "title": "Keahlian"
       }
     }
+  },
+  "ask_to_add": {
+    "title": "Minta tambah produk",
+    "empty_grid": "Tiada foto",
+    "take_picture": "Ambil gambar",
+    "indication": "Sila ambil gambar jelas label produk.",
+    "advice": "Pastikan label kelihatan dengan jelas dan boleh dibaca. Ini akan membantu kami menambah produk dengan cepat ke dalam sistem kami.",
+    "submit": "Hantar",
+    "dialog": {
+      "info": "Sila ambil gambar label produk."
+    }
   }
 }

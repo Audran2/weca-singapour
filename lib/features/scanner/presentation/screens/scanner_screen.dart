@@ -111,7 +111,7 @@ class _ScannerScreenState extends State<ScannerScreen>
                 valueListenable: viewModel.barcode,
                 builder: (context, barcode, _) {
                   return ScannerAskToAddDialog(
-                    offsetAnimation: viewModel.productDialogOffsetAnimation,
+                    offsetAnimation: viewModel.askToAddDialogOffsetAnimation,
                     barcode: barcode,
                   );
                 },

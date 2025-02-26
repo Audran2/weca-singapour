@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/text_styles.dart';
+import '../../../scanner/domain/barcode_id.dart';
 import '../../domain/user_data_domain.dart';
 import '../widgets/home_card_navigation.dart';
 import '../widgets/home_explore_card.dart';
@@ -230,7 +231,7 @@ class _HomeScreenState extends State<HomeScreen> {
               title: "home.grid_stats.not_found.label".tr(),
               subtitle: userData?.getProductScannedFailed() ?? "",
               onTap: () {
-                context.push("/ask-to-add");
+                context.push("/ask-to-add", extra: BarcodeId("0123456789101"));
                 /*Fluttertoast.showToast(
                   msg: "Feature not available yet",
                   toastLength: Toast.LENGTH_SHORT,

@@ -339,5 +339,16 @@
         "title": "Membership"
       }
     }
+  },
+  "ask_to_add": {
+    "title": "Ask to add a product",
+    "empty_grid": "No photo",
+    "take_picture": "Take a photo",
+    "indication": "Please take a clear photo of the product label.",
+    "advice": "Make sure the label is clearly visible and readable. This will help us quickly add the product to our system.",
+    "submit": "Submit",
+    "dialog": {
+      "info": "Please take a photo of the product label."
+    }
   }
 }

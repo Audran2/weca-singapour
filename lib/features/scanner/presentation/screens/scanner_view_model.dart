@@ -108,16 +108,25 @@ class ScannerViewModel {
         final Result<Product> result = await repository.getProductByBarcodeId(
             BarcodeId(detectedBarcodes.value.first.displayValue!));
 
+        print("ICI");
+        print(result.isNotFound);
+        print(result.isSuccess);
+        print(result.isFailure);
+
         if (result.isNotFound) {
           barcode.value = BarcodeId(detectedBarcodes.value.first.displayValue!);
+          showAskToAddDialog();
+          return;
         }
 
         if (result.isFailure) {
           product.value = null;
+          barcode.value = null;
           return;
         }
 
         product.value = result.data;
+
         showProductDialog();
       }
 
