@@ -38,18 +38,19 @@ class _CameraWidgetState extends State<CameraWidget> {
 
   Future<void> _setupCamera() async {
     final cameras = await availableCameras();
+    CameraDescription selectedCamera = cameras.first;
     if (cameras.isNotEmpty) {
       // For each camera output the sensorOrientation and lensDirection.
       // This doesn't provide any useful descriptions to determine if its widelens.
       // After testing each index manually you will know which index is what exactly.
       for (var camera in cameras) {
-        debugPrint('sensorOrientation: ${camera.sensorOrientation}');
-        debugPrint('lensDirection: ${camera.lensDirection}');
-        debugPrint('name: ${camera.name}');
+        if (camera.lensDirection == CameraLensDirection.back) {
+          selectedCamera = camera;
+        }
       }
 
       _controller = CameraController(
-        cameras.last,
+        selectedCamera,
         ResolutionPreset.ultraHigh,
       );
       _initializeControllerFuture = _controller.initialize();
@@ -103,11 +104,13 @@ class _CameraWidgetState extends State<CameraWidget> {
                     fit: BoxFit.cover,
                     child: SizedBox(
                         width: (isPortrait
-                            ? _controller.value.previewSize!.height
-                            : _controller.value.previewSize!.width) / 3,
+                                ? _controller.value.previewSize!.height
+                                : _controller.value.previewSize!.width) /
+                            3,
                         height: (isPortrait
-                            ? _controller.value.previewSize!.width
-                            : _controller.value.previewSize!.height) / 2,
+                                ? _controller.value.previewSize!.width
+                                : _controller.value.previewSize!.height) /
+                            2,
                         child: CustomPaint(
                           painter: ScannerOverlayPainter(
                             widgetSize: mediaSize,
@@ -128,7 +131,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                       decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius:
-                        BorderRadius.circular(AppDimensions.radius.large),
+                            BorderRadius.circular(AppDimensions.radius.large),
                       ),
                       child: const Icon(
                         Icons.close,
