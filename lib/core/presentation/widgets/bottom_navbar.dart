@@ -51,9 +51,10 @@ class BottomNavBar extends StatelessWidget {
                 AnimatedPositioned(
                   duration: AppDurations.defaultDuration,
                   curve: Curves.easeInOut,
-                  top: -AppTextSize.defaultIcon / 2,
-                  left: (currentIndex + 0.5) * itemWidth -
-                      (AppTextSize.defaultIcon),
+                  top: -AppTextSize.defaultIcon / 4,
+                  left: (currentIndex + (currentIndex > 2 ? 0.54 : 0.48)) *
+                          itemWidth -
+                      AppTextSize.defaultIcon,
                   child: Container(
                     width: AppTextSize.defaultIcon * 2,
                     height: AppTextSize.defaultIcon * 2,
@@ -68,23 +69,28 @@ class BottomNavBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: navItems.map((item) {
                     final bool isActive = location == item.route;
-                    return GestureDetector(
-                      onTap: () => item.route == "/scan"
-                          ? context.push(item.route)
-                          : context.go(item.route),
-                      child: Transform.translate(
-                        offset: item.route == '/scan'
-                            ? const Offset(0, -8)
-                            : const Offset(0, 0),
+                    final bool isScan = item.route == '/scan';
+                    final double iconSize = isScan
+                        ? AppTextSize.defaultIcon * 1.5
+                        : AppTextSize.defaultIcon;
+
+                    return Transform.translate(
+                      offset: isScan ? const Offset(0, -12) : const Offset(0, 0),
+                      child: GestureDetector(
+                        onTap: () => isScan
+                            ? context.push(item.route)
+                            : context.go(item.route),
                         child: SizedBox(
-                          width: AppTextSize.defaultIcon,
-                          height: AppTextSize.defaultIcon,
+                          width: iconSize,
+                          height: iconSize,
                           child: SvgPicture.asset(
                             item.icon,
                             colorFilter: ColorFilter.mode(
-                              isActive
+                              isScan
                                   ? ChartColors.primary500
-                                  : AppColors.grey300,
+                                  : isActive
+                                      ? ChartColors.primary500
+                                      : AppColors.grey300,
                               BlendMode.srcIn,
                             ),
                           ),

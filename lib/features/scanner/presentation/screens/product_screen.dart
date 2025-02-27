@@ -178,7 +178,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     return Padding(
                       padding: const EdgeInsets.only(right: 20),
                       child: AllergyTag(
-                        label: intolerance.name,
+                        item: intolerance,
                         icon: 'assets/icons/infos/Octagon_Warning.svg',
                         backgroundColor: ChartColors.secondary900,
                         iconColor: AppColors.white,
@@ -190,7 +190,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     return Padding(
                       padding: const EdgeInsets.only(right: 20),
                       child: AllergyTag(
-                        label: component.name,
+                        item: component,
                         icon: 'assets/icons/infos/Triangle_Warning.svg',
                         backgroundColor: ChartColors.secondary50,
                         iconColor: ChartColors.secondary500,
